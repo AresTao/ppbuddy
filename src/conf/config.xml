@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+
+<parameters>
+    <parameter ID="SoapWSUrl">
+        <description>soap服务请求地址</description>
+       <value>http://219.141.189.123:3266/soapserver</value>
+    </parameter>
+    
+    <parameter ID="P2PCallUrl">
+        <description>点对点呼叫url</description>
+  		 <value>http://219.141.189.123:3266/soapserver</value>
+    </parameter>
+    
+
+    
+</parameters>

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+
+		<!-- Database connection settings -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+	
+		<property name="connection.url"><![CDATA[jdbc:mysql://localhost:3306/paopaodb?useUnicode=true&characterEncoding=utf8]]></property>
+		<property name="connection.username">paopaobang</property>
+		<property name="connection.password">123</property>
+		
+		<!-- C3P0连接池设 -->
+		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+		<property name="c3p0.min_size">5</property> <!--连接池最小连接数-->  
+		<property name="c3p0.max_size">100</property> <!-- 最大连接数-->  
+		<property name="c3p0.timeout">5000</property> <!--超时时长 -->  
+		<property name="c3p0.max_statements">100</property> <!--最多缓存的语句数量 -->
+		<property name="hibernate.c3p0.idle_test_period">120</property><!-- 连接池检测线程多长时间检测一次池内的所有链接对象 -->
+		<property name="hibernate.c3p0.acquire_increment">2</property><!-- 当连接池里面的连接用完的时候，C3P0一下获取的新的连接  -->
+
+		<!-- SQL dialect --><!--指定连接的语言-->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+		<!-- Enable Hibernate's automatic session context management -->
+		<property name="current_session_context_class">thread</property>
+
+		<property name="connection.autocommit">true</property>
+
+		<!-- business object Mapping file 业务对象映射文件-->
+		<mapping resource="com/ctbri/model/Post.hbm.xml" />
+		<!-- business object Mapping file 业务对象映射文件-->
+		<mapping resource="com/ctbri/model/Account.hbm.xml" /><!-- WEB服务端注册权限数据表映射 -->
+
+	</session-factory>
+
+</hibernate-configuration>
