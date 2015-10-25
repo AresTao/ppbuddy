@@ -1,0 +1,35 @@
+1. 获取新闻列表
+method :post
+url:    http://localhost:8080/ppbuddy/api/0.1/post/getList/category/{categoryId}/flag/{flag}
+request:
+response:
+[
+    {
+        "publishTime":"2015-10-25 10:40:16.0",
+        "publisherName":"ztwu",
+        "shortContent":"shortcontent",
+        "bannerPath":"/upload",
+        "postId":"20151025"
+    },
+    {
+        "publishTime":"2015-10-25 10:40:16.0",
+        "publisherName":"ztwu",
+        "shortContent":"shortcontent",
+        "bannerPath":"/upload",
+        "postId":"20151025"
+    }
+]
+
+2. 获取新闻记录
+method :post
+url :http://localhost:8080/ppbuddy/api/0.1/post/get/{postId}
+request:
+response:
+{
+    "imgPaths":[],
+    "publishTime":"2015-10-25 10:40:16.0",
+    "publisherName":"ztwu",
+    "postId":"20151025",
+    "content":"content",
+    "title":"test"
+}
