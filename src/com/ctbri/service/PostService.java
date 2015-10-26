@@ -138,12 +138,12 @@ public class PostService {
 	 * 
 	 * */
 	@POST
-	@Path("/{APIversion}/post/delete/{POSTID}")	
+	@Path("/{APIversion}/post/delete")	
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response deletePost(@PathParam("APIversion") String APIversion,@PathParam("POSTID") String postId
+	public Response deletePost(@PathParam("APIversion") String APIversion,PublishPostParam postIds
 			){
-		CommonPostResp res = PostOperator.deletePost(postId);
+		CommonPostResp res = PostOperator.deletePost(postIds.getPostIds());
 		return Response.status(200).entity(res).build(); 
 	}
 	

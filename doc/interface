@@ -1,7 +1,7 @@
 1. 获取新闻列表
-method :post
-url:    http://localhost:8080/ppbuddy/api/0.1/post/getList/category/{categoryId}/flag/{flag}
-request:
+method  : post
+url     : http://localhost:8080/ppbuddy/api/0.1/post/getList/category/{categoryId}/flag/{flag}
+request :
 response:
 [
     {
@@ -21,9 +21,9 @@ response:
 ]
 
 2. 获取新闻记录
-method :post
-url :http://localhost:8080/ppbuddy/api/0.1/post/get/{postId}
-request:
+method  : post
+url     : http://localhost:8080/ppbuddy/api/0.1/post/get/{postId}
+request :
 response:
 {
     "imgPaths":[],
@@ -32,4 +32,43 @@ response:
     "postId":"20151025",
     "content":"content",
     "title":"test"
+}
+
+3. 发布新闻
+method  : post
+url     : http://localhost:8080/ppbuddy/api/0.1/post/publish/flag/1
+request :
+{
+    "postIds":[20151025,20151026]
+}
+response:
+{
+    "reason":"publish success.",
+    "code":200
+}
+
+4. 取消发布新闻
+method  : post
+url     : http://localhost:8080/ppbuddy/api/0.1/post/publish/flag/0
+request :
+{
+    "postIds":[20151025,20151026]
+}
+response:
+{
+    "reason":"publish success.",
+    "code":200
+}
+
+5. 删除新闻（已经发布的不可以删除，一定是取消发布之后才可以删除）
+method  : post
+url     : http://localhost:8080/ppbuddy/api/0.1/post/delete
+request :
+{
+    "postIds":[20151025,20151026]
+}
+response:
+{
+    "reason":"publish success.",
+    "code":200
 }

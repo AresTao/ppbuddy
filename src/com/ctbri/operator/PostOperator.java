@@ -46,18 +46,21 @@ public class PostOperator {
 		CommonPostResp res = null;		
 		try{
 			session = DbHelper.getSession();
-						
+			
 			Transaction tran = session.beginTransaction();//开始事物  
-			String hql = "UPDATE post p set p.isPublish=:isPublish where p.postId in :postIds";
-			Query query = session.createQuery(hql);
-			query.setInteger("isPublish", flag);
-			query.setEntity("postIds", postIds);
-			query.executeUpdate();
-	        tran.commit();			
+			for (String postId : postIds)
+			{
+				String hql = "UPDATE com.ctbri.model.Post p set p.isPublish=:isPublish where p.postId =:postId";
+				Query query = session.createQuery(hql);
+				query.setInteger("isPublish", flag);
+				query.setString("postId", postId);
+				query.executeUpdate();				
+			}
+			tran.commit();
 			
 	        res = new CommonPostResp();
 	        res.setCode(200);
-	        res.setReason("create success.");
+	        res.setReason("publish success.");
 		}catch(Exception e)
 		{
 			log.error(e.getMessage());
@@ -65,21 +68,47 @@ public class PostOperator {
 		return res;
 	}
 	
-	public static CommonPostResp deletePost(final String postId)
+	@SuppressWarnings("unchecked")
+	public static CommonPostResp deletePost(List<String> postIds)
 	{
-		Session session = null;	
-		CommonPostResp res = null;		
+		Session session = null;
+		CommonPostResp res = null;
 		try{
-			FileOperator.deleteFiles(postId);
+			res = new CommonPostResp();
 			session = DbHelper.getSession();
-					
-			Transaction tran = session.beginTransaction();//开始事物     
-			session.delete("FROM post as p where p.postId="+postId+" and p.isPublish=0");   
-	        tran.commit();
-	        
-	        res = new CommonPostResp();
-	        res.setCode(200);
-	        res.setReason("delete success.");
+			for (String postId:postIds)
+			{
+				FileOperator.deleteFiles(postId);
+				String hql = "from com.ctbri.model.Post as p where p.postId=:postId";
+				Query query = session.createQuery(hql);
+				query.setString("postId", postId);
+				List<Post> posts = query.list();
+				if (posts.size() > 0)
+				{
+					if (posts.get(0).getIsPublish() == 0)
+					{
+						Transaction tran = session.beginTransaction();//开始事物    
+						hql = "delete com.ctbri.model.Post  as p where p.postId=:postId";
+						query = session.createQuery(hql);
+						query.setString("postId", postId);
+						query.executeUpdate();
+						//session.delete("FROM com.ctbri.model.MimeFile as m where m.postId="+postId);  
+				        tran.commit();
+						res.setCode(200);
+						res.setReason("delete success.");
+					} else
+					{
+						res.setCode(403);
+						res.setReason("post "+postId+" is published.");
+						return res;
+					}
+				} else 
+				{
+					res.setCode(404);
+					res.setReason("post "+postId+" not exist.");
+					return res;
+				}
+			}
 		}catch(Exception e)
 		{
 			log.error(e.getMessage());

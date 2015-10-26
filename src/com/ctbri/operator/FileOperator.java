@@ -68,10 +68,14 @@ public class FileOperator {
 				
 		try{
 			session = DbHelper.getSession();
-			
-			Transaction tran = session.beginTransaction();//开始事物     
-			session.delete("FROM mimeFile as m where m.postId="+postId);  
+			Transaction tran = session.beginTransaction();//开始事物    
+			String hql = "delete com.ctbri.model.MimeFile  as m where m.postId=:postId";
+			Query query = session.createQuery(hql);
+			query.setString("postId", postId);
+			query.executeUpdate();
+			//session.delete("FROM com.ctbri.model.MimeFile as m where m.postId="+postId);  
 	        tran.commit();
+	        
 	        
 			return true;
 		}catch(Exception e)
