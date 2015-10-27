@@ -1,0 +1,125 @@
+/* CSS Document */
+.equipment_Chassis{width:100%; background-color:#FCFCCC; float:left;}
+.equipment_slot{width:100%; background-color:#bfbfbf; float:left; border-top:#CCCCCC solid 1px; border-bottom:#CCCCCC solid 1px;}
+.equipment_slot_left{width:3%; height:100px; background-image:url(../images/topo/gear.gif); background-position: center; background-repeat:no-repeat;float:left;}
+.equipment_slotWin{width:93.9%; height:100px; background-color:#bfbfbf; float:left;background-image:url(../images/topo/center.gif); background-position: center; background-repeat:repeat-x;float:left;}
+.equipment_slot_right{width:3%; height:100px; background-image:url(../images/topo/gear.gif); background-position: center; background-repeat:no-repeat; float:right;}
+.equipment_plane{width:100%; background-color:#FCFCCC; height:60px;}
+.equipment_plane_top{width:100%; background-color:#a8a8aa; height:20px;float:right;}
+.equipment_plane_win{width:100%; background-color:#aCaCaC; height:60px;float:right; padding-left:10px; padding-top:20px; padding-bottom:20px;}
+.equipment_plane_tempCon{width:20%; height:80px; background-color:#aCaCaC; height:60px;float:left;}
+.equipment_plane_fanCon{width:59%; height:80px; background-color:#aCaCaC; height:60px;float:left;}
+.equipment_plane_powerCon{width:20%; height:80px; background-color:#aCaCaC; height:60px;float:left;}
+.equipment_plane_power{width: 60px;height: 26px;margin:5px 5px auto 5px;background: url("../images/snapshot/power.gif") no-repeat center center;clear:both;float:right;}
+.equipment_plane_fan{width: 52px; height: 51px;margin:10px 15px 10px 15px;background: url("../images/snapshot/fan.gif") no-repeat center center;display:inline;border: #aCaCaC 1px solid;}
+.equipment_plane_temperature{width: 25px; height: 79px;  background-repeat:no-repeat; background-position-x: center;margin:3px 15px 3px 15px;border: #aCaCaC 1px solid; float:left}
+.equipment_plane_temperature_win{width: 25px; height: 79px;background:  url(../images/snapshot/device_interface/temperature.png) no-repeat center center;display:inline;}
+/*-------*/
+.equipment_planeConsor{width:61%; height:20px;float:left;}
+.tooltip_main {
+    background: none repeat scroll 0 0 #99CCFF;
+    border: 1px solid #aCaCaC;
+    display: none;
+    height: auto !important;
+    padding: 8px;
+    position: absolute;
+	text-align:left;
+    width: 200px;
+}
+.equipment_tps_0,.equipment_tps_5{cursor: pointer ;float:left; width:12px; height:12px; display: inline-block; *display: inline; margin:2px 2px 1px 2px; background:url(../images/snapshot/panel/panel_legend_t1.png) center center no-repeat !important; background:none;  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../resource/style/global/images/snapshot/panel/panel_legend_t1.png',sizingMethod='image');}
+.equipment_tps_10{ float:left; width:12px; height:12px; display: inline-block; *display: inline; margin:2px 2px 1px 2px; background:url(../images/snapshot/panel/panel_legend_t2.png) center center no-repeat !important; background:none;  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../resource/style/global/images/snapshot/panel/panel_legend_t2.png',sizingMethod='image');}
+.equipment_tps_15{ float:left; width:12px; height:12px; display: inline-block; *display: inline; margin:2px 2px 1px 2px; background:url(../images/snapshot/panel/panel_legend_t3.png) center center no-repeat !important; background:none;  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../resource/style/global/images/snapshot/panel/panel_legend_t3.png',sizingMethod='image');}
+.equipment_tps_20{ float:left; width:12px; height:12px; display: inline-block; *display: inline; margin:2px 2px 1px 2px; background:url(../images/snapshot/panel/panel_legend_t4.png) center center no-repeat !important; background:none;  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../resource/style/global/images/snapshot/panel/panel_legend_t4.png',sizingMethod='image');}
+.equipment_tps_30{ float:left; width:12px; height:12px; display: inline-block; *display: inline; margin:2px 2px 1px 2px; background:url(../images/snapshot/panel/panel_legend_t5.png) center center no-repeat !important; background:none;  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../resource/style/global/images/snapshot/panel/panel_legend_t5.png',sizingMethod='image');}
+
+.equipment_status_0,.equipment_status_5{ float:left; width:12px; height:12px; display: inline-block; *display: inline; margin:2px 2px 1px 2px; background:url(../images/snapshot/panel/panel_legend_s1.png) center center no-repeat !important; background:none;  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../resource/style/global/images/snapshot/panel/panel_legend_s1.png',sizingMethod='image');}
+.equipment_status_10{ float:left; width:12px; height:12px; display: inline-block; *display: inline; margin:2px 2px 1px 2px; background:url(../images/snapshot/panel/panel_legend_s2.png) center center no-repeat !important; background:none;  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../resource/style/global/images/snapshot/panel/panel_legend_s2.png',sizingMethod='image');}
+.equipment_status_15{ float:left; width:12px; height:12px; display: inline-block; *display: inline; margin:2px 2px 1px 2px; background:url(../images/snapshot/panel/panel_legend_s3.png) center center no-repeat !important; background:none;  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../resource/style/global/images/snapshot/panel/panel_legend_s3.png',sizingMethod='image');}
+.equipment_status_20{ float:left; width:12px; height:12px; display: inline-block; *display: inline; margin:2px 2px 1px 2px; background:url(../images/snapshot/panel/panel_legend_s4.png) center center no-repeat !important; background:none;  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../resource/style/global/images/snapshot/panel/panel_legend_s4.png',sizingMethod='image');}
+.equipment_status_30{ float:left; width:12px; height:12px; display: inline-block; *display: inline; margin:2px 2px 1px 2px; background:url(../images/snapshot/panel/panel_legend_s5.png) center center no-repeat !important; background:none;  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../resource/style/global/images/snapshot/panel/panel_legend_s5.png',sizingMethod='image');}
+.equipment_panelName{width:38%; height:20px; float:left; text-align:left; font-style:italic; background-image:url(../images/default/sizer/nw-handle-dark.gif); background-position:left top; background-repeat:no-repeat; text-indent:20px; font-weight:bold;}
+.equipment_interface_group{ margin: 0 3px 0 3px;  float: left;height:auto; width:auto;}
+.equipment_interface_modulec{ margin: 0 6px 0 6px;  float: left;height:auto; width:auto;border: #3C3C9C 1px solid;}
+
+.equipment_interface_module{  float: left;height:auto; width:auto;}
+
+.equipment_interface_title_fp{
+    height: 16px;
+    width: 19px;
+    float: left;
+	font-family:"Times New Roman", Times, serif;
+	color:#FFFBF0;
+	font-size:10px;
+	font-weight:500px;
+	text-align:center;
+	display: inline;
+}
+.equipment_interface_title_gp{
+    height: 20px;
+    width: 27px;
+    float: left;
+	font-family:"Times New Roman", Times, serif;
+	color:#FFFBF0;
+	font-size:10px;
+	font-weight:500px;
+	text-align:center;
+	display: inline;
+}
+.equipment_interface_fp{
+    background: url(../images/snapshot/device_interface/netPort_u.gif);
+    height: 16px;
+    width: 19px;
+    float: left;
+	display:inline;
+    cursor: pointer;
+}
+
+.equipment_interface_fp_d{
+    background: url(../images/snapshot/device_interface/netPort_d.gif);
+    height: 16px;
+    width: 19px;
+    float: left;
+    display:inline;
+    cursor: pointer;
+}
+.equipment_interface_gp{
+    background: url(../images/snapshot/device_interface/gport_d.png);
+    height: 20px;
+    width: 27px;
+    float: left;
+	display:inline;
+    cursor: pointer;
+}
+
+.equipment_interface_gp_d{
+    background: url(../images/snapshot/device_interface/gport.png);
+    height: 20px;
+    width: 27px;
+    float: left;
+    display:inline;
+    cursor: pointer;
+}
+.equipment_fp_group_title{
+height:auto;
+float:left;
+margin:0 2px 0 2px;
+}
+.equipment_fp_group_title_bottom{
+height:auto;
+float:left;
+margin-top:5px;
+
+}
+.equipment_group_border{
+	border:solid 2px #D4BF00;
+	background-image:url(../images/topo/rectangle.gif);
+	background-position:center;
+	background-repeat:no-repeat;
+	float:left;
+	height:auto;
+	width:100%;
+}
+.equipment_group_line{
+clear:both;
+height: 16px;
+}

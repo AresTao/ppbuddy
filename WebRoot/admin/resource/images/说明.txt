@@ -1,0 +1,12 @@
+说明：
+
+1、手动执行：    run_syn.sh
+
+2、配置定时执行：
+   设置          crontab timer.txt
+   删除          crontab -r
+   查看          crontab -l
+   
+   timer.txt:
+   50 15 * * * /home/ipic/data_syn/run_syn.sh >/home/ipic/data_syn/run_syn.log
+   表示每天15点50执行一次/home/ipic/data_syn/run_syn.sh，并将system.out日志输出到/home/ipic/data_syn/run_syn.log文件

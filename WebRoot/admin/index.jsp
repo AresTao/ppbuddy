@@ -33,9 +33,8 @@
                 <li>
                     <a href="#"><i class="icon-font">&#xe003;</i>常用操作</a>
                     <ul class="sub-menu">
-                        <li><a href="javascript:menu('./getAdminNewsInfoList.do?reqType=active')"><i class="icon-font">&#xe003;</i>活动管理</a></li>
-                        <li><a href="javascript:menu('./getAdminDownLoadInfoList.do')"><i class="icon-font">&#xe001;</i>下载管理</a></li>
-                        <li><a href="javascript:menu('./getAdminNewsInfoList.do?reqType=')"><i class="icon-font">&#xe002;</i>新闻管理</a></li>
+                        
+                        <li><a href="javascript:menu('./newsInfoList.jsp')"><i class="icon-font">&#xe002;</i>新闻管理</a></li>
                                                 
                     </ul>
                 </li>
@@ -52,7 +51,7 @@
         </div>
     </div>
     <div id="contentMain" style='margin-bottom:5px;'>
-		<iframe src="./getAdminNewsInfoList.do?reqType=active"id="contentframe" class="contentframe"></iframe>
+		<iframe src="./newsInfoList.jsp" id="contentframe" class="contentframe"></iframe>
 	</div>
 </div>    
 <%@ include file="./common/footer.jsp"%>

@@ -1,0 +1,53 @@
+/* CSS Document */
+/* CSS Document */
+
+/*二级菜单层定位样式*/
+.menu_TextMenu_sub {
+	border:1px solid #718BB7;
+	color:#000; 	
+	width:150px; 
+	top:0;
+	left:0;  
+	position:absolute;
+	background: #F0F0F0 url(../images/contextmenu/gray_line.gif) repeat-y;
+	background-position:24px 1px; 
+	z-index:5000; 
+	padding:3px 1px 2px 1px;}
+/*右键菜单样式*/
+.menu_TextMenu_sub_item {
+	text-indent:30px; 
+	font-family: arial, sans-serif;
+	 font-size:12px;
+	 display:block;
+	 color:#000;
+	 width:100%;
+	 height:24px;
+	 line-height:24px;
+	 margin:2px 1px 2px 1px;
+	 }
+/*右键菜单样式*/
+.menu_TextMenu_sub_itemu {	text-indent:30px; font-family: arial, sans-serif; font-size:12px;display:block;color:#777777;width:100%;height:24px;line-height:24px;margin:2px 1px 2px 1px;}
+.menu_TextMenu_separator{ width:100%; cursor:pointer; height:2px; background: #F0F0F0 url(../images/contextmenu/gray_line_.gif) repeat; font-size:0px;}
+/*右键菜单鼠标经过样式*/
+.menu_TextMenu_sub_item_over {
+	text-indent:30px; 
+border:1px solid #AACCF6;
+font-family: arial, sans-serif; 
+font-size:12px; 
+display:block;
+color:#000;
+background:url(../images/contextmenu/grid3-hrow-over.gif) repeat;
+width:100%;
+height:24px;
+line-height:24px;
+margin:2px 1px 2px 1px;
+}
+/*右键菜单鼠标经过样式*/
+.menu_TextMenu_sub_item_overu {font-family: arial, sans-serif; font-size:12px; display:block;color:#444444; background:#2E6BC4;width:100%;height:24px;line-height:24px;margin:2px 1px 2px 1px;}
+.menu_TextMenu_sub_item_undo {	text-indent:30px; font-family: arial, sans-serif; font-size:12px; display:block;color:#aaa; width:100%;height:24px;line-height:24px;margin:2px 1px 2px 1px;}
+.bor_b { border-bottom: 1px solid #999;}
+.toptip_main{ border:solid #CCCCCC 1px;position:absolute;width:200px; height:auto !important; background:#99CCFF; display:none; padding:8px 8px 8px 8px; }
+
+
+
+

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Editor>
+	<contextMenu css="menu_TextMenu_sub">
+		<item title="添加子拓扑" action="add" mouseover="menu_TextMenu_sub_item_over" mouseout="menu_TextMenu_sub_item"  undo="menu_TextMenu_sub_item_undo" if="add"  icon="/resource/EHM/css/images/contextmenu/ungroup.gif"/>
+		<separator />
+		<item title="修改" action="edit" mouseover="menu_TextMenu_sub_item_over" mouseout="menu_TextMenu_sub_item"  undo="menu_TextMenu_sub_item_undo" if="edit"  icon="/resource/EHM/css/images/contextmenu/gear.gif"/>
+		<separator />
+		<item title="删除" action="delete" mouseover="menu_TextMenu_sub_item_over" mouseout="menu_TextMenu_sub_item"  undo="menu_TextMenu_sub_item_undo" if="delete"  icon="/resource/EHM/css/images/contextmenu/delete.gif"/>
+	</contextMenu>
+	<Array as="actions">
+            <item as="add"><![CDATA[
+				function(ev)
+				{
+				ev=ev||window.event;
+	         var target = ev.target || ev.srcElement;
+			 SKContextMenu.clearMenu();
+			var a= window.showModalDialog("prevAddTopoFile.do?id="+target.tId+"&"+new Date(), self,"dialogHeight: 300px;dialogWidth: 400px;");
+				}
+			]]></item>
+			 <item as="edit"><![CDATA[
+				function(ev)
+				{
+				ev=ev||window.event;
+	         var target = ev.target || ev.srcElement;
+			 SKContextMenu.clearMenu();
+			 var b= window.showModalDialog("prevModifyTopoFile.do?id="+target.tId+"&"+new Date(), self,"dialogHeight: 300px;dialogWidth: 400px;");
+				}
+			]]></item>
+			<item as="delete"><![CDATA[
+				function(ev)
+				{
+			ev=ev||window.event;
+	         var target = ev.target || ev.srcElement;
+			 SKContextMenu.clearMenu();
+			 if(confirm("确定要删除吗？")){
+			 var fun=TreeBridge.getDelete();
+			 var idArr=target.tId.split('_');
+			 if(idArr.length>1){
+			 if(fun!=null)fun(idArr[1]);
+			 }
+			window.location.href="deleteTopoFile.do?$(topoFileId)="+target.tId;
+			 }
+			 	      
+				}
+			]]></item>
+	</Array>
+</Editor>

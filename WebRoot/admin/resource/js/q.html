@@ -1,0 +1,67 @@
+<!--
+  ~ <p>Title: EAP企业应用开发平台</p>
+  ~
+  ~ <p>Description: 旨在为各位同仁提供统一的基础开发平台，提高开发效率，改进工作质量！</p>
+  ~
+  ~ <p>Copyright: Copyright (C) Surekam 2008</p>
+  ~
+  ~ <p>Company: www.surekam.com</p>
+  -->
+
+<html>
+<head>
+
+    <script src="jsvalidation.js"></script>
+    <script>
+
+        var $ = function() {
+        var elements = new Array();
+        for (var i = 0; i < arguments.length; i++) {
+            var element;
+
+            if (typeof arguments[i] == 'string') {
+                element = document.getElementById(arguments[i]);
+                if (element == null)//没有声明id，根据name找(提高兼容性，ie中id name相同)
+                    element = document.all[arguments[i]];
+            }
+            if (element == null) {//对$(??)为名称的属性特殊处理
+                arguments[i]="$("+arguments[i]+")";
+                if (typeof arguments[i] == 'string') {
+                    element = document.getElementById(arguments[i]);
+                    if (element == null)//没有声明id，根据name找(提高兼容性，ie中id name相同)
+                        element = document.all[arguments[i]];
+                }
+            }
+
+            if (arguments.length == 1) {
+                return element;//可能为null
+            }
+            elements.push(element);
+        }
+        return elements;
+     }
+
+        var validxml=function(){
+        /*
+        <valid>
+            <form id="sada" show-error="alert" show-type="all">
+                <field name="name" display-name="名称">
+                    <depend name="required" />
+                </field>
+
+            </form>
+        </valid>
+        */
+        }
+    </script>
+</head>
+<body>
+
+<form action="#" name="sada" onsubmit="return doValidate(this)">
+    名称:<input type="text" name="name" value="">
+    <input type="submit" value="提交">
+</form>
+
+
+</body>
+</html>

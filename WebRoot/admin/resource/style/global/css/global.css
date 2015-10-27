@@ -1,0 +1,10 @@
+/* CSS Document */
+/* login.jsp */
+#login_itim{ background:url(../images/bg_itim.jpg) center top no-repeat;}
+.login_in{ width:500px; margin:385px auto 0;}
+.login_in td{ color:#000;}
+.login_in td a{ }
+.login_in .pad{ padding-top:3px;}
+
+/* personalAssetInfo */
+.personIframe{ }

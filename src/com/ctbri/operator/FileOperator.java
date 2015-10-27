@@ -76,7 +76,6 @@ public class FileOperator {
 			//session.delete("FROM com.ctbri.model.MimeFile as m where m.postId="+postId);  
 	        tran.commit();
 	        
-	        
 			return true;
 		}catch(Exception e)
 		{

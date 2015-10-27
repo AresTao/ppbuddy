@@ -1,0 +1,30 @@
+html, body {
+    font: normal 9pt tahoma;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+#header {
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+#loading {
+    position: absolute;
+    left: 40%;
+    top: 40%;
+    width:20%;
+    padding: 2px;
+    text-align: center;
+    z-index: 20001;
+}
+
+#loading .loading-box {
+    border: 2px solid #a3bad9;
+    color: #003366;
+    background: white;
+    padding: 10px;
+    margin: 10px;
+}
+

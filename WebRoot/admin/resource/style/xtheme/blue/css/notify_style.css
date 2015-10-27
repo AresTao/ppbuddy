@@ -1,0 +1,446 @@
+html {
+    font-size: 9pt;
+
+}
+
+#dise {
+    background-color: #f9fafc;
+}
+
+body {
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    font-size: 12px;
+    color: #333333;
+    text-decoration: none;
+    line-height: 15px;
+    background-color: FFFFFF;
+}
+
+IMG {
+    BORDER-TOP-WIDTH: 0px;
+    BORDER-LEFT-WIDTH: 0px;
+    BORDER-BOTTOM-WIDTH: 0px;
+    BORDER-RIGHT-WIDTH: 0px
+}
+
+table {
+    font-family: "??¨¬?";
+    font-size: 9pt;
+    height: 25px;
+    line-height: 18px;
+
+}
+
+talbe.is {
+    background-color: F9FAFC;
+    height: 25px;
+    border: 1px solid #788893;
+}
+
+#zhuce {
+    background-color: none;
+}
+
+#zhuce table {
+    background-color: F9FAFC;
+    height: 25px;
+    border: 1px solid #788893;
+    padding: 0px
+
+}
+
+.bottom {
+    border-top: 1px none #788893;
+    border-right: 1px none #788893;
+    border-bottom: 1px solid #788893;
+    border-left: 1px none #788893;
+
+}
+
+.bottomone {
+    border-top: 1px none #788893;
+    border-right: 1px none #788893;
+    border-bottom: 1px solid #788893;
+    border-left: 1px none #788893;
+    background-color: B8DCF1;
+    background-position: center;
+    text-align: center;
+}
+
+.huangse {
+    color: BF1D07;
+}
+
+.biaoti {
+    font-size: 14px;
+    color: 0 B3891;
+    font-weight: bold;
+}
+
+#zhuceneione {
+    background-color: F9FAFC;
+}
+
+#zhuceneione table {
+    background-color: F9FAFC;
+    height: 25px;
+    border: 0px solid #788893;
+    padding: 1px 2px 2px;
+
+}
+
+#zhuceneione td {
+
+    height: 25px;
+    border: 0px solid #788893;
+    padding-left: 5pt
+
+}
+
+.biaotou {
+
+    background-color: B8DCF1;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+.panelSel {
+
+    background-color: #B8DCF1;
+
+    width: 150px;
+
+    height: 24px;
+
+    text-align: center;
+
+    vertical-align: middle;
+
+    border: 0px solid #788893;
+
+    cursor: hand;
+
+}
+
+.panelNotSel {
+
+    background-color: #FFFFFF;
+
+    width: 150px;
+
+    height: 24px;
+
+    text-align: center;
+
+    vertical-align: middle;
+
+    border: 0px solid #788893;
+
+    cursor: hand;
+
+}
+
+.zhucedione {
+    background-color: B8DCF1;
+}
+
+#zhuceneitwo {
+    background-color: F9FAFC;
+}
+
+#zhuceneitwo table {
+    background-color: F9FAFC;
+    height: 25px;
+    border: 0px solid #788893;
+
+}
+
+#zhuceneitwo td {
+
+    height: 25px;
+    border: 0px solid #788893;
+    padding-left: 5pt;
+    padding-top: 5pt;
+
+}
+
+.zhucetwo {
+    background-color: 84 C9CB;
+    padding-right: 4pt;;
+    text-align: right;
+    text-indent: 4px;
+}
+
+.zhucethree {
+    background-color: B8DCF1;
+    padding-right: 4pt;;
+    text-align: right;
+    text-indent: 4px;
+}
+
+.zhucelimian {
+    color: 16387 C;
+}
+
+.zhucelidi {
+    background-color: B8DCF1;
+}
+
+.ceisetiao1 {
+    background-color: F1F1BF;
+}
+
+.daishenpi {
+    font-size: 9pt;
+    color: #FF730B;
+}
+
+#zhuceneithree {
+    background-color: F9FAFC;
+}
+
+#zhuceneithree table {
+    background-color: F9FAFC;
+    height: 25px;
+    border: 0px solid #788893;
+
+}
+
+#zhuceneithree td {
+
+    height: 25px;
+    border: 0px solid #788893;
+    padding-left: 5pt;
+    padding-top: 5pt;
+
+}
+
+.anniu {
+    font-family: "??";
+    font-size: 12px;
+    background-image: url( ../images/ditu.jpg );
+    background-position: center bottom;
+    height: 21px;
+    width: 69px;
+    text-align: center;
+    vertical-align: middle;;
+    border: 0px solid #788893;
+    cursor: hand;
+}
+
+.denglu3 {
+    border: none;
+    background-image: url( ../images/ditusix.jpg );
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 21px;
+    width: 82px;
+    cursor: hand;
+}
+
+a:link {
+    color: #000000;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #000000;
+    text-decoration: none;
+}
+
+a:hover {
+
+    color: 9 D392A;
+
+    position: relative;
+
+    bottom: 2px;
+    text-decoration: none;
+}
+
+a.titleLink:link {
+
+    color: #000099;
+
+    text-decoration: none;
+
+}
+
+a.titleLink:visited {
+
+    color: #000099;
+
+    text-decoration: none;
+
+}
+
+a.titleLink:hover {
+
+    color: 9 D392A;
+
+    position: relative;
+
+    bottom: 2px;
+
+    text-decoration: underline;
+
+}
+
+input {
+    border: solid;
+    border-width: 1px;
+    border-color: #788893;
+}
+
+textarea {
+    border: solid;
+    border-width: 1px;
+    border-color: #788893;
+}
+
+select {
+    border: solid;
+    border-width: 1px;
+    border-color: #788893;
+    ont-family: "ËÎÌå";
+    font-size: 9pt;
+    color: 000000;
+}
+
+.imgbutton {
+    border: none;
+    cursor: hand;
+}
+
+.num {
+    text-align: right;
+}
+
+#zhucenei {
+    background-color: none;
+}
+
+#zhucenei table {
+    background-color: F9FAFC;
+    height: 25px;
+
+    padding: 0px 0px 0px;
+    border-bottom: 1px solid #788893;
+    border-right: 1px solid #788893;
+
+}
+
+#zhucenei td {
+    height: 25px;
+    padding-left: 5pt;
+    text-align: left;
+    border-top: 1px solid #788893;
+    border-right: 1px none;
+    border-bottom: 1px none;
+    border-left: 1px solid #788893;
+}
+
+#zhuceneifour {
+    background-color: FFFFFF;
+}
+
+#zhuceneifour table {
+    background-color: F9FAFC;
+    height: 25px;
+
+    padding: 0px 0px 0px;
+    border: 1px solid #788893
+
+}
+
+#zhuceneifour td {
+    height: 25px;
+    padding-left: 5pt;
+    text-align: left;
+    border: 0px solid #788893
+}
+
+.denglu {
+    border: none;
+    background-image: url( ../images/denglu2.jpg );
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 21px;
+    width: 41px;
+    cursor: hand;
+}
+
+.denglu2 {
+    border: none;
+    background-image: url( ../images/denglu3.jpg );
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 21px;
+    width: 58px;
+    cursor: hand;
+}
+
+.denglu4 {
+    border: none;
+    background-image: url( ../images/huseditu.jpg );
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 23px;
+    width: 50px;
+    cursor: hand;
+}
+
+.denglu5 {
+    border: none;
+    background-image: url( ../images/husedu2.jpg );
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 23px;
+    width: 70px;
+    cursor: hand;
+}
+
+.denglu6 {
+    border: none;
+    background-image: url( ../images/dituanniu.gif );
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 31px;
+    width: 67px;
+    cursor: hand;
+}
+
+.denglu7 {
+
+    border: none;
+
+    background-image: url( ../images/denglu4.jpg );
+
+    background-repeat: no-repeat;
+
+    background-position: center center;
+
+    height: 23px;
+
+    width: 140px;
+
+    cursor: hand;
+
+}
+
+<!--
+model-->
+
+#modelDiv span.red {
+    color: red;
+    font-weight: bold;
+}
+
+#modelDiv span {
+    color: blue;
+}

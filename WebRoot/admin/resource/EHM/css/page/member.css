@@ -1,0 +1,42 @@
+@charset "utf-8";
+/* cSS Document */
+table tr td{ font-size:12px;}  
+
+
+.membermain{ width:941px; float:left; margin:7px 5px 0 4px;}
+.membermain_left{ width:202px; float:left;}
+.membermain_right{ width:739px; float:right;}
+.memberleft_top{ width:202px; height:39px; float:left; clear:both;}
+.memberleft_nav{ width:202px; float:left; clear:both; background:url(../images/bg_member_leftnav.jpg) repeat-y;}
+.member_navleft{float:left;font-size:5px;padding-right:7px; text-align:left; }
+.member_navright{float:left; text-align:left; width:auto; height:30px; line-height:30px;}
+
+.memberleft_navbottom{ width:202px; float:left; clear:both; background:url(../images/pic_memberleft_navbottom.jpg) no-repeat top; height:24px;}
+.member_left{ width:158px; float:left; background:url(../images/bg_member_nav.jpg) no-repeat center; margin:0 7px 0; height:30px; line-height:30px; display:inline; padding-left:30px; text-align:left; }
+
+.member_lefttop{ width:88px; float:left; background:url(../images/pic_menbercenter.jpg) no-repeat;height:48px; }
+.member_righttop{ width:130px; float:right; background:url(../images/pic_member_topright.jpg) no-repeat; height:33px; text-align:right; padding:15px 30px 0 0;}
+.member_middletop{ width:481px; float:left; padding-top:12px; text-align:left; padding-left:10px;}
+.member_middle_h308{ min-height:308px; height:308px;}
+.member_middle{ width:739px; float:left; display:inline; }
+
+
+.member_topbg{ background:url(../images/bg_menbercenter.jpg) repeat-x;}
+.member_middle_bg{ background:url(../images/pic_member_right.jpg) repeat-y;}
+.member_bottombg{ background:url(../images/pic_member_bottom.jpg) no-repeat; height:15px;}
+
+.login_h250{ height:400px;}
+.loginmain{ width:305px; margin-left:auto; margin-right:auto; margin-top:60px;}
+.login_line{ width:305px; float:left; clear:both;}
+.login_top_left{ width:54px; float:left; height:54px; background:url(../images/pic_login_lefttop.jpg) no-repeat;}
+.login_top_middle{ width:197px; float:left; text-align:center; padding-top:13px; }
+.login_top_right{ width:54px; float:left; height:54px; background:url(../images/pic_login_topright.jpg) no-repeat;}
+.login_bgtop{ background:url(../images/bg_login_top.jpg) repeat-x;}
+.login_middle_h118{ height:118px;}
+.login_bgmiddle{ background:url(../images/pic_login_middle.jpg) repeat-y;}
+.login_bgbottom{ background:url(../images/pic_login_bottom.jpg) no-repeat; height:24px;}
+
+/*---------------------------------lianwei_add 20090104 membercenter-----------------------------------*/
+.b_down{border-bottom:1px solid #eaeaea;}
+.b_right{border-right:1px solid #eaeaea;}
+.l_title{background:#f5f5f5; font-weight:bold;}

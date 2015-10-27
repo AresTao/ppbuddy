@@ -1,0 +1,68 @@
+.login_body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #f1f1f1;
+}
+/*登陆主体框架*/
+.login{
+	margin-top:130px;
+	width:668px;
+	height:361px;
+	background-image: url(../images/denglu.jpg);
+
+}
+/*登陆头部*/
+.login_head{
+	height:30px;
+	float:left;
+}
+.login_head_banner{
+	width:76px;
+	height:30px;
+	margin-left:530px;
+	margin-top:10px;
+}
+.login_mid{
+	width:590px;
+	height:260px;
+	float:left;
+	margin-left:20px;
+	margin-right:20px;
+}
+.login_mid_copyright{
+	width:365px;
+	height:245px;
+	background-image:url(../images/t-1.jpg);
+	margin-top:25px;
+	float:left;
+}
+.login_mid_form{
+	float:left;
+	width:210px;
+	height:100px;
+	margin-top: 120px;
+	margin-left:10px;
+}
+.login_bottom{
+	width:76px;
+	height:30px;
+	float:left;
+}
+.ss {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #333333;
+	text-decoration: none;
+}
+.s-l {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #006ed0;
+	text-decoration: underline;
+}
+
+
+
+

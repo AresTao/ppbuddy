@@ -1,0 +1,15 @@
+.inputContainer{
+    text-align: center;
+    margin: 15px;
+}
+.assignBtnContainer{
+    text-align: center;
+}
+
+.assignBtnContainer input{
+    margin: 10px;
+}
+.assignTaskWin{
+	height:295px;
+	overflow:auto;
+}

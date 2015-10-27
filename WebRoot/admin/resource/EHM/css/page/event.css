@@ -1,0 +1,23 @@
+.module_wrapper_bottom_on {
+    background: url(../images/index/up.png) right no-repeat;
+    float: left;
+    height: 17px;
+    width: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 2px;
+    cursor: pointer;
+}
+
+.module_wrapper_bottom_off {
+    background: url(../images/index/down.png) right no-repeat;
+    float: left;
+    height: 17px;
+    width: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 2px;
+    cursor: pointer;
+}

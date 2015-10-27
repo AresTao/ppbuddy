@@ -1,0 +1,65 @@
+.topo_graph_tree li{
+	text-align: left;
+	margin-left: 50px;
+	font: 11px arial,tahoma,helvetica,sans-serif;
+}
+.topo_graph_tree a{
+	color: #000000;
+	text-decoration:none;
+}
+.topo_graph_tree a:hover{
+	color: #000000;
+	font:bolder;
+	text-decoration:none;
+}
+.topo_graph_tree a:visited{
+	color: #000000;
+	text-decoration:none;
+}
+.topo_graph_container,.topo_graph_rectangle,.topo_graph_rounded,.topo_graph_ellipse,
+.topo_graph_double_ellipse,.topo_graph_triangle,.topo_graph_rhombus,.topo_graph_horizontal_line,
+.topo_graph_hexagon,.topo_graph_cylinder,.topo_graph_actor,.topo_graph_cloud,.topo_graph_text{
+	background: no-repeat center bottom;
+	display:inline-block;
+ 	height: 24px;
+ 	width: 24px;
+}
+.topo_graph_container{
+ 	background-image: url("../images/topo/swimlane.gif");
+}
+.topo_graph_rectangle{
+	background-image: url("../images/topo/rectangle.gif");
+}
+.topo_graph_rounded{
+	background-image: url("../images/topo/rounded.gif");
+}
+.topo_graph_ellipse{
+	background-image: url("../images/topo/ellipse.gif");
+}
+.topo_graph_double_ellipse{
+	background-image: url("../images/topo/doubleellipse.gif");
+}
+.topo_graph_triangle{
+	background-image: url("../images/topo/triangle.gif");
+}
+.topo_graph_rhombus{
+	background-image: url("../images/topo/rhombus.gif");
+}
+.topo_graph_horizontal_line{
+	background-image: url("../images/topo/hline.gif");
+}
+.topo_graph_hexagon{
+	background-image: url("../images/topo/hexagon.gif");
+}
+.topo_graph_cylinder{
+	background-image: url("../images/topo/cylinder.gif");
+}
+.topo_graph_actor{
+	background-image: url("../images/topo/actor.gif");
+}
+.topo_graph_cloud{ 
+	background-image: url("../images/topo/cloud.gif");
+}
+.topo_graph_text{ 
+	background-image: url("../images/topo/text.gif");
+}
