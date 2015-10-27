@@ -44,7 +44,7 @@ public class FileOperator {
 	@SuppressWarnings("unchecked")
 	public static List<MimeFile> getFiles(String postId)
 	{
-		Session session = null;	
+		Session session = null;
 		List<MimeFile> fileList = null;
 		try{
 
@@ -60,6 +60,28 @@ public class FileOperator {
 			log.error(e.getMessage());
 		}
 		return fileList;
+	}
+	
+	public static boolean deleteFile(int fileId)
+	{
+		Session session = null;	
+		
+		try{
+
+			session = DbHelper.getSession();
+			Transaction tran = session.beginTransaction();//开始事物 
+			String hql = "delete com.ctbri.model.MimeFile as m where m.fileId=:fileId";
+			Query query = session.createQuery(hql);
+			query.setInteger("fileId", fileId);
+			query.executeUpdate();
+			tran.commit();
+			
+	        return true;
+		}catch(Exception e)
+		{
+			log.error(e.getMessage());
+		}
+		return false;
 	}
 	
 	public static boolean deleteFiles(String postId)

@@ -4,7 +4,7 @@
 <html>
     <head>
     
-    	<title>添加新闻</title>
+    	<title>更新新闻</title>
     	<script type="text/javascript" src="resource/EHM/Base.js"></script>
 		<script type="text/javascript">
 			 ChangeSkinAPP.Register(function(){ChangeSkin.Import("style.css");});
@@ -20,13 +20,10 @@
 		<script type="text/javascript" src="resource/wbox/wbox-min.js"></script>
 	    <script type="text/javascript">
 	    
-	    function addMimeFile()
-	    {
-	        
-	    }
+	    
 	        
 	      	//给表单绑定验证引擎
-	    function initFormValidate(){
+	     function initFormValidate(){
 	       	$("#frm").validationEngine("attach",{
 					validationEventTrigger : "blur",
 					autoPositionUpdate : true,
@@ -35,30 +32,30 @@
 					autoHidePrompt : true,
 					autoHideDelay : 3000
 				});
-	    }
+	        }
 	      	
 			//确定提交表单
-		function addNewsInfo(isPublish){
+			function addNewsInfo(isPublish){
 					//document.getElementById("frm").action = "addNewsInfo.do?reqPage=toSave&isPublish="+isPublish;
 					//document.getElementById("frm").method = "post";
-					//$("#isPublish").val(isPublish);
+					$("#isPublish").val(isPublish);
 					$("#frm").submit();
 					
-		}
+			}
 			
-		$(function() {
-			initFormValidate();//表单验证
-		});
+			$(function() {
+				initFormValidate();//表单验证
+			});
 	    </script>
     </head>
     <body>
 	<div class="mainbody">
-	    <form id="frm" action="${pageContext.request.contextPath}/api/0.1/post/add" method="post" enctype="multipart/form-data">
-	       	<table cellspacing=1 class="form_table" align="center" id="newsTable">
+	    <form id="frm" action="" method="post"  enctype="multipart/form-data">
+	       	<table cellspacing=1 class="form_table" align="center">
 	            <thead>
 		             <tr>
 		                <th colspan="4">
-		               		 添加新闻
+		               		 更新新闻
 		                </th>
 		            </tr>
 	            </thead>
@@ -66,42 +63,33 @@
 	            <tr>
 	                <th width="30%">新闻标题</th>
 	                <td >
-	               	 
-	                    <input type="text" id="newsTitle" name="title" class="input50 validate[required]"/>
+	               	 <input type="hidden" id="isPublish" name="newsInfo.isPublish" class="btn3" value="0" ">
+	                    <input type="text" id="newsTitle" name="newsInfo.newsTitle" class="input50 validate[required]"/>
 	                    <span style="color: red;"> *</span>
 	                </td>
 	            </tr>
 	            <tr>
-	                <th width="30%">发布人</th>
-	                <td >
-	               	 
-	                    <input type="text" id="newsTitle" name="publisherName" class="input50 validate[required]"/>
-	                    <span style="color: red;"> *</span>
-	                </td>
-	            </tr>
-	             <tr>
 	                <tr>
 	                <th >新闻纲要</th>
 	                <td colspan="3" >
-	              	<textarea name="shortContent" id="shortremark" cols=120 rows=4 maxlength="5000"></textarea>  
+	              	<textarea name="newsInfo.content" id="shortremark" cols=120 rows=4 maxlength="5000"></textarea>  
 	                </td>
 	                
 	            </tr>
 		
-				
 	            <tr>
 	                <tr>
 	                <th >新闻内容</th>
 	                <td colspan="3" >
-	              	<textarea name="content" id="remark" cols=120 rows=2 maxlength="5000"></textarea>  
+	              	<textarea name="newsInfo.content" id="remark" cols=120 rows=2 maxlength="5000"></textarea>  
 	                </td> 
 	            </tr>
 	            
 	            <tr>
 	                
-	                <th>附件1</th>
+	                <th>附件一</th>
 	                <td>
-	                	<input type="file" name="file0" id="uploadFile" accept=""/>
+	                	<input type="file" name="uploadFile1" id="uploadFile" accept="image/*"/>
 	                </td>
 	            </tr> 
 	        </table>
@@ -109,8 +97,7 @@
 	       	
 	        <table class="btn_table" align="center">
 				<td>
-		            <input type="button" class="btn3" value="保存" onclick=" addNewsInfo(0) ">
-		           <input type="button" class="btn5" value="保存并发布"onclick=" addNewsInfo(1)">
+		            <input type="button" class="btn3" value="保存修改"onclick=" addNewsInfo(0) ">
 		            <input type="button" class="btn3" value="取消" onClick="javascript:location.href='getAdminNewsInfoList.do?reqType=${reqType}';">
 				</td>
 			</table>

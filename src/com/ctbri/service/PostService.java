@@ -15,11 +15,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
+import org.jboss.resteasy.annotations.Form;
 import org.jboss.resteasy.plugins.providers.multipart.InputPart;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import org.jboss.resteasy.spi.HttpRequest;
@@ -46,18 +48,28 @@ public class PostService {
 	 * */
 	@POST
 	@Path("/{APIversion}/post/add")
+	//@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Consumes("multipart/form-data")
-	//@Produces("application/json")
+	@Produces("text/plain")
 	public Response addPost(@PathParam("APIversion") String APIversion,MultipartFormDataInput input
 			){
-		MultivaluedMap<String,String> param = request.getFormParameters();
+		//MultivaluedMap<String,String> param = request.getFormParameters();
 		
-		Post post = new Post();
+		String fileName = "";
 		
-		String title = param.getFirst("title");
-		String shortContent = param.getFirst("shortContent");
-		String content = param.getFirst("content");
-		String publisherName = param.getFirst("publisherName");
+        Map<String, List<InputPart>> uploadForm = input.getFormDataMap();
+        
+        System.out.print(uploadForm);
+        int fileSize = uploadForm.size();
+        
+        String title = getValue(uploadForm, "title");
+      	String shortContent = getValue(uploadForm, "shortContent");
+      	String content = getValue(uploadForm, "content");
+      	String publisherName = getValue(uploadForm, "publisherName");
+        
+      	Post post = new Post();
+		
+		
 		String postId = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
 		post.setTitle(title);
 		post.setShortContent(shortContent);
@@ -65,18 +77,14 @@ public class PostService {
 		post.setPublisherName(publisherName);
 		post.setPostId(postId);
 		post.setIsPublish(0);
+		post.setCreateTime(new Date().toLocaleString());
 		
-		String fileName = "";
-		
-        Map<String, List<InputPart>> uploadForm = input.getFormDataMap();
-                
-        int fileSize = uploadForm.size();
-        
-        for (int i=0; i<fileSize; i++)
-        {
+		for (int i=0; i<fileSize - 4; i++)
+		{
             String fileNameNew =UUID.randomUUID().toString();  
             String downPath = null;
         	List<InputPart> inputParts = uploadForm.get("file"+i);
+        	if (inputParts != null)
             for (InputPart inputPart : inputParts) {
             	try {
             		MultivaluedMap<String, String> header = inputPart.getHeaders();  
@@ -86,12 +94,12 @@ public class PostService {
             		byte [] bytes = IOUtils.toByteArray(inputStream);
             		//constructs upload file path
             		ResourceBundle bundle = ResourceBundle.getBundle("path");
-           		    String path = bundle.getString("path");
+           		    String path = bundle.getString("path1");
            		    fileName = fileNameNew+"."+fileName;
 		            if (!path.endsWith("/"))
            		    	path = path + "/";
 		            downPath=new String(path+fileName);
-		            
+		            log.info(downPath);
             		FileUtils.writeFile(bytes,downPath);
                 } catch (IOException e) {
                 	e.printStackTrace(); 
@@ -109,6 +117,27 @@ public class PostService {
 		return Response.status(200).entity(res).build();
 	}
 	
+	private String getValue(Map<String, List<InputPart>> uploadForm, String key)
+	{
+		List<InputPart> inputParts = uploadForm.get(key);
+        StringBuffer content = new StringBuffer();
+        String fileName = null;
+        for (InputPart inputPart : inputParts) {
+        	try {
+        		MultivaluedMap<String, String> header = inputPart.getHeaders();  
+        		fileName = FileUtils.getFileName(header);
+        		//convert the uploaded file to inputstream
+        		InputStream inputStream = inputPart.getBody(InputStream.class,null);  
+        		byte [] bytes = IOUtils.toByteArray(inputStream);
+        		//constructs upload file path
+        		content.append(new String(bytes));
+        		
+            } catch (IOException e) {
+            	e.printStackTrace(); 
+            }
+        }
+        return content.toString();
+	}
 	/*
 	 * 
 	 * */

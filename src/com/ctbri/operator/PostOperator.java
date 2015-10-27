@@ -54,7 +54,7 @@ public class PostOperator {
 				Query query = session.createQuery(hql);
 				query.setInteger("isPublish", flag);
 				query.setString("postId", postId);
-				query.executeUpdate();				
+				query.executeUpdate();
 			}
 			tran.commit();
 			
@@ -170,7 +170,7 @@ public class PostOperator {
 		PostResp post = null;
 		try{
 			session = DbHelper.getSession();
-						
+			
 			String hql = "from com.ctbri.model.Post where postId=:postId";
 			Query query = session.createQuery(hql);
 			query.setString("postId", postId);
@@ -198,8 +198,7 @@ public class PostOperator {
 					
 				}
 				post.setImgPaths(imgPaths);
-				
-			} 
+			}
 			return post;
 		}catch(Exception e)
 		{

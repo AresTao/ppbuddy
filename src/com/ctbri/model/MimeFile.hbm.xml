@@ -20,7 +20,7 @@
         <property name="createTime" type="java.lang.String">
             <column name="createTime" not-null="false" />
         </property>
-        <property name="postId" type="java.lang.Integer">
+        <property name="postId" type="java.lang.String">
         	<column name="postId" not-null="false" />
         </property>    
              
