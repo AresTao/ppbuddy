@@ -80,7 +80,7 @@
 		}
 		
 		function addNews(){
-			window.location.href='';	
+			window.location.href='addNews.jsp';	
 	    }
 	    
 		function updateNews(newsId){
