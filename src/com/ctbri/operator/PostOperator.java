@@ -10,7 +10,10 @@ import org.hibernate.Transaction;
 
 import com.ctbri.model.MimeFile;
 import com.ctbri.model.Post;
+import com.ctbri.resp.AdminPostItem;
+import com.ctbri.resp.AdminPostResp;
 import com.ctbri.resp.CommonPostResp;
+import com.ctbri.resp.MimeFileItem;
 import com.ctbri.resp.PostItem;
 import com.ctbri.resp.PostResp;
 import com.ctbri.util.DbHelper;
@@ -33,6 +36,27 @@ public class PostOperator {
 	        res = new CommonPostResp();
 	        res.setCode(200);
 	        res.setReason("create success.");
+		}catch(Exception e)
+		{
+			log.error(e.getMessage());
+		}
+		return res;
+	}
+	
+	public static CommonPostResp updatePost(Post post)
+	{
+		Session session = null;
+		CommonPostResp res = null;
+		try{
+			session = DbHelper.getSession();
+						
+			Transaction tran = session.beginTransaction();//开始事物     
+			session.update(post);   
+	        tran.commit();
+			
+	        res = new CommonPostResp();
+	        res.setCode(200);
+	        res.setReason("update success.");
 		}catch(Exception e)
 		{
 			log.error(e.getMessage());
@@ -163,6 +187,56 @@ public class PostOperator {
 		return res;	
 	}
 	
+	public static List<AdminPostItem> getAdminPostList(int categoryId, int flag) 
+	{
+		Session session = null;
+		List<AdminPostItem> res = null;
+		try{
+			session = DbHelper.getSession();
+			String hql = null;
+			if (flag == 0)
+			{
+				hql = "from com.ctbri.model.Post where categoryId=:categoryId and isPublish=0";
+			}else if (flag == 1)
+			{
+				hql = "from com.ctbri.model.Post where categoryId=:categoryId and isPublish=1";
+			}else if (flag == 2)
+			{
+				hql = "from com.ctbri.model.Post where categoryId=:categoryId";
+			}
+			
+			Query query = session.createQuery(hql);
+			query.setInteger("categoryId", categoryId);
+			List<Post> posts = query.list();
+			
+			if (posts.size() > 0)
+			{
+				res = new ArrayList<AdminPostItem>();
+				AdminPostItem item = null;
+				for (Post post : posts)
+				{
+					item = new AdminPostItem();
+					item.setPostId(post.getPostId());
+					item.setTitle(post.getTitle());
+					item.setShortContent(post.getShortContent());
+					item.setPublishTime(post.getPublishTime());
+					item.setPublisherName(post.getPublisherName());
+					item.setCreateTime(post.getCreateTime());
+					item.setPublishTime(post.getPublishTime());
+					item.setIsPublish(post.getIsPublish());
+					item.setCategoryId(post.getCategoryId());
+					
+					res.add(item);
+				}
+			}
+			return res;
+		}catch(Exception e)
+		{
+			log.error(e.getMessage());
+		}	
+		return res;	
+	}
+	
 	@SuppressWarnings("unchecked")
 	public static PostResp getPost(String postId)
 	{
@@ -198,6 +272,56 @@ public class PostOperator {
 					
 				}
 				post.setImgPaths(imgPaths);
+			}
+			return post;
+		}catch(Exception e)
+		{
+			log.error(e.getMessage());
+		}
+		return post;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static AdminPostResp getAdminPost(String postId)
+	{
+		Session session = null;
+		AdminPostResp post = null;
+		try{
+			session = DbHelper.getSession();
+			
+			String hql = "from com.ctbri.model.Post where postId=:postId";
+			Query query = session.createQuery(hql);
+			query.setString("postId", postId);
+			List<Post> accounts = query.list();
+			
+			post = new AdminPostResp();
+			if(accounts.size() > 0)
+			{
+				Post res = accounts.get(0);
+				
+				post.setPostId(res.getPostId());
+				post.setTitle(res.getTitle());
+				post.setContent(res.getContent());
+				post.setShortContent(res.getShortContent());
+				post.setPublisherName(res.getPublisherName());
+				
+				List<MimeFile> fileList = FileOperator.getFiles(postId);
+				List<MimeFileItem> mimeFileList = new ArrayList<MimeFileItem>();
+				MimeFileItem mimeFileItem = null;
+				if (fileList.size() > 0)
+				{
+					for (MimeFile file:fileList)
+					{
+						mimeFileItem = new MimeFileItem();
+						mimeFileItem.setFileId(file.getFileId());
+						mimeFileItem.setName(file.getName());
+						mimeFileItem.setPath(file.getPath());
+						
+						mimeFileList.add(mimeFileItem);
+					}
+					
+				}
+				post.setFileList(mimeFileList);
 			}
 			return post;
 		}catch(Exception e)

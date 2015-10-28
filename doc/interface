@@ -1,5 +1,5 @@
 1. 获取新闻列表
-method  : post
+method  : get
 url     : http://localhost:8080/ppbuddy/api/0.1/post/getList/category/{categoryId}/flag/{flag}
 request :
 response:

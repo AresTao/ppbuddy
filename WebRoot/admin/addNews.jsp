@@ -25,8 +25,8 @@
 	        alert("test");
 	        var newRow = document.createElement('tr');
 	        fileNum++;
-	        newRow.innerHTML = "<th>附件"+fileNum+"</th><td><input type='file' name='file"+fileNum+"' id='uploadFile' accept=''/></td>"
-	                +"<td><img onclick='addMimeFile()' src='resource/images/add.gif'></td>";
+	        newRow.innerHTML = "<th>附件"+fileNum+"</th><td><input type='file' name='file"+fileNum+"' id='uploadFile' accept=''/>"
+	                +"<img onclick='addMimeFile()' src='resource/images/add.gif'></td>";
 	        document.getElementById('newsTable').appendChild( newRow);
 	    }
 	        
@@ -46,7 +46,7 @@
 		function addNewsInfo(isPublish){
 					//document.getElementById("frm").action = "addNewsInfo.do?reqPage=toSave&isPublish="+isPublish;
 					//document.getElementById("frm").method = "post";
-					//$("#isPublish").val(isPublish);
+					$("#isPublish").val(isPublish);
 					$("#frm").submit();
 					
 		}
@@ -71,7 +71,7 @@
 	            <tr>
 	                <th width="30%">新闻标题</th>
 	                <td >
-	               	 
+	               		<input type="hidden" id="isPublish" name="isPublish" class="btn3" value="0">
 	                    <input type="text" id="newsTitle" name="title" class="input50 validate[required]"/>
 	                    <span style="color: red;"> *</span>
 	                </td>
@@ -114,10 +114,9 @@
 	                <th>附件1</th>
 	                <td>
 	                	<input type="file" name="file1" id="uploadFile" accept=""/>
-	                </td>
-	                <td>
 	                	<img onclick='addMimeFile()' src='resource/images/add.gif'>
 	                </td>
+	                
 	            </tr>
 	            </tbody>
 	        </table>

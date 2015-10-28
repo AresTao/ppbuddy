@@ -59,12 +59,20 @@
 		                </th>
 		            </tr>
 	            </thead>
-	            
+	            <tbody>
 	            <tr>
 	                <th width="30%">新闻标题</th>
 	                <td >
 	               	 <input type="hidden" id="isPublish" name="newsInfo.isPublish" class="btn3" value="0" ">
 	                    <input type="text" id="newsTitle" name="newsInfo.newsTitle" class="input50 validate[required]"/>
+	                    <span style="color: red;"> *</span>
+	                </td>
+	            </tr>
+	            <tr>
+	                <th width="30%">发布人</th>
+	                <td >
+	               	 
+	                    <input type="text" id="newsTitle" name="publisherName" class="input50 validate[required]"/>
 	                    <span style="color: red;"> *</span>
 	                </td>
 	            </tr>
@@ -84,20 +92,29 @@
 	              	<textarea name="newsInfo.content" id="remark" cols=120 rows=2 maxlength="5000"></textarea>  
 	                </td> 
 	            </tr>
-	            
 	            <tr>
 	                
-	                <th>附件一</th>
+	                <th>banner</th>
 	                <td>
-	                	<input type="file" name="uploadFile1" id="uploadFile" accept="image/*"/>
+	                	<input type="file" name="file0" id="uploadFile" accept=""/>
 	                </td>
 	            </tr> 
+	            <tr>
+	                
+	                <th>附件1</th>
+	                <td>
+	                	<input type="file" name="file1" id="uploadFile" accept=""/>
+	                	<img onclick='addMimeFile()' src='resource/images/add.gif'>
+	                </td>
+	                
+	            </tr>
+	            </tbody>
 	        </table>
 	       	
 	       	
 	        <table class="btn_table" align="center">
 				<td>
-		            <input type="button" class="btn3" value="返回" onClick="javascript:location.href='getAdminNewsInfoList.do?reqType=${reqType}';">
+		            <input type="button" class="btn3" value="返回" onClick="javascript:location.href='newsInfoList.jsp';">
 				</td>
 			</table>
 	    </form>

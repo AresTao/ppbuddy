@@ -20,7 +20,16 @@
 		<script type="text/javascript" src="resource/wbox/wbox-min.js"></script>
 	    <script type="text/javascript">
 	    
-	    
+	    var fileNum=1;
+	    function addMimeFile()
+	    {
+	        alert("test");
+	        var newRow = document.createElement('tr');
+	        fileNum++;
+	        newRow.innerHTML = "<th>附件"+fileNum+"</th><td><input type='file' name='file"+fileNum+"' id='uploadFile' accept=''/>"
+	                +"<img onclick='addMimeFile()' src='resource/images/add.gif'></td>";
+	        document.getElementById('newsTable').appendChild( newRow);
+	    }
 	        
 	      	//给表单绑定验证引擎
 	     function initFormValidate(){
@@ -31,26 +40,47 @@
 					promptPosition : "centerRight",//position：topLeft,topRight, bottomLeft, centerRight, bottomRight
 					autoHidePrompt : true,
 					autoHideDelay : 3000
-				});
-	        }
+			});
+	    }
 	      	
 			//确定提交表单
-			function addNewsInfo(isPublish){
-					//document.getElementById("frm").action = "addNewsInfo.do?reqPage=toSave&isPublish="+isPublish;
-					//document.getElementById("frm").method = "post";
-					$("#isPublish").val(isPublish);
-					$("#frm").submit();
-					
-			}
+		function addNewsInfo(isPublish){
+			//document.getElementById("frm").action = "addNewsInfo.do?reqPage=toSave&isPublish="+isPublish;
+			//document.getElementById("frm").method = "post";
+			$("#isPublish").val(isPublish);
+			$("#frm").submit();
+		}
 			
-			$(function() {
-				initFormValidate();//表单验证
+		function loadNews()
+		{
+			
+			var url = "${pageContext.request.contextPath}/api/0.1/admin/post/get/"+postId;
+			$.ajax({
+				url : url,
+				type : "get",
+				dataType : "json",
+				cache : false,
+				async : true,
+				success : function(res) {
+					
+					alert(res[0].title);
+				},
+				error : function() {
+					alert("发送请求失败，请检查网络或刷新重试");
+				}
 			});
-	    </script>
+		
+		}
+			
+		$(function() {
+				//initFormValidate();//表单验证
+			loadNews(<%=request.getParameter("postId")%>);
+		});
+		</script>
     </head>
     <body>
 	<div class="mainbody">
-	    <form id="frm" action="" method="post"  enctype="multipart/form-data">
+	    <form id="frm" action="${pageContext.request.contextPath}/api/0.1/post/update" method="post"  enctype="multipart/form-data">
 	       	<table cellspacing=1 class="form_table" align="center">
 	            <thead>
 		             <tr>
@@ -59,12 +89,20 @@
 		                </th>
 		            </tr>
 	            </thead>
-	            
+	            <tbody id="newsTable">
 	            <tr>
 	                <th width="30%">新闻标题</th>
 	                <td >
 	               	 <input type="hidden" id="isPublish" name="newsInfo.isPublish" class="btn3" value="0" ">
 	                    <input type="text" id="newsTitle" name="newsInfo.newsTitle" class="input50 validate[required]"/>
+	                    <span style="color: red;"> *</span>
+	                </td>
+	            </tr>
+	            <tr>
+	                <th width="30%">发布人</th>
+	                <td >
+	               	 
+	                    <input type="text" id="newsTitle" name="publisherName" class="input50 validate[required]"/>
 	                    <span style="color: red;"> *</span>
 	                </td>
 	            </tr>
@@ -84,14 +122,23 @@
 	              	<textarea name="newsInfo.content" id="remark" cols=120 rows=2 maxlength="5000"></textarea>  
 	                </td> 
 	            </tr>
-	            
 	            <tr>
 	                
-	                <th>附件一</th>
+	                <th>banner</th>
 	                <td>
-	                	<input type="file" name="uploadFile1" id="uploadFile" accept="image/*"/>
+	                	<input type="file" name="file0" id="uploadFile" accept=""/>
 	                </td>
 	            </tr> 
+	            <tr>
+	                
+	                <th>附件1</th>
+	                <td>
+	                	<input type="file" name="file1" id="uploadFile" accept=""/>
+	                	<img onclick='addMimeFile()' src='resource/images/add.gif'>
+	                </td>
+	                
+	            </tr>
+	            </tbody>
 	        </table>
 	       	
 	       	
