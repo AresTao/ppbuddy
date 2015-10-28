@@ -24,4 +24,13 @@ public class StringUtils {
     	}
     	return sb.toString();
     }
+    
+    public static boolean isBlank(String str)
+    {
+        if (str == null || str.trim().equals(""))
+        {
+            return true;
+        }
+        return false;
+    }
 }

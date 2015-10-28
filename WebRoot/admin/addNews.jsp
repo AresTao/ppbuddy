@@ -19,10 +19,15 @@
 		<link rel="stylesheet" type="text/css" href="resource/wbox/wbox/wbox-min.css"/>
 		<script type="text/javascript" src="resource/wbox/wbox-min.js"></script>
 	    <script type="text/javascript">
-	    
+	    var fileNum=1;
 	    function addMimeFile()
 	    {
-	        
+	        alert("test");
+	        var newRow = document.createElement('tr');
+	        fileNum++;
+	        newRow.innerHTML = "<th>附件"+fileNum+"</th><td><input type='file' name='file"+fileNum+"' id='uploadFile' accept=''/></td>"
+	                +"<td><img onclick='addMimeFile()' src='resource/images/add.gif'></td>";
+	        document.getElementById('newsTable').appendChild( newRow);
 	    }
 	        
 	      	//给表单绑定验证引擎
@@ -54,7 +59,7 @@
     <body>
 	<div class="mainbody">
 	    <form id="frm" action="${pageContext.request.contextPath}/api/0.1/post/add" method="post" enctype="multipart/form-data">
-	       	<table cellspacing=1 class="form_table" align="center" id="newsTable">
+	       	<table cellspacing=1 class="form_table" align="center" >
 	            <thead>
 		             <tr>
 		                <th colspan="4">
@@ -62,7 +67,7 @@
 		                </th>
 		            </tr>
 	            </thead>
-	            
+	            <tbody id="newsTable">
 	            <tr>
 	                <th width="30%">新闻标题</th>
 	                <td >
@@ -99,11 +104,22 @@
 	            
 	            <tr>
 	                
-	                <th>附件1</th>
+	                <th>banner</th>
 	                <td>
 	                	<input type="file" name="file0" id="uploadFile" accept=""/>
 	                </td>
 	            </tr> 
+	            <tr>
+	                
+	                <th>附件1</th>
+	                <td>
+	                	<input type="file" name="file1" id="uploadFile" accept=""/>
+	                </td>
+	                <td>
+	                	<img onclick='addMimeFile()' src='resource/images/add.gif'>
+	                </td>
+	            </tr>
+	            </tbody>
 	        </table>
 	       	
 	       	

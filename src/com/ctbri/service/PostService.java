@@ -34,6 +34,7 @@ import com.ctbri.resp.CommonPostResp;
 import com.ctbri.resp.PostItem;
 import com.ctbri.resp.PostResp;
 import com.ctbri.util.FileUtils;
+import com.ctbri.util.StringUtils;
 
 @Path("/api")
 public class PostService {
@@ -83,12 +84,19 @@ public class PostService {
 		{
             String fileNameNew =UUID.randomUUID().toString();  
             String downPath = null;
+            boolean flag = true;
         	List<InputPart> inputParts = uploadForm.get("file"+i);
         	if (inputParts != null)
             for (InputPart inputPart : inputParts) {
             	try {
+            		
             		MultivaluedMap<String, String> header = inputPart.getHeaders();  
             		fileName = FileUtils.getFileName(header);
+            		if (fileName == null || StringUtils.isBlank(fileName))
+            		{
+            			flag = false;
+            			break;
+            		}
             		//convert the uploaded file to inputstream
             		InputStream inputStream = inputPart.getBody(InputStream.class,null);  
             		byte [] bytes = IOUtils.toByteArray(inputStream);
@@ -110,7 +118,14 @@ public class PostService {
                 post.setBannerPath(fileName);
             } else
             {
-            	FileOperator.addMimeFile(postId, fileName, downPath);
+            	if (flag)
+            	{
+            		FileOperator.addMimeFile(postId, fileName, downPath);
+            	} else
+            	{
+            		flag = true;
+            	}
+            	
             }
         }
 		CommonPostResp res = PostOperator.addPost(post);

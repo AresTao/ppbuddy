@@ -37,8 +37,8 @@
 			});
 			newsIds = newsIds.substring(0, newsIds.lastIndexOf(","));
 			if(newsIds==null||newsIds==""||newsIds==undefined){
-				alert("请至少选择一条新闻进行处理");		
-				return false;	
+				alert("请至少选择一条新闻进行处理");
+				return false;
 			}
 		};
 	    

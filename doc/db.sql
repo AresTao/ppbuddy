@@ -19,12 +19,12 @@ CREATE TABLE IF NOT EXISTS `category` (
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=gbk;
 
-CREATE TABLE IF NOT EXISTS `mimeFile` (
+CREATE TABLE IF NOT EXISTS `mimefile` (
     `fileId`           INT            AUTO_INCREMENT    ,
     `name`             VARCHAR(128)   NOT NULL          ,
     `path`             VARCHAR(128)   NOT NULL          ,
     `createTime`       datetime       NOT NULL          ,
-	`postId`           INT                              ,
+	`postId`           VARCHAR(128)   NOT NULL          ,
     PRIMARY KEY (`fileId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=gbk;
 
