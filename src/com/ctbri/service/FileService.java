@@ -23,7 +23,7 @@ public class FileService {
 	
 	@POST
 	@Path("/{APIversion}/admin/file/delete/{fileId}")	
-	@Consumes("application/json")
+	//@Consumes("application/json")
 	@Produces("application/json")
 	public Response deletePost(@PathParam("APIversion") String APIversion,@PathParam("fileId") int fileId
 			){

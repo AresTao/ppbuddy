@@ -49,11 +49,12 @@ public class FileOperator {
 		try{
 
 			session = DbHelper.getSession();
+			Transaction tran = session.beginTransaction();//开始事物     
 			String hql = "from com.ctbri.model.MimeFile where postId=:postId";
 			Query query = session.createQuery(hql);
 			query.setString("postId", postId);
 			fileList = query.list();			
-			
+			tran.commit();
 	        return fileList;
 		}catch(Exception e)
 		{

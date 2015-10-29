@@ -21,18 +21,57 @@
 	    <script type="text/javascript">
 	    
 	    var fileNum=0;
+	    var postId;
 	    function addMimeFile()
 	    {
-	        alert("test");
+	        var newRow = document.createElement('tr');
+	        fileNum++;
+	        newRow.innerHTML = "<th>附件"+fileNum+"</th><td><input type='hidden' id='file"+fileNum+"Id' name='fileId' class='btn3' value=''><label id='file"+fileNum+"Name' style='float:left;display:inline-block;width:50px;'></label><input type='file' name='file"+fileNum+"' id='file"+fileNum+"' accept=''/>"
+	                +"<input type='button' class='btn3' value='删除' onclick='deleteMimeFile("+fileNum+")'>"
+	                +"<img onclick='addMimeFile()' src='resource/images/add.gif'></td>";
+	        document.getElementById('newsTable').appendChild( newRow);
+	    }
+	    
+	    function addNewMimeFile()
+	    {
 	        var newRow = document.createElement('tr');
 	        fileNum++;
 	        newRow.innerHTML = "<th>附件"+fileNum+"</th><td><label id='file"+fileNum+"Name' style='float:left;display:inline-block;width:40px;'></label><input type='file' name='file"+fileNum+"' id='file"+fileNum+"' accept=''/>"
 	                +"<img onclick='addMimeFile()' src='resource/images/add.gif'></td>";
 	        document.getElementById('newsTable').appendChild( newRow);
 	    }
+	    
+	    function deleteMimeFile(fileNo)
+	    {
+	    	if(confirm("确定删除？"))
+	    	{
+	    	var fileId = document.getElementById("file"+fileNo+"Id").value;
+	    	var url = "${pageContext.request.contextPath}/api/0.1/admin/file/delete/"+fileId;
+			$.ajax({
+				url : url,
+				type : "post",
+				dataType : "json",
+				cache : false,
+				async : true,
+				success : function(res) {
+					if (res)
+					{
+						alert("删除成功");
+						loadNews(postId);
+					} else
+					{
+						alert("删除失败");
+					}
+				},
+				error : function() {
+					alert("发送请求失败，请检查网络或刷新重试");
+				}
+			});
+			}
+	    }
 	        
 	      	//给表单绑定验证引擎
-	     function initFormValidate(){
+	    function initFormValidate(){
 	       	$("#frm").validationEngine("attach",{
 					validationEventTrigger : "blur",
 					autoPositionUpdate : true,
@@ -44,10 +83,10 @@
 	    }
 	      	
 			//确定提交表单
-		function addNewsInfo(isPublish){
+		function updateNews(isPublish){
 			//document.getElementById("frm").action = "addNewsInfo.do?reqPage=toSave&isPublish="+isPublish;
 			//document.getElementById("frm").method = "post";
-			$("#isPublish").val(isPublish);
+			
 			$("#frm").submit();
 		}
 			
@@ -73,6 +112,7 @@
 					{
 						addMimeFile();
 						document.getElementById("file"+i+"Name").innerHTML = fileList[i-1].name;
+						document.getElementById("file"+i+"Id").value = fileList[i-1].fileId;
 					}
 				},
 				error : function() {
@@ -84,7 +124,7 @@
 			
 		$(function() {
 				//initFormValidate();//表单验证
-			var postId = document.getElementById("newsId").value;
+			postId = document.getElementById("hiddenNewsId").value;
 			loadNews(postId);
 		});
 		</script>
@@ -104,7 +144,7 @@
 	            <tr>
 	                <th width="30%">新闻标题</th>
 	                <td >
-	               	    <input type="hidden" id="newsId" name="postId" class="btn3" value='<%=request.getParameter("postId")%>'>
+	               	    <input type="hidden" id="hiddenNewsId" name="postId" class="btn3" value='<%=request.getParameter("postId")%>'>
 	                    <input type="text" id="title" name="title" class="input50 validate[required]"/>
 	                    <span style="color: red;"> *</span>
 	                </td>
@@ -137,7 +177,8 @@
 	                
 	                <th>banner</th>
 	                <td>
-	                	<label id="bannerName" style='float:left;display:inline-block;width:40px;'></label><input type="file" name="file0" id="banner" accept=""/>
+	                	<label id="bannerName" style='float:left;display:inline-block;width:50px;'></label><input type="file" name="file0" id="banner" accept=""/>
+	                	<img onclick='addNewMimeFile()' src='resource/images/add.gif'>
 	                </td>
 	            </tr> 
 	            

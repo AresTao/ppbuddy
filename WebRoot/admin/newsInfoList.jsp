@@ -23,13 +23,15 @@
 			for(var i=0; i<arrTr.length; i++) {
 				s += '<tr>';
 				s += '<td>';	
-		        s += '<input type="checkbox" onclick="controllCheckAllBtn()" name="newsId" id="newsId" value='+arrTr[i][0]+' class="validate[required]"/>';         
+		        s += '<input type="checkbox" onclick="controllCheckAllBtn()" name="newsId" value='+arrTr[i][0]+' class="validate[required]"/>';         
 	            s += '</td>';
 				for(var j=1; j<arrTr[i].length; j++) {
 					s += '<td>' + arrTr[i][j] + '</td>';
 				}
-				s += '<td>';	
-		        s += '<a href="#" onclick="updateNews('+arrTr[i][0]+')" style="color: blue;">修改</a>';         
+				s += '<td>';
+				var param = new Object();	
+				param.postId = arrTr[i][0];
+		        s += '<a href="#" onclick="updateNews()" style="color: blue;">修改</a>';         
 	            s += '</td>';
 				
 				s += '</tr>';
@@ -126,6 +128,7 @@
 				newsIds[i] = $(this).val();
 			});
 			var data = JSON.stringify(newsIds);
+			var body = {postIds:newsIds};
 			var url = "${pageContext.request.contextPath}/api/0.1/post/delete";
 			$.ajax({
 				url : url,
@@ -133,12 +136,16 @@
 				dataType : "json",
 				cache : false,
 				async : true,
-				data  : {"postIds":data},
+				contentType: "application/json",
+				data  : JSON.stringify(body),
 				success : function(res) {
-					alert("发送请求成功");
+					alert(res.reason);
+					document.getElementById('divPage').innerHTML = '';
+					document.getElementById('newsList').innerHTML = '';
+					getPostList(1, 2);
 				},
-				error : function() {
-					alert("发送请求失败，请检查网络或刷新重试");
+				error : function(res) {
+					alert(res);
 				}
 			});
 		};
@@ -151,7 +158,12 @@
 				//newsIds += $(this).val() + ",";
 				newsIds[i] = $(this).val();
 			});
+			if (newsIds.length == 0)
+			{
+				alert("请至少选择一个进行发布");
+			}
 			var data = JSON.stringify(newsIds);
+			var body = {postIds:newsIds};
 			var url = "${pageContext.request.contextPath}/api/0.1/post/publish/flag/"+isPublish;
 			$.ajax({
 				url : url,
@@ -159,12 +171,16 @@
 				dataType : "json",
 				cache : false,
 				async : true,
-				data  : {"postIds":data},
+				contentType: "application/json",
+				data  : JSON.stringify(body),
 				success : function(res) {
-					alert("发送请求成功");
+					alert(res.reason);
+					document.getElementById('divPage').innerHTML = '';
+					document.getElementById('newsList').innerHTML = '';
+					getPostList(1, 2);
 				},
-				error : function() {
-					alert("发送请求失败，请检查网络或刷新重试");
+				error : function(res) {
+					alert(res);
 				}
 			});
 		};
@@ -193,6 +209,9 @@
 		//页面初始化函数
 	    $(function(){
 	    	getPostList(1, 2);
+	    	$("#selectall").click(function(){
+					$(":checkbox[name='newsId']").attr("checked",this.checked);
+			});
 	      	//enterSearch();
 	       	//全选和取消全选
 		    //$("#selectall").click(function(){
@@ -230,12 +249,22 @@
 			window.location.href='addNews.jsp';	
 	    }
 	    
-		function updateNews(newsId){
-			window.location.href='updateNews.jsp?postId='+newsId;	    		
-	    }
+		function updateNews(){
+			var newsIds = new Array(); 
+			$("input[name='newsId']:checked").each(function(i,n){
+				//newsIds += $(this).val() + ",";
+				newsIds[i] = $(this).val();
+			});
+			if (newsIds.length == 0)
+			{
+				alert("请选择一个进行修改");
+				return;
+			}
+			window.location.href='updateNews.jsp?postId='+newsIds[0];
+		}
 	    
-	    function checkNews(newsId){
-			window.location.href='checkNews.jsp?postId='+newsId;
+	    function checkNews(postId2){
+			window.location.href='checkNews.jsp?postId='+postId2;
 	    }
    		</script>
     </head>
@@ -251,11 +280,11 @@
 	            <tr>
 	                <th width="10%">新闻标题</th>
 	                <td width="25%">
-	                	<input type="text" name="newsInfo.newsTitle" id="newsTitle" value="${newsInfo.newsTitle }" class="input50"/>
+	                	<input type="text" name="title" id="newsTitle" value="${newsInfo.newsTitle }" class="input50"/>
 	                </td>
 					<th width="10%">新闻类型</th>
                 	<td width="25%" colspan="3">
-                		<select name="newsInfo.newsType" id="newsType" >
+                		<select name="newsType" id="newsType" >
                 			<option value="-1" selected="selected">-- 全部 --</option>
                 			<option value="0">-- 未发布 --</option>
                 			<option value="1">-- 已发布 --</option>
@@ -284,22 +313,23 @@
 				<td>
 		            <input type=button class="btn3" value="查&nbsp;&nbsp;询" onClick="doSubmit();"/>
 					<input type=button class="btn3" value="增&nbsp;&nbsp;加" onClick="addNews();"/>
-					<input type=button class="btn3" value="删&nbsp;&nbsp;除" onClick="delNewsInfo()"/>
+					<input type=button class="btn3" value="删&nbsp;&nbsp;除" onClick="deleteNews();"/>
 					<input type=button class="btn3" value="发布" onClick="publish(1);"/>
-					<input type=button class="btn3" value="取消发布"onClick="publish(0);"/>
+					<input type=button class="btn3" value="取消发布" onClick="publish(0);"/>
+					<input type=button class="btn3" value="更新" onClick="updateNews();"/>
 				</td>
 			</table>
             <table cellspacing=1 class="query_table" align="center">
             	 <colgroup>
             		
             		<col width="4%"/>
-            		<col width="10%"/>
+            		<col width="15%"/>
             		<col width="6%"/>
-            		<col width="26%"/>
+            		<col width="31%"/>
             		<col width="18%"/>
             		<col width="18%"/>
             		<col width="10%"/>
-            		<col width="10%"/>
+            		
             	 </colgroup> 
 				<thead>
 	                <tr>
@@ -315,7 +345,7 @@
                     <th>创建时间</th>
                     <th>发布时间</th>
                     <th>是否发布</th>
-                    <th>操作</th>
+                    
                 </tr>
                
                 <tbody id="newsList">

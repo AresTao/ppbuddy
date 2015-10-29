@@ -2,6 +2,7 @@ package com.ctbri.operator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
@@ -51,7 +52,7 @@ public class PostOperator {
 			session = DbHelper.getSession();
 						
 			Transaction tran = session.beginTransaction();//开始事物     
-			session.update(post);   
+			session.saveOrUpdate(post);   
 	        tran.commit();
 			
 	        res = new CommonPostResp();
@@ -64,7 +65,7 @@ public class PostOperator {
 		return res;
 	}
 	
-	public static CommonPostResp publishPost(List<String> postIds, int flag)
+	public static CommonPostResp publishPost(Vector<String> postIds, int flag)
 	{
 		Session session = null;	
 		CommonPostResp res = null;		
@@ -93,7 +94,7 @@ public class PostOperator {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static CommonPostResp deletePost(List<String> postIds)
+	public static CommonPostResp deletePost(Vector<String> postIds)
 	{
 		Session session = null;
 		CommonPostResp res = null;
@@ -103,23 +104,26 @@ public class PostOperator {
 			for (String postId:postIds)
 			{
 				FileOperator.deleteFiles(postId);
+				Transaction tran = session.beginTransaction();//开始事物     
 				String hql = "from com.ctbri.model.Post as p where p.postId=:postId";
 				Query query = session.createQuery(hql);
 				query.setString("postId", postId);
 				List<Post> posts = query.list();
+				tran.commit();
 				if (posts.size() > 0)
 				{
 					if (posts.get(0).getIsPublish() == 0)
 					{
-						Transaction tran = session.beginTransaction();//开始事物    
+						Transaction tran2 = session.beginTransaction();//开始事物    
 						hql = "delete com.ctbri.model.Post  as p where p.postId=:postId";
 						query = session.createQuery(hql);
 						query.setString("postId", postId);
 						query.executeUpdate();
 						//session.delete("FROM com.ctbri.model.MimeFile as m where m.postId="+postId);  
-				        tran.commit();
+				        tran2.commit();
 						res.setCode(200);
 						res.setReason("delete success.");
+						log.info("delete post "+postId+" success.");
 					} else
 					{
 						res.setCode(403);
@@ -147,6 +151,7 @@ public class PostOperator {
 		List<PostItem> res = null;
 		try{
 			session = DbHelper.getSession();
+			Transaction tran = session.beginTransaction();//开始事物     
 			String hql = null;
 			if (flag == 0)
 			{
@@ -162,7 +167,7 @@ public class PostOperator {
 			Query query = session.createQuery(hql);
 			query.setInteger("categoryId", categoryId);
 			List<Post> posts = query.list();
-			
+			tran.commit();
 			if (posts.size() > 0)
 			{
 				res = new ArrayList<PostItem>();
@@ -193,6 +198,7 @@ public class PostOperator {
 		List<AdminPostItem> res = null;
 		try{
 			session = DbHelper.getSession();
+			Transaction tran = session.beginTransaction();//开始事物     
 			String hql = null;
 			if (flag == 0)
 			{
@@ -208,7 +214,7 @@ public class PostOperator {
 			Query query = session.createQuery(hql);
 			query.setInteger("categoryId", categoryId);
 			List<Post> posts = query.list();
-			
+			tran.commit();
 			if (posts.size() > 0)
 			{
 				res = new ArrayList<AdminPostItem>();
@@ -244,12 +250,12 @@ public class PostOperator {
 		PostResp post = null;
 		try{
 			session = DbHelper.getSession();
-			
+			Transaction tran = session.beginTransaction();//开始事物     
 			String hql = "from com.ctbri.model.Post where postId=:postId";
 			Query query = session.createQuery(hql);
 			query.setString("postId", postId);
 			List<Post> accounts = query.list();
-			
+			tran.commit();
 			post = new PostResp();
 			if(accounts.size() > 0)
 			{
@@ -288,12 +294,12 @@ public class PostOperator {
 		AdminPostResp post = null;
 		try{
 			session = DbHelper.getSession();
-			
+			Transaction tran = session.beginTransaction();//开始事物     
 			String hql = "from com.ctbri.model.Post where postId=:postId";
 			Query query = session.createQuery(hql);
 			query.setString("postId", postId);
 			List<Post> accounts = query.list();
-			
+			tran.commit();
 			post = new AdminPostResp();
 			if(accounts.size() > 0)
 			{

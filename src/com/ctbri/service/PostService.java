@@ -86,6 +86,7 @@ public class PostService {
 		post.setIsPublish(isPublish);
 		post.setCreateTime(new Date().toLocaleString());
 		post.setPublishTime(new Date().toLocaleString());
+		post.setCategoryId(1);
 		
 		for (int i=0; i<fileSize - 5; i++)
 		{
@@ -155,24 +156,21 @@ public class PostService {
         Map<String, List<InputPart>> uploadForm = input.getFormDataMap();
         
         int fileSize = uploadForm.size();
-        
+        String postId = getValue(uploadForm, "postId");
         String title = getValue(uploadForm, "title");
       	String shortContent = getValue(uploadForm, "shortContent");
       	String content = getValue(uploadForm, "content");
       	String publisherName = getValue(uploadForm, "publisherName");
-        String isPublishStr = getValue(uploadForm,"isPublish");
-        int isPublish = Integer.parseInt(isPublishStr);
-        
+                
       	Post post = new Post();
-		
-		String postId = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
 		post.setTitle(title);
 		post.setShortContent(shortContent);
 		post.setContent(content);
 		post.setPublisherName(publisherName);
 		post.setPostId(postId);
-		post.setIsPublish(isPublish);
-		
+		post.setCategoryId(1);
+		log.info("filesize:"+fileSize);
+		log.info(postId);
 		for (int i=0; i<fileSize - 5; i++)
 		{
             String fileNameNew =UUID.randomUUID().toString();  
@@ -231,6 +229,8 @@ public class PostService {
 		List<InputPart> inputParts = uploadForm.get(key);
         StringBuffer content = new StringBuffer();
         String fileName = null;
+        if (inputParts.size() == 0)
+        	return "";
         for (InputPart inputPart : inputParts) {
         	try {
         		MultivaluedMap<String, String> header = inputPart.getHeaders();  
