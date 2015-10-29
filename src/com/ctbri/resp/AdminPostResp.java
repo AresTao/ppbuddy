@@ -10,7 +10,7 @@ public class AdminPostResp {
 	private String shortContent;
 	private String content;
 	private String publisherName;
-	
+	private String bannerPath;
 	private List<MimeFileItem> fileList = new ArrayList<MimeFileItem>();
 
 	public String getPostId() {
@@ -59,6 +59,14 @@ public class AdminPostResp {
 
 	public void setFileList(List<MimeFileItem> fileList) {
 		this.fileList = fileList;
+	}
+
+	public String getBannerPath() {
+		return bannerPath;
+	}
+
+	public void setBannerPath(String bannerPath) {
+		this.bannerPath = bannerPath;
 	}
 	
 }

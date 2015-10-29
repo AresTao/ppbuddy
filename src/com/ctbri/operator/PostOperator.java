@@ -304,6 +304,10 @@ public class PostOperator {
 				post.setContent(res.getContent());
 				post.setShortContent(res.getShortContent());
 				post.setPublisherName(res.getPublisherName());
+				String banner = res.getBannerPath();
+				int index = banner.indexOf('.');
+				banner = banner.substring(index+1);
+				post.setBannerPath(banner);
 				
 				List<MimeFile> fileList = FileOperator.getFiles(postId);
 				List<MimeFileItem> mimeFileList = new ArrayList<MimeFileItem>();

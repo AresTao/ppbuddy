@@ -61,6 +61,7 @@ public class PostService {
 		//MultivaluedMap<String,String> param = request.getFormParameters();
 		
 		String fileName = "";
+		String realName = "";
 		
         Map<String, List<InputPart>> uploadForm = input.getFormDataMap();
         
@@ -103,6 +104,7 @@ public class PostService {
             			flag = false;
             			break;
             		}
+            		realName=fileName;
             		//convert the uploaded file to inputstream
             		InputStream inputStream = inputPart.getBody(InputStream.class,null);  
             		byte [] bytes = IOUtils.toByteArray(inputStream);
@@ -126,7 +128,7 @@ public class PostService {
             {
             	if (flag)
             	{
-            		FileOperator.addMimeFile(postId, fileName, downPath);
+            		FileOperator.addMimeFile(postId, realName, downPath);
             	} else
             	{
             		flag = true;
@@ -263,7 +265,7 @@ public class PostService {
 	 * */
 	@GET
 	@Path("/{APIversion}/post/get/{POSTID}")
-	@Consumes("application/json")
+	//@Consumes("application/json")
 	@Produces("application/json")
 	public Response getPost(@PathParam("APIversion") String APIversion, @PathParam("POSTID") String postId
 			){
@@ -276,7 +278,7 @@ public class PostService {
 	 * */
 	@GET
 	@Path("/{APIversion}/admin/post/get/{POSTID}")
-	@Consumes("application/json")
+	//@Consumes("application/json")
 	@Produces("application/json")
 	public Response getAdminPost(@PathParam("APIversion") String APIversion, @PathParam("POSTID") String postId
 			){

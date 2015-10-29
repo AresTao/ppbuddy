@@ -95,8 +95,6 @@
 			var result = [];
 			pageIndex = pageIndex || 0;
 
-            
-		    	
             for (var i=pageIndex*10;i<(pageIndex+1)*10 && i<data.length;i++)     
             {
 		        result.push([
@@ -321,21 +319,7 @@
                 </tr>
                
                 <tbody id="newsList">
-                	<tr>
-	                    <td>	
-		                    <input type="checkbox" onclick="controllCheckAllBtn()" name="newsId" id="newsId" value="${news.newsId}" class="validate[required]"/>
-	                    </td>
-	                    <td>${news.newsId}</td>
-	                    <td title="${news.newsTitle}">${news.newsTitle}</td>
-	                    <td>
-	                        	
-			            </td>
-	                    <td title="${news.detailAddr}">${news.detailAddr}</td>
-	                    <td>
-	                    	<a href="#" onclick="updateNews('${news.newsId}')" style="color: blue;">修改</a>
-	                    </td>
-	                </tr>
-					
+                	
 				</tbody>
 				
             </table>

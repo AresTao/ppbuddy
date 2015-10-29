@@ -20,13 +20,13 @@
 		<script type="text/javascript" src="resource/wbox/wbox-min.js"></script>
 	    <script type="text/javascript">
 	    
-	    var fileNum=1;
+	    var fileNum=0;
 	    function addMimeFile()
 	    {
 	        alert("test");
 	        var newRow = document.createElement('tr');
 	        fileNum++;
-	        newRow.innerHTML = "<th>附件"+fileNum+"</th><td><input type='file' name='file"+fileNum+"' id='uploadFile' accept=''/>"
+	        newRow.innerHTML = "<th>附件"+fileNum+"</th><td><label id='file"+fileNum+"Name' style='float:left;display:inline-block;width:40px;'></label><input type='file' name='file"+fileNum+"' id='file"+fileNum+"' accept=''/>"
 	                +"<img onclick='addMimeFile()' src='resource/images/add.gif'></td>";
 	        document.getElementById('newsTable').appendChild( newRow);
 	    }
@@ -51,7 +51,7 @@
 			$("#frm").submit();
 		}
 			
-		function loadNews()
+		function loadNews(postId)
 		{
 			
 			var url = "${pageContext.request.contextPath}/api/0.1/admin/post/get/"+postId;
@@ -62,8 +62,18 @@
 				cache : false,
 				async : true,
 				success : function(res) {
-					
-					alert(res[0].title);
+					document.getElementById("title").value = res.title;
+					document.getElementById("publisherName").value = res.publisherName;
+					document.getElementById("shortContent").value = res.shortContent;
+					document.getElementById("content").value = res.content;
+					//document.getElementById("title").value = res.title;
+					document.getElementById("bannerName").innerHTML = res.bannerPath;
+					var fileList = res.fileList;
+					for (var i=1;i<=fileList.length;i++)
+					{
+						addMimeFile();
+						document.getElementById("file"+i+"Name").innerHTML = fileList[i-1].name;
+					}
 				},
 				error : function() {
 					alert("发送请求失败，请检查网络或刷新重试");
@@ -74,7 +84,8 @@
 			
 		$(function() {
 				//initFormValidate();//表单验证
-			loadNews(<%=request.getParameter("postId")%>);
+			var postId = document.getElementById("newsId").value;
+			loadNews(postId);
 		});
 		</script>
     </head>
@@ -93,8 +104,8 @@
 	            <tr>
 	                <th width="30%">新闻标题</th>
 	                <td >
-	               	 <input type="hidden" id="isPublish" name="newsInfo.isPublish" class="btn3" value="0" ">
-	                    <input type="text" id="newsTitle" name="newsInfo.newsTitle" class="input50 validate[required]"/>
+	               	    <input type="hidden" id="newsId" name="postId" class="btn3" value='<%=request.getParameter("postId")%>'>
+	                    <input type="text" id="title" name="title" class="input50 validate[required]"/>
 	                    <span style="color: red;"> *</span>
 	                </td>
 	            </tr>
@@ -102,7 +113,7 @@
 	                <th width="30%">发布人</th>
 	                <td >
 	               	 
-	                    <input type="text" id="newsTitle" name="publisherName" class="input50 validate[required]"/>
+	                    <input type="text" id="publisherName" name="publisherName" class="input50 validate[required]"/>
 	                    <span style="color: red;"> *</span>
 	                </td>
 	            </tr>
@@ -110,7 +121,7 @@
 	                <tr>
 	                <th >新闻纲要</th>
 	                <td colspan="3" >
-	              	<textarea name="newsInfo.content" id="shortremark" cols=120 rows=4 maxlength="5000"></textarea>  
+	              	<textarea name="shortContent" id="shortContent" cols=120 rows=4 maxlength="5000"></textarea>  
 	                </td>
 	                
 	            </tr>
@@ -119,37 +130,29 @@
 	                <tr>
 	                <th >新闻内容</th>
 	                <td colspan="3" >
-	              	<textarea name="newsInfo.content" id="remark" cols=120 rows=2 maxlength="5000"></textarea>  
+	              	<textarea name="content" id="content" cols=120 rows=2 maxlength="5000"></textarea>  
 	                </td> 
 	            </tr>
 	            <tr>
 	                
 	                <th>banner</th>
 	                <td>
-	                	<input type="file" name="file0" id="uploadFile" accept=""/>
+	                	<label id="bannerName" style='float:left;display:inline-block;width:40px;'></label><input type="file" name="file0" id="banner" accept=""/>
 	                </td>
 	            </tr> 
-	            <tr>
-	                
-	                <th>附件1</th>
-	                <td>
-	                	<input type="file" name="file1" id="uploadFile" accept=""/>
-	                	<img onclick='addMimeFile()' src='resource/images/add.gif'>
-	                </td>
-	                
-	            </tr>
+	            
 	            </tbody>
 	        </table>
 	       	
 	       	
 	        <table class="btn_table" align="center">
 				<td>
-		            <input type="button" class="btn3" value="保存修改"onclick=" addNewsInfo(0) ">
-		            <input type="button" class="btn3" value="取消" onClick="javascript:location.href='getAdminNewsInfoList.do?reqType=${reqType}';">
+		            <input type="button" class="btn3" value="保存修改"onclick=" updateNews(0) ">
+		            <input type="button" class="btn3" value="取消" onClick="javascript:location.href='newsInfoList.jsp';">
 				</td>
 			</table>
 	    </form>
 	</div>
-	 <ckeditor:replace replace="remark" basePath="./ckeditor/" />
+	 <ckeditor:replace replace="content" basePath="./ckeditor/" />
     </body>
 </html>
