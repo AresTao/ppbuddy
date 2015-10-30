@@ -21,7 +21,7 @@ response:
 ]
 
 2. 获取新闻记录
-method  : post
+method  : get
 url     : http://localhost:8080/ppbuddy/api/0.1/post/get/{postId}
 request :
 response:

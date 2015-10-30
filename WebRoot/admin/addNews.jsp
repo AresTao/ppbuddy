@@ -126,7 +126,7 @@
 				<td>
 		            <input type="button" class="btn3" value="保存" onclick=" addNewsInfo(0) ">
 		           <input type="button" class="btn5" value="保存并发布"onclick=" addNewsInfo(1)">
-		            <input type="button" class="btn3" value="取消" onClick="javascript:location.href='getAdminNewsInfoList.do?reqType=${reqType}';">
+		            <input type="button" class="btn3" value="取消" onClick="javascript:location.href='newsInfoList.jsp';">
 				</td>
 			</table>
 	    </form>
