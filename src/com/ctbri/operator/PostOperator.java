@@ -1,6 +1,7 @@
 package com.ctbri.operator;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
@@ -75,9 +76,10 @@ public class PostOperator {
 			Transaction tran = session.beginTransaction();//开始事物  
 			for (String postId : postIds)
 			{
-				String hql = "UPDATE com.ctbri.model.Post p set p.isPublish=:isPublish where p.postId =:postId";
+				String hql = "UPDATE com.ctbri.model.Post p set p.isPublish=:isPublish, p.publishTime=:publishTime where p.postId =:postId";
 				Query query = session.createQuery(hql);
 				query.setInteger("isPublish", flag);
+				query.setString("publishTime", new Date().toLocaleString());
 				query.setString("postId", postId);
 				query.executeUpdate();
 			}
@@ -155,13 +157,13 @@ public class PostOperator {
 			String hql = null;
 			if (flag == 0)
 			{
-				hql = "from com.ctbri.model.Post where categoryId=:categoryId and isPublish=0";
+				hql = "from com.ctbri.model.Post where categoryId=:categoryId and isPublish=0 order by postId desc";
 			}else if (flag == 1)
 			{
-				hql = "from com.ctbri.model.Post where categoryId=:categoryId and isPublish=1";
+				hql = "from com.ctbri.model.Post where categoryId=:categoryId and isPublish=1 order by postId desc";
 			}else if (flag == 2)
 			{
-				hql = "from com.ctbri.model.Post where categoryId=:categoryId";
+				hql = "from com.ctbri.model.Post where categoryId=:categoryId order by postId desc";
 			}
 			
 			Query query = session.createQuery(hql);
@@ -202,13 +204,13 @@ public class PostOperator {
 			String hql = null;
 			if (flag == 0)
 			{
-				hql = "from com.ctbri.model.Post where categoryId=:categoryId and isPublish=0";
+				hql = "from com.ctbri.model.Post where categoryId=:categoryId and isPublish=0  order by postId desc";
 			}else if (flag == 1)
 			{
-				hql = "from com.ctbri.model.Post where categoryId=:categoryId and isPublish=1";
+				hql = "from com.ctbri.model.Post where categoryId=:categoryId and isPublish=1  order by postId desc";
 			}else if (flag == 2)
 			{
-				hql = "from com.ctbri.model.Post where categoryId=:categoryId";
+				hql = "from com.ctbri.model.Post where categoryId=:categoryId order by postId desc";
 			}
 			
 			Query query = session.createQuery(hql);

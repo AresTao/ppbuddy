@@ -49,6 +49,7 @@
 					$("#isPublish").val(isPublish);
 					$("#frm").submit();
 					
+					
 		}
 			
 		$(function() {

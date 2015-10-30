@@ -2,6 +2,8 @@ package com.ctbri.service;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -138,8 +140,16 @@ public class PostService {
             }
         }
 		CommonPostResp res = PostOperator.addPost(post);
+		StringBuffer result = new StringBuffer();
+		URI path = request.getUri().getAbsolutePath();
+		String query = path.getRawPath();
+		String[] fields = query.split("/");
 		
-		return Response.status(200).entity(res.getReason()).build();
+		result.append("<script type='text/javascript' src='/"+fields[1]+"/admin/resource/jquery/jquery-1.7.2.min.js'></script>");
+		result.append("<script type='text/javascript'>"+"window.location.href='/"+fields[1]+"/admin/newsInfoList.jsp';");
+		
+		result.append("</script>");
+		return Response.status(200).entity(result.toString()).build();
 	}
 	
 	@POST
