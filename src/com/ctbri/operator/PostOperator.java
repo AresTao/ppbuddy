@@ -40,6 +40,7 @@ public class PostOperator {
 	        res = new CommonPostResp();
 	        res.setCode(200);
 	        res.setReason("create success.");
+	        log.info("add post success.");
 		}catch(Exception e)
 		{
 			log.error(e.getMessage());
@@ -79,6 +80,7 @@ public class PostOperator {
 	        res = new CommonPostResp();
 	        res.setCode(200);
 	        res.setReason("update success.");
+	        log.info("update "+post.getPostId()+" success.");
 		}catch(Exception e)
 		{
 			log.error(e.getMessage());
@@ -108,6 +110,7 @@ public class PostOperator {
 	        res = new CommonPostResp();
 	        res.setCode(200);
 	        res.setReason("publish success.");
+	        log.info("publish "+postIds+" success.");
 		}catch(Exception e)
 		{
 			log.error(e.getMessage());
@@ -150,12 +153,14 @@ public class PostOperator {
 					{
 						res.setCode(403);
 						res.setReason("post "+postId+" is published.");
+						log.info("post "+postId+" can not be delete.unpublish it first.");
 						return res;
 					}
 				} else 
 				{
 					res.setCode(404);
 					res.setReason("post "+postId+" not exist.");
+					log.info("post "+postId+" not exist.");
 					return res;
 				}
 			}
@@ -206,6 +211,7 @@ public class PostOperator {
 					res.add(item);
 				}
 			}
+			log.info("query post list success.");
 			return res;
 		}catch(Exception e)
 		{

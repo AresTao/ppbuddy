@@ -18,11 +18,28 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="css/common.css"/>
 <link rel="stylesheet" type="text/css" href="css/main.css"/>
-<link rel="shortcut icon" href="../rtcweb/img/favicon.ico">
+<link rel="shortcut icon" href="img/favicon.ico">
 <script type="text/javascript" src="js/libs/modernizr.min.js"></script>
 </head>
 <body>
-<%@ include file="./common/head.jsp"%>
+<div class="topbar-wrap white">
+    <div class="topbar-inner clearfix">
+        <div class="topbar-logo-wrap clearfix">
+            <h1 class="topbar-logo none"><a href="index.html" class="navbar-brand">后台管理</a></h1>
+            <ul class="navbar-list clearfix">
+            	<img src="resource/images/logo.png" style="float:left;padding:5px;">
+                <li><a class="on" href="index.html">后台运营管理系统</a></li>
+            </ul>
+        </div>
+        <div class="top-info-wrap">
+            <ul class="top-info-list clearfix">
+                <li><a href="#">管理员：<%=request.getParameter("username")%></a></li>
+                <li><a href="#">修改密码</a></li>
+                <li><a href="./login?username=<%=request.getParameter("username")%>&method=logout">退出</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 <div class="container clearfix">
 	<div class="sidebar-wrap">
         <div class="sidebar-title">
