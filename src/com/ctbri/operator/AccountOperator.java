@@ -26,9 +26,10 @@ public class AccountOperator {
 
 			session = DbHelper.getSession();
 						
-			String hql = "from com.ctbri.model.Account where id=:id";
+			String hql = "from com.ctbri.model.Account where id=:id and passwd=:passwd";
 			Query query = session.createQuery(hql);
 			query.setString("id", id);
+			query.setString("passwd", passwd);
 			List<Account> accounts = query.list();
 			
 			if(accounts.size() > 0)

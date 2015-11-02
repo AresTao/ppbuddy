@@ -12,6 +12,7 @@ import org.hibernate.Transaction;
 
 import com.ctbri.model.MimeFile;
 import com.ctbri.model.Post;
+import com.ctbri.param.QueryParam;
 import com.ctbri.resp.AdminPostItem;
 import com.ctbri.resp.AdminPostResp;
 import com.ctbri.resp.CommonPostResp;
@@ -19,6 +20,7 @@ import com.ctbri.resp.MimeFileItem;
 import com.ctbri.resp.PostItem;
 import com.ctbri.resp.PostResp;
 import com.ctbri.util.DbHelper;
+import com.ctbri.util.StringUtils;
 
 public class PostOperator {
 	
@@ -53,7 +55,25 @@ public class PostOperator {
 			session = DbHelper.getSession();
 						
 			Transaction tran = session.beginTransaction();//开始事物     
-			session.saveOrUpdate(post);   
+			StringBuffer hql = new StringBuffer();
+			hql.append("UPDATE com.ctbri.model.Post p set ");
+			if (!StringUtils.isBlank(post.getTitle()))
+				hql.append("p.title=:title, ");
+			if (!StringUtils.isBlank(post.getContent()))
+				hql.append("p.content=:content, ");
+			if (!StringUtils.isBlank(post.getShortContent()))
+				hql.append("p.shortContent=:shortContent, ");
+			if (!StringUtils.isBlank(post.getPublisherName()))
+				hql.append("p.publisherName=:publisherName ");
+			hql.append("where postId=:postId");
+			
+			Query query = session.createQuery(hql.toString());
+			query.setString("title", post.getTitle());
+			query.setString("content", post.getContent());
+			query.setString("shortContent", post.getShortContent());
+			query.setString("publisherName", post.getPublisherName());
+			query.setString("postId", post.getPostId());
+			query.executeUpdate();
 	        tran.commit();
 			
 	        res = new CommonPostResp();
@@ -341,5 +361,80 @@ public class PostOperator {
 			log.error(e.getMessage());
 		}
 		return post;
+	}
+	
+	public static List<AdminPostItem> queryAdminPostList(QueryParam param)
+	{
+		Session session = null;
+		List<AdminPostItem> res = null;
+		try{
+			boolean ifHasFrontParam = true;
+			session = DbHelper.getSession();
+			Transaction tran = session.beginTransaction();//开始事物     
+			StringBuffer hql = new StringBuffer();
+			hql.append("from com.ctbri.model.Post as p ");
+			if (!StringUtils.isBlank(param.getNewsTitle()))
+			{
+				hql.append("where p.title like '%"+param.getNewsTitle()+"%' ");	
+			}
+			else
+			{
+				ifHasFrontParam = false;
+			}
+			if (!StringUtils.isBlank(param.getStartTime()) && ifHasFrontParam)
+				hql.append("and p.publishTime >= :startTime ");
+			else if(!StringUtils.isBlank(param.getStartTime()) && !ifHasFrontParam)
+			{	
+				hql.append("where p.publishTime >= :startTime ");
+				ifHasFrontParam = true;
+			}
+			if (!StringUtils.isBlank(param.getEndTime()) && ifHasFrontParam)
+				hql.append("and p.publishTime <= :endTime ");
+			else if(!StringUtils.isBlank(param.getEndTime()) && !ifHasFrontParam)
+			{	
+				hql.append("where p.publishTime  <= :endTime ");
+				ifHasFrontParam = true;
+			}
+			if (param.getIsPublish() != -1 && ifHasFrontParam)
+				hql.append("and p.isPublish = :isPublish");
+			else if(param.getIsPublish() != -1 && !ifHasFrontParam)
+				hql.append("where p.isPublish = :isPublish");
+			Query query = session.createQuery(hql.toString());
+			
+			if (!StringUtils.isBlank(param.getStartTime()))
+				query.setString("startTime", param.getStartTime());
+			if (!StringUtils.isBlank(param.getEndTime()))
+				query.setString("endTime", param.getEndTime());
+			if (param.getIsPublish() != -1)
+				query.setInteger("isPublish", param.getIsPublish());
+			List<Post> posts = query.list();
+			tran.commit();
+			
+			if (posts.size() > 0)
+			{
+				res = new ArrayList<AdminPostItem>();
+				AdminPostItem item = null;
+				for (Post post : posts)
+				{
+					item = new AdminPostItem();
+					item.setPostId(post.getPostId());
+					item.setTitle(post.getTitle());
+					item.setShortContent(post.getShortContent());
+					item.setPublishTime(post.getPublishTime());
+					item.setPublisherName(post.getPublisherName());
+					item.setCreateTime(post.getCreateTime());
+					item.setPublishTime(post.getPublishTime());
+					item.setIsPublish(post.getIsPublish());
+					item.setCategoryId(post.getCategoryId());
+					
+					res.add(item);
+				}
+			}
+			return res;
+		}catch(Exception e)
+		{
+			log.error(e.getMessage());
+		}
+		return res;
 	}
 }

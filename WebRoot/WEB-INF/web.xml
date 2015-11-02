@@ -11,7 +11,7 @@
   	</context-param>
   	<context-param>
   		<param-name>resteasy.resources</param-name>
-  		<param-value>com.ctbri.service.PostService</param-value>
+  		<param-value>com.ctbri.service.PostService,com.ctbri.service.FileService</param-value>
   	</context-param>
  	<!-- <context-param>
 		<param-name>resteasy.providers</param-name>

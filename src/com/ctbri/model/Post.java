@@ -84,5 +84,8 @@ public class Post implements java.io.Serializable{
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
-	
+	public String toString()
+	{
+		return "postId = "+postId+", content= "+content+", shortContent="+shortContent+", publisherName="+publisherName+", title="+title;
+	}
 }

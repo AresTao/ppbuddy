@@ -146,7 +146,7 @@
 	                <td >
 	               	    <input type="hidden" id="hiddenNewsId" name="postId" class="btn3" value='<%=request.getParameter("postId")%>'>
 	                    <input type="text" id="title" name="title" class="input50 validate[required]"/>
-	                    <span style="color: red;"> *</span>
+	                    
 	                </td>
 	            </tr>
 	            <tr>
@@ -154,7 +154,7 @@
 	                <td >
 	               	 
 	                    <input type="text" id="publisherName" name="publisherName" class="input50 validate[required]"/>
-	                    <span style="color: red;"> *</span>
+	                    
 	                </td>
 	            </tr>
 	            <tr>
@@ -189,7 +189,7 @@
 	        <table class="btn_table" align="center">
 				<td>
 		            <input type="button" class="btn3" value="保存修改"onclick=" updateNews(0) ">
-		            <input type="button" class="btn3" value="取消" onClick="javascript:location.href='newsInfoList.jsp';">
+		            <input type="button" class="btn3" value="取消" onClick="javascript:history.back();">
 				</td>
 			</table>
 	    </form>

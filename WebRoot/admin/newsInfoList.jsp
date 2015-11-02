@@ -184,23 +184,13 @@
 				}
 			});
 		};
-	    
-	    function doSubmit() {
-	       	if(!dateValidate("startTime","endTime")){
-	      		return false;
-	      	}
-	        	
-	      	$("#frm").action = "getAdminNewsInfoList.do";
-	      	$("#frm").method = "post";
-	        $("#frm").submit();
-	    }
 	        
 	    //enter事件触发搜索
 	    function enterSearch(){
 	      	$("input[type='text']").each(function(){
 	      		$(this).keydown(function(event){
 	       			if(event.keyCode == 13){
-	       				doSubmit();
+	       				queryPostList();
 	       			}
 	       		});
 	       	});
@@ -236,6 +226,39 @@
 				cache : false,
 				async : true,
 				success : function(res) {
+					queryResult = res;
+					initData(res);
+				},
+				error : function() {
+					alert("发送请求失败，请检查网络或刷新重试");
+				}
+			});
+		}
+		
+		function queryPostList()
+		{
+			var startTime = document.getElementById("startTime").value;
+			var endTime = document.getElementById("endTime").value;
+			var title = document.getElementById("newsTitle").value;
+			var newsTypeEle = document.getElementById("newsType");
+			var newsTypeIndex = newsTypeEle.selectedIndex;
+			var newsType = newsTypeEle.options[newsTypeIndex].value; // 选中值
+			
+			var isPublishEle = document.getElementById("isPublish");
+			var isPublishIndex = isPublishEle.selectedIndex;
+			var isPublish = isPublishEle.options[isPublishIndex].value; // 选中值
+			var body = {newsTitle:title,startTime:startTime,endTime:endTime,newsType:1,isPublish:isPublish};
+			var url = "${pageContext.request.contextPath}/api/0.1/admin/post/queryList";
+			$.ajax({
+				url : url,
+				type : "post",
+				dataType : "json",
+				cache : false,
+				async : true,
+				contentType: "application/json",
+				data  : JSON.stringify(body),
+				success : function(res) {
+					document.getElementById('newsList').innerHTML = '';
 					queryResult = res;
 					initData(res);
 				},
@@ -292,7 +315,7 @@
 					</td>
 	            </tr>
 	            <tr>
-	            	<th width="10%">创建时间</th>
+	            	<th width="10%">发布时间</th>
 		            <td width="50%">
 	                    <input type="text" name="startTime" id="startTime" value="" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){dateValidate('startTime','endTime');}});" style="height: 24px;" class="Wdate"/>&nbsp;&nbsp;到
 	                    <input type="text" name="endTime" id="endTime" value="" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){dateValidate('startTime','endTime');}});" style="height: 24px;" class="Wdate"/>
@@ -311,7 +334,7 @@
 	        </table>
 	        <table class="btn_table" align="center">
 				<td>
-		            <input type=button class="btn3" value="查&nbsp;&nbsp;询" onClick="doSubmit();"/>
+		            <input type=button class="btn3" value="查&nbsp;&nbsp;询" onClick="queryPostList();"/>
 					<input type=button class="btn3" value="增&nbsp;&nbsp;加" onClick="addNews();"/>
 					<input type=button class="btn3" value="删&nbsp;&nbsp;除" onClick="deleteNews();"/>
 					<input type=button class="btn3" value="发布" onClick="publish(1);"/>

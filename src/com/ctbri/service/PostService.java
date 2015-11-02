@@ -34,6 +34,7 @@ import com.ctbri.model.Post;
 import com.ctbri.operator.FileOperator;
 import com.ctbri.operator.PostOperator;
 import com.ctbri.param.PublishPostParam;
+import com.ctbri.param.QueryParam;
 import com.ctbri.resp.AdminPostItem;
 import com.ctbri.resp.AdminPostResp;
 import com.ctbri.resp.CommonPostResp;
@@ -180,7 +181,7 @@ public class PostService {
 		post.setPostId(postId);
 		post.setCategoryId(1);
 		log.info("filesize:"+fileSize);
-		log.info(postId);
+		log.info(post.toString());
 		for (int i=0; i<fileSize - 5; i++)
 		{
             String fileNameNew =UUID.randomUUID().toString();  
@@ -230,8 +231,16 @@ public class PostService {
             }
         }
 		CommonPostResp res = PostOperator.updatePost(post);
+		StringBuffer result = new StringBuffer();
+		URI path = request.getUri().getAbsolutePath();
+		String query = path.getRawPath();
+		String[] fields = query.split("/");
 		
-		return Response.status(200).entity(res.getReason()).build();
+		result.append("<script type='text/javascript' src='/"+fields[1]+"/admin/resource/jquery/jquery-1.7.2.min.js'></script>");
+		result.append("<script type='text/javascript'>"+"window.location.href='/"+fields[1]+"/admin/newsInfoList.jsp';");
+		
+		result.append("</script>");
+		return Response.status(200).entity(result.toString()).build();
 	}
 	
 	private String getValue(Map<String, List<InputPart>> uploadForm, String key)
@@ -332,6 +341,16 @@ public class PostService {
 	public Response getAdminPostList(@PathParam("APIversion") String APIversion, 
 			@PathParam("Category") int category,@PathParam("flag") int flag){
 		List<AdminPostItem> res = PostOperator.getAdminPostList(category, flag);
+		return Response.status(200).entity(res).build(); 
+	}
+	
+	@POST
+	@Path("/{APIversion}/admin/post/queryList/")	//flag 0 未发布 1 已经发布 2 全部
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response queryAdminPostList(@PathParam("APIversion") String APIversion, 
+			QueryParam param){
+		List<AdminPostItem> res = PostOperator.queryAdminPostList(param);
 		return Response.status(200).entity(res).build(); 
 	}
 }
