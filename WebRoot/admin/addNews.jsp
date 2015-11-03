@@ -10,6 +10,7 @@
 			 ChangeSkinAPP.Register(function(){ChangeSkin.Import("style.css");});
 			 ChangeSkinAPP.init();
 		</script>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<link rel="stylesheet" type="text/css" href= "css/add.css">
 		<script type="text/javascript" src="resource/jquery/jquery-1.7.2.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="resource/jQuery_Validation_Engine_2.6/css/validationEngine.jquery.css"/>
@@ -22,7 +23,6 @@
 	    var fileNum=1;
 	    function addMimeFile()
 	    {
-	        alert("test");
 	        var newRow = document.createElement('tr');
 	        fileNum++;
 	        newRow.innerHTML = "<th>附件"+fileNum+"</th><td><input type='file' name='file"+fileNum+"' id='uploadFile' accept=''/>"

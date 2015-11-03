@@ -51,6 +51,7 @@ public class PostService {
 	@Context
 	HttpRequest request;
 	
+	
 	/*
 	 * 
 	 * */
@@ -78,7 +79,6 @@ public class PostService {
         int isPublish = Integer.parseInt(isPublishStr);
         
       	Post post = new Post();
-		
 		
 		String postId = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
 		post.setTitle(title);
