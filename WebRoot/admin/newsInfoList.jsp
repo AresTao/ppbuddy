@@ -11,11 +11,16 @@
 		</script>
 		<script type="text/javascript" src="resource/jquery/jquery-1.7.2.min.js"></script>
 		<link rel="stylesheet" type="text/css" href= "./css/add.css">
+		<link rel="stylesheet" type="text/css" href= "./css/jquery.alerts.css">
 		<script type="text/javascript" src="resource/js/common_validate.js"></script>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.alerts.js"></script>
+		<script type="text/javascript" src="js/jquery.ui.draggable.js"></script>
 		<script type="text/javascript" src="resource/My97DatePicker/WdatePicker.js"></script>
 	    <script type="text/javascript" src="resource/wbox/wbox-min.js"></script>
 	    <script type="text/javascript">
 	    var queryResult;
+	    
 	    var getTable = function( arrTr)
 	    {
 			var s = '';
@@ -139,13 +144,13 @@
 				contentType: "application/json",
 				data  : JSON.stringify(body),
 				success : function(res) {
-					alert(res.reason);
+					
 					document.getElementById('divPage').innerHTML = '';
 					document.getElementById('newsList').innerHTML = '';
 					getPostList(1, 2);
 				},
 				error : function(res) {
-					alert(res);
+					jAlert(res, '提示');
 				}
 			});
 		};
@@ -160,7 +165,7 @@
 			});
 			if (newsIds.length == 0)
 			{
-				alert("请至少选择一个进行发布");
+				jAlert('请至少选择一个进行发布.', '提示');
 			}
 			var data = JSON.stringify(newsIds);
 			var body = {postIds:newsIds};
@@ -180,7 +185,7 @@
 					getPostList(1, 2);
 				},
 				error : function(res) {
-					alert(res);
+					jAlert("发送请求失败，请检查网络或刷新重试","提示");
 				}
 			});
 		};
@@ -230,7 +235,7 @@
 					initData(res);
 				},
 				error : function() {
-					alert("发送请求失败，请检查网络或刷新重试");
+					jAlert("发送请求失败，请检查网络或刷新重试","提示");
 				}
 			});
 		}
@@ -263,7 +268,7 @@
 					initData(res);
 				},
 				error : function() {
-					alert("发送请求失败，请检查网络或刷新重试");
+					jAlert("发送请求失败，请检查网络或刷新重试","提示");
 				}
 			});
 		}
@@ -280,7 +285,7 @@
 			});
 			if (newsIds.length == 0)
 			{
-				alert("请选择一个进行修改");
+				jAlert("请选择一个进行修改","提示");
 				return;
 			}
 			window.location.href='updateNews.jsp?postId='+newsIds[0];

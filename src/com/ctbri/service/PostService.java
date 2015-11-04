@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -87,8 +88,10 @@ public class PostService {
 		post.setPublisherName(publisherName);
 		post.setPostId(postId);
 		post.setIsPublish(isPublish);
-		post.setCreateTime(new Date().toLocaleString());
-		post.setPublishTime(new Date().toLocaleString());
+		DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String createTime = format1.format(new Date());
+		post.setCreateTime(createTime);
+		post.setPublishTime(createTime);
 		post.setCategoryId(1);
 		
 		for (int i=0; i<fileSize - 5; i++)
@@ -114,7 +117,7 @@ public class PostService {
             		byte [] bytes = IOUtils.toByteArray(inputStream);
             		//constructs upload file path
             		ResourceBundle bundle = ResourceBundle.getBundle("path");
-           		    String path = bundle.getString("path1");
+           		    String path = bundle.getString("path");
            		    fileName = fileNameNew+"."+fileName;
 		            if (!path.endsWith("/"))
            		    	path = path + "/";
@@ -147,7 +150,11 @@ public class PostService {
 		String[] fields = query.split("/");
 		
 		result.append("<script type='text/javascript' src='/"+fields[1]+"/admin/resource/jquery/jquery-1.7.2.min.js'></script>");
-		result.append("<script type='text/javascript'>"+"window.location.href='/"+fields[1]+"/admin/newsInfoList.jsp';");
+		result.append("<script type='text/javascript' src='/"+fields[1]+"/admin/js/jquery.js'></script>");
+		result.append("<script type='text/javascript' src='/"+fields[1]+"/admin/js/jquery.alerts.js'></script>");
+		result.append("<script type='text/javascript' src='/"+fields[1]+"/admin/js/jquery.ui.draggable.js'></script>");
+		result.append("<link rel='stylesheet' type='text/css' href= '/"+fields[1]+"/admin/css/jquery.alerts.css'>");
+		result.append("<script type='text/javascript'>"+"window.location.href='/"+fields[1]+"/admin/newsInfoList.jsp';"+"$(document).ready(function(){jAlert('添加新闻成功', '提示');});");
 		
 		result.append("</script>");
 		return Response.status(200).entity(result.toString()).build();

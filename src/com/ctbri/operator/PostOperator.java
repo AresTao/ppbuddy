@@ -1,5 +1,6 @@
 package com.ctbri.operator;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -101,7 +102,8 @@ public class PostOperator {
 				String hql = "UPDATE com.ctbri.model.Post p set p.isPublish=:isPublish, p.publishTime=:publishTime where p.postId =:postId";
 				Query query = session.createQuery(hql);
 				query.setInteger("isPublish", flag);
-				query.setString("publishTime", new Date().toLocaleString());
+				String publishTime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date());
+				query.setString("publishTime", publishTime);
 				query.setString("postId", postId);
 				query.executeUpdate();
 			}
