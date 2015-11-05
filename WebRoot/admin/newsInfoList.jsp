@@ -127,32 +127,44 @@
 		//删除新闻信息
 		function deleteNews(){
 			//var newsIds = "";
+			
 			var newsIds = new Array(); 
 			$("input[name='newsId']:checked").each(function(i,n){
 				//newsIds += $(this).val() + ",";
 				newsIds[i] = $(this).val();
 			});
-			var data = JSON.stringify(newsIds);
-			var body = {postIds:newsIds};
-			var url = "${pageContext.request.contextPath}/api/0.1/post/delete";
-			$.ajax({
-				url : url,
-				type : "post",
-				dataType : "json",
-				cache : false,
-				async : true,
-				contentType: "application/json",
-				data  : JSON.stringify(body),
-				success : function(res) {
-					jAlert(res.reason, '提示');
-					document.getElementById('divPage').innerHTML = '';
-					document.getElementById('newsList').innerHTML = '';
-					getPostList(1, 2);
-				},
-				error : function(res) {
-					jAlert(res, '提示');
-				}
+			if (newsIds.length == 0)
+			{
+				jAlert('请至少选择一个进行删除.', '提示');
+				return;
+			}
+			jConfirm("确定删除吗？","提示",function(r){
+			if(r)
+			{
+				var data = JSON.stringify(newsIds);
+				var body = {postIds:newsIds};
+				var url = "${pageContext.request.contextPath}/api/0.1/post/delete";
+				$.ajax({
+					url : url,
+					type : "post",
+					dataType : "json",
+					cache : false,
+					async : true,
+					contentType: "application/json",
+					data  : JSON.stringify(body),
+					success : function(res) {
+						jAlert(res.reason, '提示');
+						document.getElementById('divPage').innerHTML = '';
+						document.getElementById('newsList').innerHTML = '';
+						getPostList(1, 2);
+					},
+					error : function(res) {
+						jAlert(res, '提示');
+					}
+				});
+			}
 			});
+			
 		};
 		
 		//发布/取消发布新闻信息
@@ -166,6 +178,7 @@
 			if (newsIds.length == 0)
 			{
 				jAlert('请至少选择一个进行发布.', '提示');
+				return;
 			}
 			var data = JSON.stringify(newsIds);
 			var body = {postIds:newsIds};
