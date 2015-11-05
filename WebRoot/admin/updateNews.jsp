@@ -57,7 +57,7 @@
 					if (res)
 					{
 						alert("删除成功");
-						loadNews(postId);
+						window.location.href='updateNews.jsp?postId='+postId;
 					} else
 					{
 						alert("删除失败");

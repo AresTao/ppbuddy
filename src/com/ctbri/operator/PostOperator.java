@@ -33,7 +33,7 @@ public class PostOperator {
 		CommonPostResp res = null;
 		try{
 			session = DbHelper.getSession();
-			log.info(new String(post.getTitle().getBytes("ISO-8859-1"), "UTF-8"));			
+			
 			Transaction tran = session.beginTransaction();//开始事物     
 			session.save(post);   
 	        tran.commit();			

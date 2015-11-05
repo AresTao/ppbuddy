@@ -59,7 +59,7 @@
     </head>
     <body>
 	<div class="mainbody">
-	    <form id="frm" action="${pageContext.request.contextPath}/api/0.1/post/add" method="post" enctype="multipart/form-data">
+	    <form id="frm" action="${pageContext.request.contextPath}/admin/post" method="post" enctype="multipart/form-data">
 	       	<table cellspacing=1 class="form_table" align="center" >
 	            <thead>
 		             <tr>

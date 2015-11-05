@@ -79,6 +79,7 @@ public class PostService {
         String isPublishStr = getValue(uploadForm,"isPublish");
         int isPublish = Integer.parseInt(isPublishStr);
         
+        log.info(new String(title.getBytes("ISO-8859-1"), "utf-8"));
       	Post post = new Post();
 		
 		String postId = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());

@@ -42,6 +42,16 @@
 		<url-pattern>/admin/login</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>PostServlet</servlet-name>
+		<servlet-class>
+			com.ctbri.service.PostServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PostServlet</servlet-name>
+		<url-pattern>/admin/post</url-pattern>
+	</servlet-mapping>
+	
 	<filter>    
 		<filter-name>AdminFilter</filter-name>   
 		<filter-class>com.ctbri.filter.AdminFilter</filter-class>   
