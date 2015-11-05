@@ -144,7 +144,7 @@
 				contentType: "application/json",
 				data  : JSON.stringify(body),
 				success : function(res) {
-					
+					jAlert(res.reason, '提示');
 					document.getElementById('divPage').innerHTML = '';
 					document.getElementById('newsList').innerHTML = '';
 					getPostList(1, 2);
@@ -179,7 +179,10 @@
 				contentType: "application/json",
 				data  : JSON.stringify(body),
 				success : function(res) {
-					alert(res.reason);
+					if (isPublish == 0)
+						jAlert("取消发布成功","提示");
+					else 
+						jAlert("发布成功","提示");
 					document.getElementById('divPage').innerHTML = '';
 					document.getElementById('newsList').innerHTML = '';
 					getPostList(1, 2);

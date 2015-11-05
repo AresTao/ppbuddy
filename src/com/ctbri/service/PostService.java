@@ -149,12 +149,12 @@ public class PostService {
 		String query = path.getRawPath();
 		String[] fields = query.split("/");
 		
-		result.append("<script type='text/javascript' src='/"+fields[1]+"/admin/resource/jquery/jquery-1.7.2.min.js'></script>");
-		result.append("<script type='text/javascript' src='/"+fields[1]+"/admin/js/jquery.js'></script>");
-		result.append("<script type='text/javascript' src='/"+fields[1]+"/admin/js/jquery.alerts.js'></script>");
-		result.append("<script type='text/javascript' src='/"+fields[1]+"/admin/js/jquery.ui.draggable.js'></script>");
-		result.append("<link rel='stylesheet' type='text/css' href= '/"+fields[1]+"/admin/css/jquery.alerts.css'>");
-		result.append("<script type='text/javascript'>"+"window.location.href='/"+fields[1]+"/admin/newsInfoList.jsp';"+"$(document).ready(function(){jAlert('添加新闻成功', '提示');});");
+		
+		//result.append("<script type='text/javascript' src='/"+fields[1]+"/admin/js/jquery.js'></script>");
+		//result.append("<script type='text/javascript' src='/"+fields[1]+"/admin/js/jquery.alerts.js'></script>");
+		//result.append("<script type='text/javascript' src='/"+fields[1]+"/admin/js/jquery.ui.draggable.js'></script>");
+		//result.append("<link rel='stylesheet' type='text/css' href= '/"+fields[1]+"/admin/css/jquery.alerts.css'>");
+		result.append("<script type='text/javascript'>"+"window.location.href='/"+fields[1]+"/admin/newsInfoList.jsp';");
 		
 		result.append("</script>");
 		return Response.status(200).entity(result.toString()).build();

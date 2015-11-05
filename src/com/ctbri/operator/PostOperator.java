@@ -149,12 +149,12 @@ public class PostOperator {
 						//session.delete("FROM com.ctbri.model.MimeFile as m where m.postId="+postId);  
 				        tran2.commit();
 						res.setCode(200);
-						res.setReason("delete success.");
+						res.setReason("删除成功.");
 						log.info("delete post "+postId+" success.");
 					} else
 					{
 						res.setCode(403);
-						res.setReason("post "+postId+" is published.");
+						res.setReason("删除失败，该新闻已经发布.");
 						log.info("post "+postId+" can not be delete.unpublish it first.");
 						return res;
 					}
