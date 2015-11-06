@@ -11,6 +11,11 @@
 			 ChangeSkinAPP.init();
 		</script>
 		<link rel="stylesheet" type="text/css" href= "css/add.css">
+		<link rel="stylesheet" type="text/css" href= "./css/jquery.alerts.css">
+		<script type="text/javascript" src="resource/js/common_validate.js"></script>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.alerts.js"></script>
+		<script type="text/javascript" src="js/jquery.ui.draggable.js"></script>
 		<script type="text/javascript" src="resource/jquery/jquery-1.7.2.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="resource/jQuery_Validation_Engine_2.6/css/validationEngine.jquery.css"/>
 		<script type="text/javascript" src="resource/jQuery_Validation_Engine_2.6/js/languages/jquery.validationEngine-zh_CN.js"></script>
@@ -43,31 +48,33 @@
 	    
 	    function deleteMimeFile(fileNo)
 	    {
-	    	if(confirm("确定删除？"))
-	    	{
-	    	var fileId = document.getElementById("file"+fileNo+"Id").value;
-	    	var url = "${pageContext.request.contextPath}/api/0.1/admin/file/delete/"+fileId;
-			$.ajax({
-				url : url,
-				type : "post",
-				dataType : "json",
-				cache : false,
-				async : true,
-				success : function(res) {
-					if (res)
-					{
-						alert("删除成功");
-						window.location.href='updateNews.jsp?postId='+postId;
-					} else
-					{
-						alert("删除失败");
-					}
-				},
-				error : function() {
-					alert("发送请求失败，请检查网络或刷新重试");
+	    	jConfirm("确定删除？",'提示',function(r){
+	    		if(r)
+	    		{
+	    			var fileId = document.getElementById("file"+fileNo+"Id").value;
+	    			var url = "${pageContext.request.contextPath}/api/0.1/admin/file/delete/"+fileId;
+					$.ajax({
+						url : url,
+						type : "post",
+						dataType : "json",
+						cache : false,
+						async : true,
+						success : function(res) {
+							if (res)
+							{
+								jAlert("删除成功",'提示');
+								window.location.href='updateNews.jsp?postId='+postId;
+							} else
+							{
+								jAlert("删除失败",'提示');
+							}
+						},
+						error : function() {
+							jAlert("发送请求失败，请检查网络或刷新重试",'提示');
+						}
+					});
 				}
-			});
-			}
+	    	});
 	    }
 	        
 	      	//给表单绑定验证引擎
@@ -116,7 +123,7 @@
 					}
 				},
 				error : function() {
-					alert("发送请求失败，请检查网络或刷新重试");
+					jAlert("发送请求失败，请检查网络或刷新重试",'提示');
 				}
 			});
 		
@@ -131,7 +138,7 @@
     </head>
     <body>
 	<div class="mainbody">
-	    <form id="frm" action="${pageContext.request.contextPath}/api/0.1/post/update" method="post"  enctype="multipart/form-data">
+	    <form id="frm" action="${pageContext.request.contextPath}/admin/post" method="post"  enctype="multipart/form-data">
 	       	<table cellspacing=1 class="form_table" align="center">
 	            <thead>
 		             <tr>

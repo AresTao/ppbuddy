@@ -1,6 +1,6 @@
-/*È«¾Ö¶¨Òå*/
+/*È«ï¿½Ö¶ï¿½ï¿½ï¿½*/
 * {
-/*font-family: "ËÎÌå",serif;*/
+/*font-family: "ï¿½ï¿½ï¿½ï¿½",serif;*/
     font-size: 9pt;
     line-height: 150%;
 }
@@ -19,14 +19,14 @@ body {
 }
 
 body {
-    scrollbar-arrow-color: #4089d8; /*Í¼6,Èý½Ç¼ýÍ·µÄÑÕÉ«*/
-    scrollbar-face-color: #c8e0fe; /*Í¼5,Á¢Ìå¹ö¶¯ÌõµÄÑÕÉ«*/
-    scrollbar-3dlight-color: #ffffff; /*Í¼1,Á¢Ìå¹ö¶¯ÌõÁÁ±ßµÄÑÕÉ«*/
-    scrollbar-highlight-color: #5093da; /*Í¼2,¹ö¶¯Ìõ¿Õ°×²¿·ÖµÄÑÕÉ«*/
-    scrollbar-shadow-color: #3a82cf; /*Í¼3,Á¢Ìå¹ö¶¯ÌõÒõÓ°µÄÑÕÉ«*/
-    scrollbar-darkshadow-color: #ffffff; /*Í¼4,Á¢Ìå¹ö¶¯ÌõÇ¿ÒõÓ°µÄÑÕÉ«*/
-    scrollbar-track-color: #e7f3fe; /*Í¼7,Á¢Ìå¹ö¶¯Ìõ±³¾°ÑÕÉ«*/
-    scrollbar-base-color: #f8f8f8; /*¹ö¶¯ÌõµÄ»ù±¾ÑÕÉ«*/
+    scrollbar-arrow-color: #4089d8; /*Í¼6,ï¿½ï¿½Ç¼ï¿½Í·ï¿½ï¿½ï¿½ï¿½É«*/
+    scrollbar-face-color: #c8e0fe; /*Í¼5,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«*/
+    scrollbar-3dlight-color: #ffffff; /*Í¼1,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½É«*/
+    scrollbar-highlight-color: #5093da; /*Í¼2,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ°×²ï¿½ï¿½Öµï¿½ï¿½ï¿½É«*/
+    scrollbar-shadow-color: #3a82cf; /*Í¼3,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½É«*/
+    scrollbar-darkshadow-color: #ffffff; /*Í¼4,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½É«*/
+    scrollbar-track-color: #e7f3fe; /*Í¼7,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«*/
+    scrollbar-base-color: #f8f8f8; /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½É«*/
 }
 
 .bodymar {
@@ -69,7 +69,7 @@ a:hover {
     text-align: center;
 }
 
-/*-±íµ¥ÔªËØ-------------------------------------------------------------------*/
+/*-ï¿½?Ôªï¿½ï¿½-------------------------------------------------------------------*/
 
 textarea {
     border: 1px solid #e1e0e0;
@@ -90,9 +90,9 @@ select {
     color: #333333;
 }
 
-/*todo input½ö¶¨Òåtext buttonÀàÐÍ*/
+/*todo inputï¿½ï¿½ï¿½ï¿½ï¿½ï¿½text buttonï¿½ï¿½ï¿½ï¿½*/
 
-/*×Ô¶¯¹ö¶¯ todo----------------------------------------------------------------*/
+/*ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ todo----------------------------------------------------------------*/
 
 .tbl_auto_os {
     height: 40%;
@@ -152,10 +152,10 @@ div.autodiv {
 /*----------------------------- form_table ---------------------------------------*/
 .form_table {
     width: 98%;
-    background-color: #BAD9EB; /*Ä£Äâ¼ä¸ôÏß#B5BCCE*/
+    background-color: #BAD9EB; /*Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#B5BCCE*/
 /*filter: progid:DXImageTransform.Microsoft.Shadow(Color = #333333, Direction = 120, strength = 2 )*/
     margin: 0 auto;
-    margin-top: 10px;
+    /*margin-top: 10px;*/
     margin-bottom: 10px;
 
 }
@@ -218,7 +218,7 @@ div.autodiv {
 /*----------------------------- form_table_2 ---------------------------------------*/
 .form_table_2 {
     width: 100%;
-    background-color: #BAD9EB; /*Ä£Äâ¼ä¸ôÏß#B5BCCE*/
+    background-color: #BAD9EB; /*Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#B5BCCE*/
 /*filter: progid:DXImageTransform.Microsoft.Shadow(Color = #333333, Direction = 120, strength = 2 )*/
     margin: 0;
 /*     margin-top: 0px; */
@@ -254,7 +254,7 @@ div.autodiv {
 /*---------------------------------- form_table_list ----------------------------------*/
 .form_table_list {
     width: 98%;
-    background-color: #BAD9EB; /*Ä£Äâ¼ä¸ôÏß#B5BCCE*/
+    background-color: #BAD9EB; /*Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#B5BCCE*/
 /*filter: progid:DXImageTransform.Microsoft.Shadow(Color = #333333, Direction = 120, strength = 2 )*/
     margin: 0 auto;
     margin-top: 10px;
@@ -292,7 +292,7 @@ div.autodiv {
 
 .form_table_chg {
     width: 98%;
-    background-color: #BAD9EB; /*Ä£Äâ¼ä¸ôÏß#B5BCCE*/
+    background-color: #BAD9EB; /*Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#B5BCCE*/
 /*filter: progid:DXImageTransform.Microsoft.Shadow(Color = #333333, Direction = 120, strength = 2 )*/
     margin: 0 auto;
     margin-bottom: 10px;
@@ -352,7 +352,7 @@ div.autodiv {
 /*--------------------------------------------------------------------*/
 table.form_table_report {
     width: 98%;
-    background-color: #BAD9EB; /*Ä£Äâ¼ä¸ôÏß#B5BCCE*/
+    background-color: #BAD9EB; /*Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#B5BCCE*/
 /*filter: progid:DXImageTransform.Microsoft.Shadow(Color = #333333, Direction = 120, strength = 2 )*/
     margin-bottom: 10px;
 }
@@ -408,7 +408,7 @@ table.form_table_report td {
 
 .query_table {
     width: 98%;
-    background-color: #BAD9EB; /*Ä£Äâ¼ä¸ôÏß#B5BCCE*/
+    background-color: #BAD9EB; /*Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#B5BCCE*/
 /*filter: progid:DXImageTransform.Microsoft.Shadow(Color = #333333, Direction = 120, strength = 2 )*/
     margin: 0 auto;
     margin-top: 10px;
@@ -454,7 +454,7 @@ table.form_table_report td {
     height:19px !important;
 	height /**/: 23px;
 	
-/* 	tdÖÐ³¬³¤²¿·ÖÓÃÊ¡ÂÔºÅÈ¡´úÏÔÊ¾ */
+/* 	tdï¿½Ð³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¡ï¿½Ôºï¿½È¡ï¿½ï¿½ï¿½ï¿½Ê¾ */
 	overflow:hidden; 
 	text-overflow:ellipsis;
 	white-space:nowrap;
@@ -464,7 +464,7 @@ table.form_table_report td {
 
 .query_table_card {
     width: 100%;
-    background-color: #BAD9EB; /*Ä£Äâ¼ä¸ôÏß#B5BCCE*/
+    background-color: #BAD9EB; /*Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#B5BCCE*/
 /*filter: progid:DXImageTransform.Microsoft.Shadow(Color = #333333, Direction = 120, strength = 2 )*/
     margin: 0 auto;
     margin-top: 5px;
@@ -528,7 +528,7 @@ table.form_table_report td {
 }
 
 
-/*°´Å¥ÑùÊ½------------------------------------------------------------------------*/
+/*ï¿½ï¿½Å¥ï¿½ï¿½Ê½------------------------------------------------------------------------*/
 .btn1 {
     border: 0;
     width: 26px;
@@ -812,7 +812,7 @@ table.form_table_report td {
 }
 
 
-/*------------------------------------------µ¥ÐÐÎÄ±¾ÊäÈë¿òÑùÊ½------------------------------------------------------*/
+/*------------------------------------------ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½------------------------------------------------------*/
 .input_date {
     border: 1px solid #e1e0e0;
     background: #ffffff;
@@ -1039,7 +1039,7 @@ table.form_table_report td {
 /*     background: url(../images/form/bg_input.gif) repeat-x; */
 /* } */
 
-/*------------------------------------------selectÊäÈë¿òÑùÊ½------------------------------------------------*/
+/*------------------------------------------selectï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½------------------------------------------------*/
 .select20 {
     background: #ffffff;
     color: #333333;
@@ -1068,7 +1068,7 @@ table.form_table_report td {
     width: 90%;
 }
 
-/*------------------------------------¶àÐÐÎÄ±¾ÊäÈë¿òÔªËØ----------------------------------------------------------*/
+/*------------------------------------ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½----------------------------------------------------------*/
 .textarea50 {
     border: 1px solid #e1e0e0;
     background: url(../images/form/bg_input.gif) repeat-x;
@@ -1114,7 +1114,7 @@ table.form_table_report td {
     height: 100px;
 }
 
-/*ÇÐ»»table idÑùÊ½------------------------------------------------------------------------*/
+/*ï¿½Ð»ï¿½table idï¿½ï¿½Ê½------------------------------------------------------------------------*/
 .showcontent {  display: block;}
 
 .hiddencontent {
@@ -1689,7 +1689,7 @@ table.form_table_report td {
     float: left;
     margin-right: 4px;
     text-align: center;
-    font: bold 12px / 18px 'ËÎÌå';
+    font: bold 12px / 18px 'ï¿½ï¿½ï¿½ï¿½';
     background: url(../images/tagmenu/bg.gif) left top repeat-x;
     color: #1F4A65;
 
@@ -1755,7 +1755,7 @@ table.form_table_report td {
     float: left;
     margin-right: 1px;
     text-align: center;
-    font: bold 12px / 18px 'ËÎÌå';
+    font: bold 12px / 18px 'ï¿½ï¿½ï¿½ï¿½';
     background: url(../images/tagmenu/bg.gif) left top repeat-x;	
     color: #1F4A65;
 

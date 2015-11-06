@@ -41,3 +41,13 @@ CREATE TABLE IF NOT EXISTS `account` (
     `passwd`             VARCHAR(128)   NOT NULL          ,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `img` (
+    `imgId`             INT            AUTO_INCREMENT    ,
+    `name`              VARCHAR(128)   NOT NULL          ,
+    `path`              VARCHAR(128)   NOT NULL          ,
+    `type`              INT            default 0         ,
+    `createTime`        datetime       NOT NULL          ,
+	`isPublish`         INT            default 0         ,
+    PRIMARY KEY (`imgId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

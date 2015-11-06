@@ -66,7 +66,11 @@ public class PostOperator {
 			if (!StringUtils.isBlank(post.getShortContent()))
 				hql.append("p.shortContent=:shortContent, ");
 			if (!StringUtils.isBlank(post.getPublisherName()))
-				hql.append("p.publisherName=:publisherName ");
+				hql.append("p.publisherName=:publisherName, ");
+			if (!StringUtils.isBlank(post.getBannerPath()))
+				hql.append("p.bannerPath=:bannerPath ");
+			else
+				hql.delete(hql.lastIndexOf(","),hql.lastIndexOf(",")+1);
 			hql.append("where postId=:postId");
 			
 			Query query = session.createQuery(hql.toString());
@@ -74,6 +78,8 @@ public class PostOperator {
 			query.setString("content", post.getContent());
 			query.setString("shortContent", post.getShortContent());
 			query.setString("publisherName", post.getPublisherName());
+			if (!StringUtils.isBlank(post.getBannerPath()))
+				query.setString("bannerPath", post.getBannerPath());
 			query.setString("postId", post.getPostId());
 			query.executeUpdate();
 	        tran.commit();
@@ -341,8 +347,10 @@ public class PostOperator {
 				post.setShortContent(res.getShortContent());
 				post.setPublisherName(res.getPublisherName());
 				String banner = res.getBannerPath();
-				int index = banner.indexOf('.');
+				int index = banner.lastIndexOf('/');
 				banner = banner.substring(index+1);
+				int index2 = banner.indexOf('.');
+				banner = banner.substring(index2+1);
 				post.setBannerPath(banner);
 				
 				List<MimeFile> fileList = FileOperator.getFiles(postId);
