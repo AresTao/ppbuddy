@@ -38,6 +38,7 @@
 		<!-- business object Mapping file 业务对象映射文件-->
 		<mapping resource="com/ctbri/model/Account.hbm.xml" /><!-- WEB服务端注册权限数据表映射 -->
 
+		<mapping resource="com/ctbri/model/Img.hbm.xml" />
 	</session-factory>
 
 </hibernate-configuration>

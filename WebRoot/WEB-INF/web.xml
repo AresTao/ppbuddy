@@ -11,7 +11,7 @@
   	</context-param>
   	<context-param>
   		<param-name>resteasy.resources</param-name>
-  		<param-value>com.ctbri.service.PostService,com.ctbri.service.FileService</param-value>
+  		<param-value>com.ctbri.service.PostService,com.ctbri.service.FileService,com.ctbri.service.ImgService</param-value>
   	</context-param>
  	<!-- <context-param>
 		<param-name>resteasy.providers</param-name>
@@ -50,6 +50,16 @@
 	<servlet-mapping>
 		<servlet-name>PostServlet</servlet-name>
 		<url-pattern>/admin/post</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ImgServlet</servlet-name>
+		<servlet-class>
+			com.ctbri.service.ImgServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ImgServlet</servlet-name>
+		<url-pattern>/admin/img</url-pattern>
 	</servlet-mapping>
 	
 	<filter>    

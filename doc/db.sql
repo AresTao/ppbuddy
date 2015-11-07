@@ -48,6 +48,7 @@ CREATE TABLE IF NOT EXISTS `img` (
     `path`              VARCHAR(128)   NOT NULL          ,
     `type`              INT            default 0         ,
     `createTime`        datetime       NOT NULL          ,
+    `publishTime`       datetime       NOT NULL          ,
 	`isPublish`         INT            default 0         ,
     PRIMARY KEY (`imgId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
