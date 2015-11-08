@@ -18,6 +18,7 @@ import com.ctbri.operator.ImgOperator;
 import com.ctbri.operator.PostOperator;
 import com.ctbri.param.PublishImgParam;
 import com.ctbri.param.PublishPostParam;
+import com.ctbri.param.QueryImgParam;
 import com.ctbri.param.QueryParam;
 import com.ctbri.resp.AdminImgItem;
 import com.ctbri.resp.AdminImgResp;
@@ -84,6 +85,16 @@ private static final Logger log = Logger.getLogger(ImgService.class);
 		CommonPostResp res = ImgOperator.deleteImg(imgIds.getImgIds());
 		return Response.status(200).entity(res).build(); 
 	}
+	
+	@POST
+	@Path("/{APIversion}/admin/img/queryList")	
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response queryAdminImgList(@PathParam("APIversion") String APIversion, 
+			QueryImgParam param){
+		List<AdminImgItem> res = ImgOperator.queryAdminImgList(param);
+		return Response.status(200).entity(res).build(); 
+	}
 	/*
 	 * 
 	 * *
@@ -115,14 +126,6 @@ private static final Logger log = Logger.getLogger(ImgService.class);
 	
 	
 	
-	@POST
-	@Path("/{APIversion}/admin/img/queryList")	//flag 0 未发布 1 已经发布 2 全部
-	@Consumes("application/json")
-	@Produces("application/json")
-	public Response queryAdminImgList(@PathParam("APIversion") String APIversion, 
-			QueryParam param){
-		List<AdminImgItem> res = ImgOperator.queryAdminImgList(param);
-		return Response.status(200).entity(res).build(); 
-	}
+	
 	*/
 }

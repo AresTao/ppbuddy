@@ -14,6 +14,7 @@ import org.hibernate.Transaction;
 import com.ctbri.model.Img;
 import com.ctbri.model.MimeFile;
 import com.ctbri.model.Post;
+import com.ctbri.param.QueryImgParam;
 import com.ctbri.param.QueryParam;
 import com.ctbri.resp.AdminImgItem;
 import com.ctbri.resp.AdminImgResp;
@@ -56,6 +57,7 @@ private static final Logger log = Logger.getLogger(ImgOperator.class);
 	{
 		Session session = null;
 		CommonPostResp res = null;
+		
 		try{
 			session = DbHelper.getSession();
 						
@@ -243,7 +245,7 @@ private static final Logger log = Logger.getLogger(ImgOperator.class);
 			{
 				Img res = accounts.get(0);
 				img = new AdminImgResp();
-				String fileName = res.getName();
+				String fileName = res.getPath();
 				int index = fileName.lastIndexOf('/');
 				fileName = fileName.substring(index+1);
 				int index2 = fileName.indexOf('.');
@@ -262,6 +264,90 @@ private static final Logger log = Logger.getLogger(ImgOperator.class);
 			log.error(e.getMessage());
 		}
 		return img;
+	}
+	
+	public static List<AdminImgItem> queryAdminImgList(QueryImgParam param)
+	{
+		Session session = null;
+		List<AdminImgItem> res = null;
+		try{
+			boolean ifHasFrontParam = true;
+			session = DbHelper.getSession();
+			Transaction tran = session.beginTransaction();//开始事物     
+			StringBuffer hql = new StringBuffer();
+			hql.append("from com.ctbri.model.Img as i ");
+			if (!StringUtils.isBlank(param.getName()))
+			{
+				hql.append("where i.name like '%"+param.getName()+"%' ");	
+			}
+			else
+			{
+				ifHasFrontParam = false;
+			}
+			if (!StringUtils.isBlank(param.getStartTime()) && ifHasFrontParam)
+				hql.append("and i.publishTime >= :startTime ");
+			else if(!StringUtils.isBlank(param.getStartTime()) && !ifHasFrontParam)
+			{	
+				hql.append("where i.publishTime >= :startTime ");
+				ifHasFrontParam = true;
+			}
+			if (!StringUtils.isBlank(param.getEndTime()) && ifHasFrontParam)
+				hql.append("and i.publishTime <= :endTime ");
+			else if(!StringUtils.isBlank(param.getEndTime()) && !ifHasFrontParam)
+			{	
+				hql.append("where i.publishTime  <= :endTime ");
+				ifHasFrontParam = true;
+			}
+			if (param.getIsPublish() != -1 && ifHasFrontParam)
+				hql.append("and i.isPublish = :isPublish");
+			else if(param.getIsPublish() != -1 && !ifHasFrontParam)
+			{
+				hql.append("where i.isPublish = :isPublish");
+				ifHasFrontParam = true;
+			}
+			if (param.getType() != 0 && ifHasFrontParam)
+				hql.append("and i.type = :type");
+			else if(param.getType() != -1 && !ifHasFrontParam)
+				hql.append("where i.type = :type");
+			Query query = session.createQuery(hql.toString());
+			
+			if (!StringUtils.isBlank(param.getName()))
+				query.setString("name", param.getName());
+			if (!StringUtils.isBlank(param.getStartTime()))
+				query.setString("startTime", param.getStartTime());
+			if (!StringUtils.isBlank(param.getEndTime()))
+				query.setString("endTime", param.getEndTime());
+			if (param.getIsPublish() != -1)
+				query.setInteger("isPublish", param.getIsPublish());
+			if (param.getType() != 0)
+				query.setInteger("type", param.getType());
+			List<Img> imgs = query.list();
+			tran.commit();
+			
+			if (imgs.size() > 0)
+			{
+				res = new ArrayList<AdminImgItem>();
+				AdminImgItem item = null;
+				for (Img img : imgs)
+				{
+					item = new AdminImgItem();
+					item.setImgId(img.getImgId());
+					item.setIsPublish(img.getIsPublish());
+					item.setName(img.getName());
+					item.setPublishTime(img.getPublishTime());
+					item.setCreateTime(img.getCreateTime());
+					item.setPath(img.getPath());
+					item.setType(img.getType());
+					
+					res.add(item);
+				}
+			}
+			return res;
+		}catch(Exception e)
+		{
+			log.error(e.getMessage());
+		}
+		return res;
 	}
 	
 /*	//isPublish  0 not published 1 published 2 all
@@ -348,77 +434,6 @@ private static final Logger log = Logger.getLogger(ImgOperator.class);
 	
 	
 	
-	public static List<AdminImgItem> queryAdminImgList(QueryParam param)
-	{
-		Session session = null;
-		List<AdminImgItem> res = null;
-		try{
-			boolean ifHasFrontParam = true;
-			session = DbHelper.getSession();
-			Transaction tran = session.beginTransaction();//开始事物     
-			StringBuffer hql = new StringBuffer();
-			hql.append("from com.ctbri.model.Img as i ");
-			if (!StringUtils.isBlank(param.getNewsTitle()))
-			{
-				hql.append("where i.name like '%"+param.getNewsTitle()+"%' ");	
-			}
-			else
-			{
-				ifHasFrontParam = false;
-			}
-			if (!StringUtils.isBlank(param.getStartTime()) && ifHasFrontParam)
-				hql.append("and p.publishTime >= :startTime ");
-			else if(!StringUtils.isBlank(param.getStartTime()) && !ifHasFrontParam)
-			{	
-				hql.append("where p.publishTime >= :startTime ");
-				ifHasFrontParam = true;
-			}
-			if (!StringUtils.isBlank(param.getEndTime()) && ifHasFrontParam)
-				hql.append("and p.publishTime <= :endTime ");
-			else if(!StringUtils.isBlank(param.getEndTime()) && !ifHasFrontParam)
-			{	
-				hql.append("where p.publishTime  <= :endTime ");
-				ifHasFrontParam = true;
-			}
-			if (param.getIsPublish() != -1 && ifHasFrontParam)
-				hql.append("and p.isPublish = :isPublish");
-			else if(param.getIsPublish() != -1 && !ifHasFrontParam)
-				hql.append("where p.isPublish = :isPublish");
-			Query query = session.createQuery(hql.toString());
-			
-			if (!StringUtils.isBlank(param.getStartTime()))
-				query.setString("startTime", param.getStartTime());
-			if (!StringUtils.isBlank(param.getEndTime()))
-				query.setString("endTime", param.getEndTime());
-			if (param.getIsPublish() != -1)
-				query.setInteger("isPublish", param.getIsPublish());
-			List<Img> imgs = query.list();
-			tran.commit();
-			
-			if (imgs.size() > 0)
-			{
-				res = new ArrayList<AdminImgItem>();
-				AdminImgItem item = null;
-				for (Img img : imgs)
-				{
-					item = new AdminImgItem();
-					item.setImgId(img.getImgId());
-					item.setIsPublish(img.getIsPublish());
-					item.setName(img.getName());
-					item.setPublishTime(img.getPublishTime());
-					item.setCreateTime(img.getCreateTime());
-					item.setPath(img.getPath());
-					item.setType(img.getType());
-					
-					res.add(item);
-				}
-			}
-			return res;
-		}catch(Exception e)
-		{
-			log.error(e.getMessage());
-		}
-		return res;
-	}
+	
 	*/
 }

@@ -56,7 +56,7 @@
 				cache : false,
 				async : true,
 				success : function(res) {
-					document.getElementById("name").value = res.name;
+					document.getElementById("imgName").value = res.name;
 					$("#imgType").find("option[value='"+res.type+"']").attr("selected",true); 
 					
 					document.getElementById("fileName").innerHTML = res.path;
@@ -92,7 +92,7 @@
 	                <th width="30%">图片标题</th>
 	                <td >
 	               	    <input type="hidden" id="hiddenImgId" name="imgId" class="btn3" value='<%=request.getParameter("imgId")%>'>
-	                    <input type="text" id="name" name="name" class="input50 validate[required]"/>
+	                    <input type="text" id="imgName" name="imgName" class="input50 validate[required]"/>
 	                    
 	                </td>
 	            </tr>

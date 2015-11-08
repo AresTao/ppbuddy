@@ -315,7 +315,7 @@
 	            <tr>
 	                <th width="10%">图片标题</th>
 	                <td width="25%">
-	                	<input type="text" name="title" id="imgName" value="" class="input50"/>
+	                	<input type="text" name="imgName" id="imgName" value="" class="input50"/>
 	                </td>
 					<th width="10%">图片类型</th>
                 	<td width="25%" colspan="3">

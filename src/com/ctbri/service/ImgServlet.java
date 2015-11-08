@@ -88,6 +88,7 @@ public class ImgServlet extends HttpServlet{
                     fields.put(name, new String(value.getBytes("ISO-8859-1"), "utf-8"));
                     if (name.equals("imgId"))
                     {
+                    	
                     	imgId = Integer.parseInt(fields.get("imgId"));
                     }
                 }  
@@ -126,21 +127,22 @@ public class ImgServlet extends HttpServlet{
                         //在   buf 数组中 取出数据 写到 （输出流）磁盘上  
                         out.write(buf, 0, length);
                     }  
-                      
+                     
                     in.close();
                     out.close();
                     downPath = downloadPath +"/" +fileName;
                 }  
             }
             Img img = new Img();
+            
             if (fields.containsKey("imgId"))
             {
+            	
             	img.setName(fields.get("imgName"));
             	img.setPath(downPath);
             	img.setType(Integer.parseInt(fields.get("imgType")));
-            	img.setIsPublish(Integer.parseInt(fields.get("isPublish")));
             	img.setImgId(Integer.parseInt(fields.get("imgId")));
-            	
+            	 
         		CommonPostResp res = ImgOperator.updateImg(img);
             }else
             {
