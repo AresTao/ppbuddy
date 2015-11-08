@@ -3,6 +3,7 @@ package com.ctbri.resp;
 public class PostItem {
 
 	private String postId;
+	private String title;
 	private String bannerPath;
 	private String shortContent;
 	private String publishTime;
@@ -37,5 +38,11 @@ public class PostItem {
 	}
 	public void setPublisherName(String publisherName) {
 		this.publisherName = publisherName;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 }

@@ -56,12 +56,10 @@
 				cache : false,
 				async : true,
 				success : function(res) {
-					document.getElementById("title").value = res.title;
-					document.getElementById("publisherName").value = res.publisherName;
-					document.getElementById("shortContent").value = res.shortContent;
-					document.getElementById("content").value = res.content;
-					//document.getElementById("title").value = res.title;
-					document.getElementById("bannerName").innerHTML = res.bannerPath;
+					document.getElementById("name").value = res.name;
+					$("#imgType").find("option[value='"+res.type+"']").attr("selected",true); 
+					
+					document.getElementById("fileName").innerHTML = res.path;
 					
 				},
 				error : function() {
@@ -80,7 +78,7 @@
     </head>
     <body>
 	<div class="mainbody">
-	    <form id="frm" action="${pageContext.request.contextPath}/admin/post" method="post"  enctype="multipart/form-data">
+	    <form id="frm" action="${pageContext.request.contextPath}/admin/img" method="post"  enctype="multipart/form-data">
 	       	<table cellspacing=1 class="form_table" align="center">
 	            <thead>
 		             <tr>
@@ -93,7 +91,7 @@
 	            <tr>
 	                <th width="30%">图片标题</th>
 	                <td >
-	               	    <input type="hidden" id="hiddenImgId" name="imgId" class="btn3" value='<%=request.getParameter("postId")%>'>
+	               	    <input type="hidden" id="hiddenImgId" name="imgId" class="btn3" value='<%=request.getParameter("imgId")%>'>
 	                    <input type="text" id="name" name="name" class="input50 validate[required]"/>
 	                    
 	                </td>
@@ -113,7 +111,7 @@
 	                
 	                <th>图片文件</th>
 	                <td>
-	                	<input type="file" name="file0" id="uploadFile" accept=""/>
+	                	<label id='fileName' style='float:left;display:inline-block;width:50px;'></label><input type="file" name="file0" id="uploadFile" accept=""/>
 	                </td>
 	                
 	            </tr> 

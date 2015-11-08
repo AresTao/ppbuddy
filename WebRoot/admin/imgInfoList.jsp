@@ -105,6 +105,7 @@
 				data[i].name,
 				data[i].path,
 				data[i].createTime,
+				data[i].publishTime,
 				data[i].isPublish
 			     ]);
 		    }
@@ -135,8 +136,8 @@
 			if(r)
 			{
 				var data = JSON.stringify(imgIds);
-				var body = {postIds:imgIds};
-				var url = "${pageContext.request.contextPath}/api/0.1/post/delete";
+				var body = {imgIds:imgIds};
+				var url = "${pageContext.request.contextPath}/api/0.1/img/delete";
 				$.ajax({
 					url : url,
 					type : "post",
@@ -149,7 +150,7 @@
 						jAlert(res.reason, '提示');
 						document.getElementById('divPage').innerHTML = '';
 						document.getElementById('imgList').innerHTML = '';
-						getPostList(1, 2);
+						getImgList(-1);
 					},
 					error : function(res) {
 						jAlert(res, '提示');
@@ -174,8 +175,8 @@
 				return;
 			}
 			var data = JSON.stringify(imgIds);
-			var body = {postIds:imgIds};
-			var url = "${pageContext.request.contextPath}/api/0.1/post/publish/flag/"+isPublish;
+			var body = {imgIds:imgIds};
+			var url = "${pageContext.request.contextPath}/api/0.1/img/publish/flag/"+isPublish;
 			$.ajax({
 				url : url,
 				type : "post",
@@ -191,7 +192,7 @@
 						jAlert("发布成功","提示");
 					document.getElementById('divPage').innerHTML = '';
 					document.getElementById('imgList').innerHTML = '';
-					getPostList(1, 2);
+					getImgList(-1);
 				},
 				error : function(res) {
 					jAlert("发送请求失败，请检查网络或刷新重试","提示");
@@ -212,7 +213,7 @@
 	        
 		//页面初始化函数
 	    $(function(){
-	    	getPostList(1, 2);
+	    	getImgList(-1);
 	    	$("#selectall").click(function(){
 					$(":checkbox[name='imgId']").attr("checked",this.checked);
 			});
@@ -358,11 +359,12 @@
             	 <colgroup>
             		
             		<col width="4%"/>
-            		<col width="15%"/>
-            		<col width="25%"/>
-            		<col width="26%"/>
+            		<col width="10%"/>
+            		<col width="10%"/>
+            		<col width="35%"/>
             		
-            		<col width="20%"/>
+            		<col width="16%"/>
+            		<col width="16%"/>
             		<col width="10%"/>
             		
             	 </colgroup> 
@@ -377,6 +379,7 @@
                     <th>图片标题</th>
                     <th>图片路径</th>
                     <th>创建时间</th>
+                    <th>发布时间</th>
                     <th>是否发布</th>
                     
                 </tr>

@@ -211,6 +211,7 @@ public class PostOperator {
 				{
 					item = new PostItem();
 					item.setPostId(post.getPostId());
+					item.setTitle(post.getTitle());
 					item.setShortContent(post.getShortContent());
 					item.setPublishTime(post.getPublishTime());
 					item.setPublisherName(post.getPublisherName());

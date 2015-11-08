@@ -73,7 +73,7 @@
 	                <th width="30%">图片标题</th>
 	                <td >
 	               		<input type="hidden" id="isPublish" name="isPublish" class="btn3" value="0">
-	                    <input type="text" id="imgName" name="name" class="input50 validate[required]"/>
+	                    <input type="text" id="imgName" name="imgName" class="input50 validate[required]"/>
 	                    <span style="color: red;"> *</span>
 	                </td>
 	            </tr>
