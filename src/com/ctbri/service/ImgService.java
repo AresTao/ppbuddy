@@ -25,6 +25,8 @@ import com.ctbri.resp.AdminImgResp;
 import com.ctbri.resp.AdminPostItem;
 import com.ctbri.resp.AdminPostResp;
 import com.ctbri.resp.CommonPostResp;
+import com.ctbri.resp.ImgItem;
+import com.ctbri.resp.ImgResp;
 import com.ctbri.resp.PostItem;
 import com.ctbri.resp.PostResp;
 @Path("/api")
@@ -95,6 +97,19 @@ private static final Logger log = Logger.getLogger(ImgService.class);
 		List<AdminImgItem> res = ImgOperator.queryAdminImgList(param);
 		return Response.status(200).entity(res).build(); 
 	}
+	
+	
+	/*
+	 * 
+	 * */
+	@GET
+	@Path("/{APIversion}/img/getAboutList/")	//flag 0 未发布 1 已经发布 2 全部
+	//@Consumes("application/json")
+	@Produces("application/json")
+	public Response getImgList(@PathParam("APIversion") String APIversion){
+		ImgResp res = ImgOperator.getAboutImgList(1,1,20);
+		return Response.status(200).entity(res).build(); 
+	}
 	/*
 	 * 
 	 * *
@@ -112,17 +127,7 @@ private static final Logger log = Logger.getLogger(ImgService.class);
 	
 	
 	
-	/*
-	 * 
-	 * *
-	@GET
-	@Path("/{APIversion}/img/getList/flag/{flag}")	//flag 0 未发布 1 已经发布 2 全部
-	//@Consumes("application/json")
-	@Produces("application/json")
-	public Response getImgList(@PathParam("APIversion") String APIversion, @PathParam("flag") int flag){
-		List<ImgItem> res = imgOperator.getImgList(flag);
-		return Response.status(200).entity(res).build(); 
-	}
+	
 	
 	
 	

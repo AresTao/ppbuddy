@@ -11,6 +11,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.ctbri.consts.Consts;
 import com.ctbri.model.Img;
 import com.ctbri.model.MimeFile;
 import com.ctbri.model.Post;
@@ -21,6 +22,8 @@ import com.ctbri.resp.AdminImgResp;
 import com.ctbri.resp.AdminPostItem;
 import com.ctbri.resp.AdminPostResp;
 import com.ctbri.resp.CommonPostResp;
+import com.ctbri.resp.ImgItem;
+import com.ctbri.resp.ImgResp;
 import com.ctbri.resp.MimeFileItem;
 import com.ctbri.resp.PostItem;
 import com.ctbri.resp.PostResp;
@@ -348,47 +351,73 @@ private static final Logger log = Logger.getLogger(ImgOperator.class);
 		}
 		return res;
 	}
-	
-/*	//isPublish  0 not published 1 published 2 all
+	//head表示关于页head部分图片个数、body表示页面中的图片个数、reward表示证书图片个数
 	@SuppressWarnings("unchecked")
-	public static List<ImgItem> getImgList(int flag) 
+	public static ImgResp getAboutImgList(int head, int body, int reward) 
 	{
 		Session session = null;
-		List<ImgItem> res = null;
+		ImgResp res = null;
 		try{
 			session = DbHelper.getSession();
-			Transaction tran = session.beginTransaction();//开始事物     
 			String hql = null;
-			if (flag == -1)
-			{
-				hql = "from com.ctbri.model.Img order by imgId desc";
-			}else 
-			{
-				hql = "from com.ctbri.model.Img where type=:type order by imgId desc";
-			}
-			
+			res = new ImgResp();
+			Transaction tran = session.beginTransaction();//开始事物     			
+			hql = "from com.ctbri.model.Img where type=:type order by imgId desc limit "+head;	
 			Query query = session.createQuery(hql);
-			if (flag != -1)
-				query.setInteger("type", flag);
+			query.setInteger("type", Consts.ABOUT_HEAD);
 			List<Img> Imgs = query.list();
-			tran.commit();
+			
 			if (Imgs.size() > 0)
 			{
-				res = new ArrayList<ImgItem>();
-				PostItem item = null;
+				ImgItem item = new ImgItem();
 				for (Img img : Imgs)
 				{
 					item = new ImgItem();
-					item.setPostId(post.getPostId());
-					item.setShortContent(post.getShortContent());
-					item.setPublishTime(post.getPublishTime());
-					item.setPublisherName(post.getPublisherName());
-					item.setBannerPath(post.getBannerPath());
+					item.setName(img.getName());
+					item.setPath(img.getPath());
+					item.setType(img.getType());
 					
-					res.add(item);
+					res.getHeadImg().add(item);
 				}
 			}
-			log.info("query img list success.");
+			hql = "from com.ctbri.model.Img where type=:type order by imgId desc limit "+body;	
+			query = session.createQuery(hql);
+			query.setInteger("type", Consts.ABOUT_BODY);
+			Imgs = query.list();
+			
+			if (Imgs.size() > 0)
+			{
+				ImgItem item = new ImgItem();
+				for (Img img : Imgs)
+				{
+					item = new ImgItem();
+					item.setName(img.getName());
+					item.setPath(img.getPath());
+					item.setType(img.getType());
+					
+					res.getBodyImg().add(item);
+				}
+			}
+			
+			hql = "from com.ctbri.model.Img where type=:type order by imgId desc limit "+reward;	
+			query = session.createQuery(hql);
+			query.setInteger("type", Consts.ABOUT_REWARD);
+			Imgs = query.list();
+			
+			if (Imgs.size() > 0)
+			{
+				ImgItem item = new ImgItem();
+				for (Img img : Imgs)
+				{
+					item = new ImgItem();
+					item.setName(img.getName());
+					item.setPath(img.getPath());
+					item.setType(img.getType());
+					
+					res.getRewardImg().add(item);
+				}
+			}
+			tran.commit();
 			return res;
 		}catch(Exception e)
 		{
@@ -396,6 +425,9 @@ private static final Logger log = Logger.getLogger(ImgOperator.class);
 		}	
 		return res;	
 	}
+	
+/*	//isPublish  0 not published 1 published 2 all
+	
 	
 	@SuppressWarnings("unchecked")
 	public static ImgResp getImg(int imgId)
