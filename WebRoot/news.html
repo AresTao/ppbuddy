@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>泡泡帮之新闻</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Educator Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="applijegleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />	
+<script src="js/jquery-1.11.1.min.js"></script>
+
+</head>
+<body>
+<!--start-home-->
+		<div class="head" id="home">
+			  <div class="container">  
+			     <div class="main">	
+				   <div class="wht-head">	
+				     <div class="logo">
+				   	   <a href="index.html"><img src="./images/logo.png" title="logo" /></a>
+				     </div>
+					<!--top-nav-->
+					 <span class="menu"> </span>
+					  <div class="top-menu">
+					  <nav>
+						<ul class="cl-effect-16">
+							<li><a href="index.html" data-hover="首页">首页</a></li>
+							<li><a href="hands.html" data-hover="洗洗手">洗洗手</a></li>
+							<li><a href="bowls.html" data-hover="刷刷碗">刷刷碗</a></li>
+							<li><a href="cars.html" data-hover="擦擦车">擦擦车</a></li>
+							<li><a class="active" href="news.html" data-hover="新闻">新闻</a></li>
+							<li><a href="about.html" data-hover="关于">关于</a></li>
+							<div class="clearfix"></div>
+						</ul>
+					  </nav>		
+					</div>
+					<!-- script-for-menu -->
+					<script>
+					$( "span.menu" ).click(function() {
+					  $( ".top-menu" ).slideToggle( "slow", function() {
+						// Animation complete.
+					  });
+					});
+				</script>
+				<!-- script-for-menu -->
+				<div class="shopping_car">
+					<a href="http://shop.paopaobuddy.com"><img src="./images/car_shop.png" title="购物车" /></a>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			 <!--end-nav-->
+
+		<!--start head news-->
+		<div class="news-header">
+			<div class="slider">
+				<div class="slider-caption">
+					<a href="news-test.html"><h1>既然是植物精华的，刷刷碗可以洗果蔬类的食物吗</h1></a>
+				</div>
+			</div>
+		</div>	
+		<div class="clearfix"> </div>
+		<!--end head news-->
+		<!--start news-->
+		<div class="news-list">
+			<div class="top-grids"><a href="news-test.html">
+				<div class="news-small-pic col-md-3">
+						<img class="news-ab-img zoom-img" src="images/po.jpg"/>
+					</div>
+				<div class="news-block">
+						<h4>泡泡帮新闻1</h4>
+						<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+				</div></a>
+			</div>
+ 			<div class="news-seg"></div>
+
+			<div class="top-grids"><a href="news-test.html">
+				<div class="news-small-pic col-md-3">
+						<img class="news-ab-img zoom-img" src="images/po.jpg"/>
+					</div>
+				<div class="news-block">
+						<h4>泡泡帮新闻2</h4>
+						<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+				</div></a>	
+			</div>
+ 			<div class="news-seg"></div>
+
+ 			<div id="rocktheworld"></div>
+		</div>
+
+
+		<!--end news-->
+<!-- 		<div class="news" onload="getNewsList()">
+			<div id="a">aa</div>
+			<div id="b">bb</div>
+			<div id="c">cc</div>
+			<div id="d">dd</div>
+		</div>
+
+		<div class="clearfix"> </div> -->
+		<!--start footer-->
+		<div class="wechat"></div>
+		<div class="copy">
+			<center><img src="./images/QRcode.jpg" class="img-responsive" alt=""/></center>
+		    <p><B>&copy; 泡泡帮<br>地址</B> | 北京市丰台区方庄南路15号方恒偶寓1座802室 京ICP备15025321号<br><B>联系方式</B> | 电话：010-56288540， 010-56288541， 邮箱：paopaobang@paopaobuddy.com
+</p>
+		</div>
+		<!--footer-->
+
+	    </div>
+        <link rel="stylesheet" href="css/swipebox.css">
+        	<script src="js/jquery.swipebox.min.js"></script> 
+        	    <script type="text/javascript">
+        			jQuery(function($) {
+        				$(".swipebox").swipebox();
+        			});
+        </script>
+	<!--//gallery-->
+
+	</div>
+</div>	
+		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+</body>
+<script type="text/javascript">
+	var data ='[{"publishTime":"2015-10-25 10:40:16.0","publisherName":"ztwu","shortContent":"shortcontent1","bannerPath":"/upload","postId":"20151025","title":"热烈庆祝网站第二版开通！"},{"publishTime":"2015-10-25 10:40:16.0","publisherName":"ztwu","shortContent":"shortcontent2","bannerPath":"/upload","postId":"20151025","title":"感谢周小龊的辛勤工作！"}]';
+	var jsonObj = eval('('+data+')');
+	var newsCount = jsonObj.length;
+	// if(newsCount<1){
+	// 	alert("oops...木有新闻");
+	// }
+	// else{
+	// 	alert("有"+newsCount+"条新闻");
+	// }
+	for(var i=0;i<jsonObj.length;i++){
+		// alert(jsonObj[i].newsTitle);
+		$("#rocktheworld").append("<div class=\"top-grids\"><a href=\"news-test.html\"><div class=\"news-small-pic col-md-3\"><img class=\"news-ab-img zoom-img\" src=\"images/po.jpg\"/></div><div class=\"news-block\"><h4>"+jsonObj[i].title+"</h4><p>"+jsonObj[i].shortContent+"</p></div></a></div><div class=\"news-seg\"></div>");
+ // 　　　　for(var key in jsonObj[i]){
+ //         　　alert("key："+key+",value："+jsonObj[i][key]); 
+ //        } 
+ 　　}
+
+// function getPostList(categoryId, flag)
+// {
+// 	var url = "${pageContext.request.contextPath}/api/0.1/admin/post/getList/category/"+categoryId+"/flag/"+flag;
+// 	$.ajax({
+// 		url : url,
+// 		type : "get",
+// 		dataType : "json",
+// 		cache : false,
+// 		async : true,
+// 		success : function(res) {
+// 			queryResult = res;
+// 			initData(res);
+// 		},
+// 		error : function() {
+// 			alert("发送请求失败，请检查网络或刷新重试");
+// 		}
+// 	});
+// }
+
+
+</script>
+</html>

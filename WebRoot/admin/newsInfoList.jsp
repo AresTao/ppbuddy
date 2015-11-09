@@ -284,7 +284,8 @@
 					initData(res);
 				},
 				error : function() {
-					jAlert("发送请求失败，请检查网络或刷新重试","提示");
+					document.getElementById('newsList').innerHTML = '没有查询结果';
+					//jAlert("发送请求失败，请检查网络或刷新重试","提示");
 				}
 			});
 		}
