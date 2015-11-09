@@ -305,21 +305,19 @@ private static final Logger log = Logger.getLogger(ImgOperator.class);
 				hql.append("where i.isPublish = :isPublish");
 				ifHasFrontParam = true;
 			}
-			if (param.getType() != 0 && ifHasFrontParam)
+			if (param.getType() != -1 && ifHasFrontParam)
 				hql.append("and i.type = :type");
 			else if(param.getType() != -1 && !ifHasFrontParam)
 				hql.append("where i.type = :type");
 			Query query = session.createQuery(hql.toString());
 			
-			if (!StringUtils.isBlank(param.getName()))
-				query.setString("name", param.getName());
 			if (!StringUtils.isBlank(param.getStartTime()))
 				query.setString("startTime", param.getStartTime());
 			if (!StringUtils.isBlank(param.getEndTime()))
 				query.setString("endTime", param.getEndTime());
 			if (param.getIsPublish() != -1)
 				query.setInteger("isPublish", param.getIsPublish());
-			if (param.getType() != 0)
+			if (param.getType() != -1)
 				query.setInteger("type", param.getType());
 			List<Img> imgs = query.list();
 			tran.commit();
@@ -342,6 +340,7 @@ private static final Logger log = Logger.getLogger(ImgOperator.class);
 					res.add(item);
 				}
 			}
+			log.info("query img list success.");
 			return res;
 		}catch(Exception e)
 		{

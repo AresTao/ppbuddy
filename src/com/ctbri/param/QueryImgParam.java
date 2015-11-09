@@ -3,7 +3,7 @@ package com.ctbri.param;
 public class QueryImgParam {
 
 	private String name;
-	private int type=0;
+	private int type=-1;
 	private String startTime;
 	private String endTime;
 	private int isPublish=-1;
