@@ -18,8 +18,8 @@ public class ImgTest {
 	{
 		try{
 			
-			String restUrl = "http://localhost:8080/ppbuddy/api/0.1/img/getAboutList";
-			//String restUrl = "http://124.127.117.203:8199/logservice/log/upload";
+			//String restUrl = "http://localhost:8080/ppbuddy/api/0.1/img/getAboutList";
+			String restUrl = "http://101.200.173.116:8096/ppbuddy/api/0.1/img/getAboutList";
 			
 			URL url = new URL(restUrl);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();

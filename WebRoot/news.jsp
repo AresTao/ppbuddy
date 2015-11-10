@@ -66,28 +66,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!--end head news-->
 		<!--start news-->
 		<div class="news-list">
-			<div class="top-grids"><a href="news-test.html">
-				<div class="news-small-pic col-md-3">
-						<img class="news-ab-img zoom-img" src="images/po.jpg"/>
-					</div>
-				<div class="news-block">
-						<h4>泡泡帮新闻1</h4>
-						<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
-				</div></a>
-			</div>
- 			<div class="news-seg"></div>
-
-			<div class="top-grids"><a href="news-test.html">
-				<div class="news-small-pic col-md-3">
-						<img class="news-ab-img zoom-img" src="images/po.jpg"/>
-					</div>
-				<div class="news-block">
-						<h4>泡泡帮新闻2</h4>
-						<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
-				</div></a>	
-			</div>
- 			<div class="news-seg"></div>
-
+			
  			<div id="rocktheworld"></div>
 		</div>
 

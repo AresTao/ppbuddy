@@ -1,5 +1,7 @@
 package com.ctbri.operator;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +24,9 @@ public class FileOperator {
 		file.setName(name);
 		file.setPath(path);
 		file.setPostId(postId);
-		file.setCreateTime(new Date().toLocaleString());
+		DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String createTime = format1.format(new Date());
+		file.setCreateTime(createTime);
 		
 		Session session = null;	
 				
@@ -32,7 +36,7 @@ public class FileOperator {
 			Transaction tran = session.beginTransaction();//开始事物     
 			session.save(file);   
 	        tran.commit();			
-			
+			log.info("add mimefile");
 	        return true;
 		}catch(Exception e)
 		{

@@ -104,14 +104,16 @@
 
             for (var i=pageIndex*10;i<(pageIndex+1)*10 && i<data.length;i++)     
             {
+            	var category=['','统一类型'];
+            	var publish = ['未发布','已发布'];
 		        result.push([
 				data[i].postId,
 				data[i].title,
-				data[i].categoryId,
+				category[data[i].categoryId],
 				data[i].shortContent,
 				data[i].createTime,
 				data[i].publishTime,
-				data[i].isPublish
+				publish[data[i].isPublish]
 			     ]);
 		    }
            
@@ -330,9 +332,8 @@
 					<th width="10%">新闻类型</th>
                 	<td width="25%" colspan="3">
                 		<select name="newsType" id="newsType" >
-                			<option value="-1" selected="selected">-- 全部 --</option>
-                			<option value="0">-- 未发布 --</option>
-                			<option value="1">-- 已发布 --</option>
+                			<option value="0" selected="selected">-- 全部 --</option>
+                			
                 		</select>
 					</td>
 	            </tr>

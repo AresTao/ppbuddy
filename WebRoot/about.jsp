@@ -53,8 +53,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			 <!--end-nav-->
 		<!--start video-->
-		<div class="aboutheader"></div>
-		<div class="aboutinfo"></div>
+		<div class="aboutheader" id="aboutheader"></div>
+		<div class="aboutinfo" id="aboutinfo"></div>
 		<div class="abouttrophy" id="abouttrophy">
 <!-- 			<div class="trophy">
 				<div class="col-md-4" id="stretch"><img src="./images/6.jpg" /></div>
@@ -102,7 +102,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  		cache : false,
  		async : true,
  		success : function(res) {
- 			alert(res);
+ 			var head = document.getElementById("aboutheader");
+ 			head.style.backgroundImage = res.headImg[0].path;
+ 			var info = document.getElementById("aboutinfo");
+            info.style.backgroundImage = "url("+res.bodyImg[0].path+")";
  		},
  		error : function() {
  			alert("发送请求失败，请检查网络或刷新重试");

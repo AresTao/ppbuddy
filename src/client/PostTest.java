@@ -18,20 +18,20 @@ public class PostTest {
 		//testGetPostList();
 		//testPublishPost();
 		//testDeletePost();
-		testQueryPost();
+		testGetPost();
 	}
 	
 	public static void testGetPost() throws Exception
 	{
 		try{
 			
-			String restUrl = "http://localhost:8080/ppbuddy/api/0.1/post/get/20151025";
-			//String restUrl = "http://124.127.117.203:8199/logservice/log/upload";
+			//String restUrl = "http://localhost:8080/ppbuddy/api/0.1/post/get/20151025";
+			String restUrl = "http://101.200.173.116:8096/ppbuddy/api/0.1/post/get/";
 			
 			URL url = new URL(restUrl);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setDoOutput(true);
-			conn.setRequestMethod("POST");
+			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-Type", "application/json");
 			conn.setConnectTimeout(30000);
 			//conn.setRequestProperty("Content-Encoding", "gzip");
