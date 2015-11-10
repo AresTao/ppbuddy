@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -26,12 +27,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					  <div class="top-menu">
 					  <nav>
 						<ul class="cl-effect-16">
-							<li><a href="index.html" data-hover="首页">首页</a></li>
-							<li><a href="hands.html" data-hover="洗洗手">洗洗手</a></li>
-							<li><a href="bowls.html" data-hover="刷刷碗">刷刷碗</a></li>
-							<li><a href="cars.html" data-hover="擦擦车">擦擦车</a></li>
-							<li><a href="news.html" data-hover="新闻">新闻</a></li>
-							<li><a class="active" href="about.html" data-hover="关于">关于</a></li>
+							<li><a href="index.jsp" data-hover="首页">首页</a></li>
+							<li><a href="hands.jsp" data-hover="洗洗手">洗洗手</a></li>
+							<li><a href="bowls.jsp" data-hover="刷刷碗">刷刷碗</a></li>
+							<li><a href="cars.jsp" data-hover="擦擦车">擦擦车</a></li>
+							<li><a href="news.jsp" data-hover="新闻">新闻</a></li>
+							<li><a class="active" href="about.jsp" data-hover="关于">关于</a></li>
 							<div class="clearfix"></div>
 						</ul>
 					  </nav>		
@@ -54,17 +55,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!--start video-->
 		<div class="aboutheader"></div>
 		<div class="aboutinfo"></div>
-		<div class="abouttrophy">
-			<div class="trophy">
-				<div class="col-md-4" id="stretch"><img src="./images/6.jpg" /><p>国际CE认证</p></div>
-			</div>
-			<div class="trophy">
+		<div class="abouttrophy" id="abouttrophy">
+<!-- 			<div class="trophy">
 				<div class="col-md-4" id="stretch"><img src="./images/6.jpg" /></div>
-				<div class="col-md-4"><p>国际CE认证</p></div>
-			</div>
-			<div class="trophy">
-				<div class="col-md-4" id="stretch"><img src="./images/about_frame.png" /><p>国际CE认证</p></div>
-			</div>
+				<p>国际CE认证</p>
+			</div> -->
 		</div>
 		<div class="aboutpeople"></div>
 		<!--end video-->
@@ -80,12 +75,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	    </div>
         <link rel="stylesheet" href="css/swipebox.css">
-        	<script src="js/jquery.swipebox.min.js"></script> 
-        	    <script type="text/javascript">
-        			jQuery(function($) {
-        				$(".swipebox").swipebox();
-        			});
-        </script>
+        <script src="js/jquery.swipebox.min.js"></script> 
+       
 	<!--//gallery-->
 
 	</div>
@@ -93,4 +84,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
 </body>
+<script type="text/javascript">
+	
+	jQuery(function($) {
+        				$(".swipebox").swipebox();
+        			});
+    $(function(){
+    	getAboutImgList();
+    });
+	function getAboutImgList()
+	{
+	 	var url = "${pageContext.request.contextPath}/api/0.1/img/getAboutList";
+	 	$.ajax({
+ 		url : url,
+ 		type : "get",
+ 		dataType : "json",
+ 		cache : false,
+ 		async : true,
+ 		success : function(res) {
+ 			alert(res);
+ 		},
+ 		error : function() {
+ 			alert("发送请求失败，请检查网络或刷新重试");
+ 		}
+	 	});
+	}
+	
+</script>
 </html>

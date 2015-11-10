@@ -1,7 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>泡泡帮之擦擦车</title>
+<title>泡泡帮之洗洗手</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="miao"/>
@@ -25,12 +26,12 @@
 					  <div class="top-menu">
 					  <nav>
 						<ul class="cl-effect-16">
-							<li><a href="index.html" data-hover="首页">首页</a></li>
-							<li><a href="hands.html" data-hover="洗洗手">洗洗手</a></li>
-							<li><a href="bowls.html" data-hover="刷刷碗">刷刷碗</a></li>
-							<li><a class="active" href="cars.html" data-hover="擦擦车">擦擦车</a></li>
-							<li><a href="news.html" data-hover="新闻">新闻</a></li>
-							<li><a href="about.html" data-hover="关于">关于</a></li>
+							<li><a href="index.jsp" data-hover="首页">首页</a></li>
+							<li><a class="active" href="hands.jsp" data-hover="洗洗手">洗洗手</a></li>
+							<li><a href="bowls.jsp" data-hover="刷刷碗">刷刷碗</a></li>
+							<li><a href="cars.jsp" data-hover="擦擦车">擦擦车</a></li>
+							<li><a href="news.jsp" data-hover="新闻">新闻</a></li>
+							<li><a href="about.jsp" data-hover="关于">关于</a></li>
 							<div class="clearfix"></div>
 						</ul>
 					  </nav>		
@@ -51,19 +52,19 @@
 					</div>
 			 <!--end-nav-->
 		<!--start video-->
-		<div class="video_cars">
+		<div class="video_hands">
 			<embed class="player" src="http://player.youku.com/player.php/sid/XMTI2MjgwOTI5Mg==/v.swf" width="39%" height="407" allowFullScreen="true" quality="high" allowScriptAccess="always" type="application/x-shockwave-flash" >
 		</div>
 		<!--end video-->
-		<div class="buy_cars">
+		<div class="buy_hands">
 			<div class="col-md-2">
-				<div class="btn_container4">
-				<a href="http://shop.paopaobuddy.com"><div class="knowMoreBtn4"></div></a>
+				<div class="btn_container2">
+				<a href="http://shop.paopaobuddy.com"><div class="knowMoreBtn3"></div></a>
 				</div>
 			</div>
 		</div>
-		<div class="cars_info"></div>
-		<div class="cars_qa"></div>
+		<div class="hands_info"></div>
+		<div class="hands_qa"></div>
 		<div class="wechat"></div>
         <div class="clearfix"></div>
 		<!--start footer-->

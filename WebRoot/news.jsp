@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -27,12 +28,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					  <div class="top-menu">
 					  <nav>
 						<ul class="cl-effect-16">
-							<li><a href="index.html" data-hover="首页">首页</a></li>
-							<li><a href="hands.html" data-hover="洗洗手">洗洗手</a></li>
-							<li><a href="bowls.html" data-hover="刷刷碗">刷刷碗</a></li>
-							<li><a href="cars.html" data-hover="擦擦车">擦擦车</a></li>
-							<li><a class="active" href="news.html" data-hover="新闻">新闻</a></li>
-							<li><a href="about.html" data-hover="关于">关于</a></li>
+							<li><a href="index.jsp" data-hover="首页">首页</a></li>
+							<li><a href="hands.jsp" data-hover="洗洗手">洗洗手</a></li>
+							<li><a href="bowls.jsp" data-hover="刷刷碗">刷刷碗</a></li>
+							<li><a href="cars.jsp" data-hover="擦擦车">擦擦车</a></li>
+							<li><a class="active" href="news.jsp" data-hover="新闻">新闻</a></li>
+							<li><a href="about.jsp" data-hover="关于">关于</a></li>
 							<div class="clearfix"></div>
 						</ul>
 					  </nav>		
@@ -125,42 +126,46 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </body>
 <script type="text/javascript">
-	var data ='[{"publishTime":"2015-10-25 10:40:16.0","publisherName":"ztwu","shortContent":"shortcontent1","bannerPath":"/upload","postId":"20151025","title":"热烈庆祝网站第二版开通！"},{"publishTime":"2015-10-25 10:40:16.0","publisherName":"ztwu","shortContent":"shortcontent2","bannerPath":"/upload","postId":"20151025","title":"感谢周小龊的辛勤工作！"}]';
-	var jsonObj = eval('('+data+')');
-	var newsCount = jsonObj.length;
+//	var data ='[{"publishTime":"2015-10-25 10:40:16.0","publisherName":"ztwu","shortContent":"shortcontent1","bannerPath":"/upload","postId":"20151025","title":"热烈庆祝网站第二版开通！"},{"publishTime":"2015-10-25 10:40:16.0","publisherName":"ztwu","shortContent":"shortcontent2","bannerPath":"/upload","postId":"20151025","title":"感谢周小龊的辛勤工作！"}]';
+//	var jsonObj = eval('('+data+')');
+//	var newsCount = jsonObj.length;
 	// if(newsCount<1){
 	// 	alert("oops...木有新闻");
 	// }
 	// else{
 	// 	alert("有"+newsCount+"条新闻");
 	// }
-	for(var i=0;i<jsonObj.length;i++){
+//	for(var i=0;i<jsonObj.length;i++){
 		// alert(jsonObj[i].newsTitle);
-		$("#rocktheworld").append("<div class=\"top-grids\"><a href=\"news-test.html\"><div class=\"news-small-pic col-md-3\"><img class=\"news-ab-img zoom-img\" src=\"images/po.jpg\"/></div><div class=\"news-block\"><h4>"+jsonObj[i].title+"</h4><p>"+jsonObj[i].shortContent+"</p></div></a></div><div class=\"news-seg\"></div>");
- // 　　　　for(var key in jsonObj[i]){
- //         　　alert("key："+key+",value："+jsonObj[i][key]); 
- //        } 
- 　　}
+//		$("#rocktheworld").append("<div class=\"top-grids\"><a href=\"news-test.html\"><div class=\"news-small-pic col-md-3\"><img class=\"news-ab-img zoom-img\" src=\"images/po.jpg\"/></div><div class=\"news-block\"><h4>"+jsonObj[i].title+"</h4><p>"+jsonObj[i].shortContent+"</p></div></a></div><div class=\"news-seg\"></div>");
+// 　　　　for(var key in jsonObj[i]){
+//         　　alert("key："+key+",value："+jsonObj[i][key]); 
+//        } 
+//　　}
 
-// function getPostList(categoryId, flag)
-// {
-// 	var url = "${pageContext.request.contextPath}/api/0.1/admin/post/getList/category/"+categoryId+"/flag/"+flag;
-// 	$.ajax({
-// 		url : url,
-// 		type : "get",
-// 		dataType : "json",
-// 		cache : false,
-// 		async : true,
-// 		success : function(res) {
-// 			queryResult = res;
-// 			initData(res);
-// 		},
-// 		error : function() {
-// 			alert("发送请求失败，请检查网络或刷新重试");
-// 		}
-// 	});
-// }
-
+function getPostList(categoryId, flag)
+{
+	var url = "${pageContext.request.contextPath}/api/0.1/post/getList/category/"+categoryId+"/flag/"+flag;
+	$.ajax({
+		url : url,
+		type : "get",
+		dataType : "json",
+		cache : false,
+ 		async : true,
+ 		success : function(res) {
+ 			for (var i=0; i<res.length; i++)
+ 			{
+ 				$("#rocktheworld").append("<div class=\"top-grids\"><a href=\"newsItem.jsp?newsId="+res[i].postId+"\"><div class=\"news-small-pic col-md-3\"><img class=\"news-ab-img zoom-img\" src='"+res[i].bannerPath+"'/></div><div class=\"news-block\"><h4>"+res[i].title+"</h4><p>"+res[i].shortContent+"</p></div></a></div><div class=\"news-seg\"></div>");
+ 			}
+ 		},
+ 		error : function() {
+ 			alert("发送请求失败，请检查网络或刷新重试");
+ 		}
+ 	});
+}
+$(function(){
+	getPostList(1,2);
+});
 
 </script>
 </html>

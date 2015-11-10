@@ -103,7 +103,7 @@ private static final Logger log = Logger.getLogger(ImgService.class);
 	 * 
 	 * */
 	@GET
-	@Path("/{APIversion}/img/getAboutList/")	//flag 0 未发布 1 已经发布 2 全部
+	@Path("/{APIversion}/img/getAboutList")	//flag 0 未发布 1 已经发布 2 全部
 	//@Consumes("application/json")
 	@Produces("application/json")
 	public Response getImgList(@PathParam("APIversion") String APIversion){

@@ -1,7 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>新闻测试页面</title>
+<title>新闻详述</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Educator Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
@@ -27,12 +28,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					  <div class="top-menu">
 					  <nav>
 						<ul class="cl-effect-16">
-							<li><a href="index.html" data-hover="首页">首页</a></li>
-							<li><a href="hands.html" data-hover="洗洗手">洗洗手</a></li>
-							<li><a href="bowls.html" data-hover="刷刷碗">刷刷碗</a></li>
-							<li><a href="cars.html" data-hover="擦擦车">擦擦车</a></li>
-							<li><a class="active" href="news.html" data-hover="新闻">新闻</a></li>
-							<li><a href="about.html" data-hover="关于">关于</a></li>
+							<li><a href="index.jsp" data-hover="首页">首页</a></li>
+							<li><a href="hands.jsp" data-hover="洗洗手">洗洗手</a></li>
+							<li><a href="bowls.jsp" data-hover="刷刷碗">刷刷碗</a></li>
+							<li><a href="cars.jsp" data-hover="擦擦车">擦擦车</a></li>
+							<li><a class="active" href="news.jsp" data-hover="新闻">新闻</a></li>
+							<li><a href="about.jsp" data-hover="关于">关于</a></li>
 							<div class="clearfix"></div>
 						</ul>
 					  </nav>		
@@ -55,6 +56,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 		<!--start news-->
 		<div class="news">
+			<input type="hidden" id="hiddenNewsId" name="newsId" class="btn3" value='<%=request.getParameter("newsId")%>'>
 			<div class="news-title" id="newstitle"></div>
 			<div class="news-image" id="newsimage"></div>
 			<div class="news-content" id="newscontent"></div>
@@ -87,15 +89,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </body>
 <script type="text/javascript">
-	var data ='[{"imgPaths":"images/po.jpg","publishTime":"2015-10-25 10:40:16.0","publisherName":"ztwu","postId":"20151025","content":"服务端向客户端返回了一串JSON格式的数据。在有些时候，因为某些特殊的原因我们不知道原始的key值，因此我们此时无法象正常一样通过key值，来获取value值。这时我们必须循环读取JSON对象数据。废话少说，来看例子。<br><br>服务端向客户端返回了一串JSON格式的数据。在有些时候，因为某些特殊的原因我们不知道原始的key值，因此我们此时无法象正常一样通过key值，来获取value值。这时我们必须循环读取JSON对象数据。废话少说，来看例子。","title":"姜东元主演的电影《黑祭祀们》将于2015年11月5日在韩国上映"}]';
-	var jsonObj = eval('('+data+')');
-	var newsCount = jsonObj.length;
-	for(var i=0;i<jsonObj.length;i++){
-		$("#newstitle").append("<h1>"+jsonObj[i].title+"</h1>");
-		$("#newsimage").append("<img src=\""+jsonObj[i].imgPaths+"\" />");
-		$("#newscontent").append("<h3>"+jsonObj[i].content+"<h3>");
- 　　}
-
+	function loadImg(newsId)
+	{
+			
+		var url = "${pageContext.request.contextPath}/api/0.1/post/get/"+newsId;
+		$.ajax({
+				url : url,
+				type : "get",
+				dataType : "json",
+				cache : false,
+				async : true,
+				success : function(res) {
+					$("#newstitle").append("<h1>"+res.title+"</h1>");
+					$("#newsimage").append("<img src=\""+res.imgPaths[0]+"\" />");
+					$("#newscontent").append(res.content);
+					
+				},
+				error : function() {
+					jAlert("发送请求失败，请检查网络或刷新重试",'提示');
+				}
+			});
+		
+	}
+			
+	$(function() {
+				//initFormValidate();//表单验证
+		newsId = document.getElementById("hiddenNewsId").value;
+		loadImg(newsId);
+	});
 
 </script>
 </html>

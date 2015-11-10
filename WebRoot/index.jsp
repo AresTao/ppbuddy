@@ -1,18 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!DOCTYPE HTML>
 <html>
 <head>
 <title>泡泡帮</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="miao"/>
 <script type="applijegleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
 <!-- Custom Theme files -->
-<link href="css/style.css" rel='stylesheet' type='text/css' />	
 <script src="js/jquery-1.11.1.min.js"></script>
-<!--webfonts-->
- <!--<link href='http://fonts.googleapis.com/css?family=Poiret+One|Lily+Script+One|Raleway:400,300,500,600,200,700' rel='stylesheet' type='text/css'>-->
-<!--//webfonts-->
+<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+<script src="js/functions.js" type="text/javascript"></script>
 </head>
 <body>
 <!--start-home-->
@@ -31,11 +33,11 @@
 					<nav>
 						<ul class="cl-effect-16">
 							<li><a class="active scroll" href="#home" data-hover="首页">首页</a></li>
-							<li><a href="hands.html" data-hover="洗洗手">洗洗手</a></li>
-							<li><a href="bowls.html" data-hover="刷刷碗">刷刷碗</a></li>
-							<li><a href="cars.html" data-hover="擦擦车">擦擦车</a></li>
-							<li><a href="news.html" data-hover="新闻">新闻</a></li>
-							<li><a href="about.html" data-hover="关于">关于</a></li>
+							<li><a href="hands.jsp" data-hover="洗洗手">洗洗手</a></li>
+							<li><a href="bowls.jsp" data-hover="刷刷碗">刷刷碗</a></li>
+							<li><a href="cars.jsp" data-hover="擦擦车">擦擦车</a></li>
+							<li><a href="news.jsp" data-hover="新闻">新闻</a></li>
+							<li><a href="about.jsp" data-hover="关于">关于</a></li>
 							<div class="clearfix"></div>
 						</ul>
 					</nav>		
@@ -56,36 +58,28 @@
 					</div>
 			 		<!--end-nav-->
 				<!--start banner-->
-				<div class="about" id="about">
-					<div class="col-md-5 ab-img">
-						<div id="top" class="callbacks_container">
-							<ul class="rslides" id="slider4">
-								<li><img src="images/index_banner_1.jpg" alt=" " title="ab" /></li>
-								<li><img src="images/index_banner_1.jpg" alt=" " title="ab" /></li>
-						    </ul>
-						</div>
-					<script src="js/responsiveslides.min.js"></script>
-				    <script>
-					$(function () {
-					  $("#slider4").responsiveSlides({
-						auto: true,
-						pager:false,
-						nav: true,
-						speed: 500,
-						namespace: "callbacks",
-						before: function () {
-						  $('.events').append("<li>before event fired.</li>");
-						},
-						after: function () {
-						  $('.events').append("<li>after event fired.</li>");
-						}
-					  });
-				
-					});
-				    </script>
+		<div class="about" id="about">
+			<section><div class="shell">
+				<!-- slider -->
+				<div class="slider-holder">
+					<!-- <span class="slider-shadow"></span> -->
+					<div class="flexslider">
+						<ul class="slides">
+							<li>
+								<img src="./images/index_banner_1.jpg" alt="" />
+								<span class="overlay"></span>
+							</li>
+							<li>
+								<img src="./images/index_banner_1.jpg" alt="" />
+								<span class="overlay"></span>
+							</li>
+						</ul>
 					</div>
-					  <div class="clearfix"></div>
 				</div>
+				<!-- end of slider -->
+			</div></section>
+			<div class="clearfix"></div>
+		</div>
 			</div><!--end main-->
 		<div class="clearfix"></div>
 		<!--end banner-->
