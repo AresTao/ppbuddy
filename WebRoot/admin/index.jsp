@@ -34,7 +34,7 @@
         <div class="top-info-wrap">
             <ul class="top-info-list clearfix">
                 <li><a href="#">管理员：<%=request.getParameter("username")%></a></li>
-                <li><a href="./modifyPwd.jsp?username=<%=request.getParameter("username")%>">修改密码</a></li>
+                <li><a href="javascript:menu('./modifyPwd.jsp?username=<%=request.getParameter("username")%>')">修改密码</a></li>
                 <li><a href="./login?username=<%=request.getParameter("username")%>&method=logout">退出</a></li>
             </ul>
         </div>

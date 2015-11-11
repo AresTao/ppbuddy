@@ -11,6 +11,11 @@
 			 ChangeSkinAPP.init();
 		</script>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href= "./css/jquery.alerts.css">
+		<script type="text/javascript" src="resource/js/common_validate.js"></script>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.alerts.js"></script>
+		<script type="text/javascript" src="js/jquery.ui.draggable.js"></script>
 		<link rel="stylesheet" type="text/css" href= "css/add.css">
 		<script type="text/javascript" src="resource/jquery/jquery-1.7.2.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="resource/jQuery_Validation_Engine_2.6/css/validationEngine.jquery.css"/>
@@ -24,8 +29,47 @@
 	      	
 		//确定提交表单
 		function modifyPwd(){
-			$("#isPublish").val(isPublish);
-			$("#frm").submit();			
+			var id = document.getElementById("hiddenusername").value;
+			var oldpasswd = document.getElementById("oldpasswd").value;
+			var newpasswd1 = document.getElementById("newpasswd1").value;
+			var newpasswd2 = document.getElementById("newpasswd2").value;
+			if (oldpasswd == newpasswd1)
+			{
+				jAlert("新密码和原始密码相同",'提示');
+				return;
+			}
+			if (newpasswd1 != newpasswd2)
+			{
+				jAlert("新密码和确认密码不一致",'提示');
+				return;
+			}
+			jConfirm("确定保存修改？",'提示',function(r){
+	    		if(r)
+	    		{
+	    			var fileId = document.getElementById("file"+fileNo+"Id").value;
+	    			var url = "${pageContext.request.contextPath}/api/0.1/admin/modifyPwd/username/"+id+"/oldpasswd/"+oldpasswd+"/newpasswd/"+newpasswd1;
+					$.ajax({
+						url : url,
+						type : "post",
+						dataType : "json",
+						cache : false,
+						async : true,
+						success : function(res) {
+							if (res)
+							{
+								jAlert("修改成功",'提示');
+								window.location.href='newsInfoList.jsp';
+							} else
+							{
+								jAlert("修改失败",'提示');
+							}
+						},
+						error : function() {
+							jAlert("发送请求失败，请检查网络或刷新重试",'提示');
+						}
+					});
+				}
+	    	});
 		}
 			
 		$(function() {
@@ -35,7 +79,7 @@
     </head>
     <body>
 	<div class="mainbody">
-	    <form id="frm" action="${pageContext.request.contextPath}/admin/" method="post" enctype="multipart/form-data">
+	    <form id="frm" action="" method="post" >
 	       	<table cellspacing=1 class="form_table" align="center" >
 	            <thead>
 		             <tr>
@@ -48,8 +92,8 @@
 	            <tr>
 	                <th width="30%">原始密码</th>
 	                <td >
-	               		
-	                    <input type="text" id="oldPasswd" name="oldPasswd" class="input50 validate[required]"/>
+	               		<input type="hidden" id="hiddenusername" name="username" class="btn3" value='<%=request.getParameter("username")%>'>
+	                    <input type="text" id="oldpasswd" name="oldpasswd" class="input50 validate[required]"/>
 	                    <span style="color: red;"> *</span>
 	                </td>
 	            </tr>
