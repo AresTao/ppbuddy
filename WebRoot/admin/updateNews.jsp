@@ -76,24 +76,9 @@
 				}
 	    	});
 	    }
-	        
-	      	//给表单绑定验证引擎
-	    function initFormValidate(){
-	       	$("#frm").validationEngine("attach",{
-					validationEventTrigger : "blur",
-					autoPositionUpdate : true,
-					showOneMessage : true,
-					promptPosition : "centerRight",//position：topLeft,topRight, bottomLeft, centerRight, bottomRight
-					autoHidePrompt : true,
-					autoHideDelay : 3000
-			});
-	    }
-	      	
-			//确定提交表单
-		function updateNews(isPublish){
-			//document.getElementById("frm").action = "addNewsInfo.do?reqPage=toSave&isPublish="+isPublish;
-			//document.getElementById("frm").method = "post";
-			
+	    
+	    //确定提交表单
+		function updateNews(isPublish){	
 			$("#frm").submit();
 		}
 			
