@@ -46,7 +46,7 @@
 			jConfirm("确定保存修改？",'提示',function(r){
 	    		if(r)
 	    		{
-	    			var fileId = document.getElementById("file"+fileNo+"Id").value;
+	    			//var fileId = document.getElementById("file"+fileNo+"Id").value;
 	    			var url = "${pageContext.request.contextPath}/api/0.1/admin/modifyPwd/username/"+id+"/oldpasswd/"+oldpasswd+"/newpasswd/"+newpasswd1;
 					$.ajax({
 						url : url,
@@ -93,7 +93,7 @@
 	                <th width="30%">原始密码</th>
 	                <td >
 	               		<input type="hidden" id="hiddenusername" name="username" class="btn3" value='<%=request.getParameter("username")%>'>
-	                    <input type="text" id="oldpasswd" name="oldpasswd" class="input50 validate[required]"/>
+	                    <input type="password" id="oldpasswd" name="oldpasswd" class="input50 validate[required]"/>
 	                    <span style="color: red;"> *</span>
 	                </td>
 	            </tr>
@@ -101,7 +101,7 @@
 	                <th width="30%">新密码</th>
 	                <td >
 	               		
-	                    <input type="text" id="newPasswd1" name="newPasswd1" class="input50 validate[required]"/>
+	                    <input type="password" id="newpasswd1" name="newpasswd1" class="input50 validate[required]"/>
 	                    <span style="color: red;"> *</span>
 	                </td>
 	            </tr>
@@ -109,14 +109,13 @@
 	                <th width="30%">确认密码</th>
 	                <td >
 	               		
-	                    <input type="text" id="newPasswd2" name="newPasswd2" class="input50 validate[required]"/>
+	                    <input type="password" id="newpasswd2" name="newpasswd2" class="input50 validate[required]"/>
 	                    <span style="color: red;"> *</span>
 	                </td>
 	            </tr>
 	            
 	            </tbody>
 	        </table>
-	       	
 	       	
 	        <table class="btn_table" align="center">
 				<td>
