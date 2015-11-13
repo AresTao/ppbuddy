@@ -15,10 +15,10 @@ public class PostTest {
 	public static void main(String[] args) throws Exception
 	{
 		//testGetPost();
-		//testGetPostList();
+		testGetPostList();
 		//testPublishPost();
 		//testDeletePost();
-		testGetPost();
+		//testGetPost();
 	}
 	
 	public static void testGetPost() throws Exception
@@ -65,13 +65,13 @@ public class PostTest {
 	{
 		try{
 			
-			String restUrl = "http://localhost:8080/ppbuddy/api/0.1/post/getList/category/1/flag/1";
+			String restUrl = "http://localhost:8080/ppbuddy/api/0.1/post/getList/category/1/flag/2/pageNum/1/page/10";
 			//String restUrl = "http://124.127.117.203:8199/logservice/log/upload";
 			
 			URL url = new URL(restUrl);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setDoOutput(true);
-			conn.setRequestMethod("POST");
+			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-Type", "application/json");
 			conn.setConnectTimeout(30000);
 			//conn.setRequestProperty("Content-Encoding", "gzip");

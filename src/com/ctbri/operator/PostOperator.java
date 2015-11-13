@@ -180,7 +180,7 @@ public class PostOperator {
 	}
 	//isPublish  0 not published 1 published 2 all
 	@SuppressWarnings("unchecked")
-	public static List<PostItem> getPostList(int categoryId, int flag) 
+	public static List<PostItem> getPostList(int categoryId, int flag, int pageNum, int page) 
 	{
 		Session session = null;
 		List<PostItem> res = null;
@@ -190,25 +190,31 @@ public class PostOperator {
 			String hql = null;
 			if (flag == 0)
 			{
-				hql = "from com.ctbri.model.Post where categoryId=:categoryId and isPublish=0 order by postId desc";
+				hql = "from com.ctbri.model.Post where categoryId=:categoryId and isPublish=0 order by postId desc ";
 			}else if (flag == 1)
 			{
-				hql = "from com.ctbri.model.Post where categoryId=:categoryId and isPublish=1 order by postId desc";
+				hql = "from com.ctbri.model.Post where categoryId=:categoryId and isPublish=1 order by postId desc ";
 			}else if (flag == 2)
 			{
-				hql = "from com.ctbri.model.Post where categoryId=:categoryId order by postId desc";
+				hql = "from com.ctbri.model.Post where categoryId=:categoryId order by postId desc ";
 			}
 			
 			Query query = session.createQuery(hql);
 			query.setInteger("categoryId", categoryId);
 			List<Post> posts = query.list();
 			tran.commit();
-			if (posts.size() > 0)
+			int start = (pageNum-1)*page;
+			int size = posts.size();
+			if (start > size)
+				return res;
+			if (size > 0)
 			{
 				res = new ArrayList<PostItem>();
 				PostItem item = null;
-				for (Post post : posts)
+				for (int i = start; i<start + page && i<size;i++)
+				//for (Post post : posts)
 				{
+					Post post = posts.get(i);
 					item = new PostItem();
 					item.setPostId(post.getPostId());
 					item.setTitle(post.getTitle());
@@ -453,5 +459,15 @@ public class PostOperator {
 			log.error(e.getMessage());
 		}
 		return res;
+	}
+	
+	public static void main(String[] args) throws Exception
+	{
+		List<PostItem> res = PostOperator.getPostList(1, 2, 1, 10);
+		System.out.println(res.size());
+		for (int i = 0; i < res.size(); i++)
+		{
+			System.out.println(res.get(i).getPostId());
+		}
 	}
 }

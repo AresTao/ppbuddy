@@ -330,12 +330,12 @@ public class PostService {
 	 * 
 	 * */
 	@GET
-	@Path("/{APIversion}/post/getList/category/{Category}/flag/{flag}")	//flag 0 未发布 1 已经发布 2 全部
+	@Path("/{APIversion}/post/getList/category/{Category}/flag/{flag}/pageNum/{PAGENUM}/page/{PAGE}")	//flag 0 未发布 1 已经发布 2 全部
 	//@Consumes("application/json")
 	@Produces("application/json")
 	public Response getPostList(@PathParam("APIversion") String APIversion, 
-			@PathParam("Category") int category,@PathParam("flag") int flag){
-		List<PostItem> res = PostOperator.getPostList(category, flag);
+			@PathParam("Category") int category,@PathParam("flag") int flag, @PathParam("PAGENUM") int pageNum,@PathParam("PAGE") int page){
+		List<PostItem> res = PostOperator.getPostList(category, flag, pageNum, page);
 		return Response.status(200).entity(res).build(); 
 	}
 	

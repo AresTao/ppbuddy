@@ -122,9 +122,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 //        } 
 //　　}
 
-function getPostList(categoryId, flag)
+function getPostList(categoryId, flag, pageNum, page)
 {
-	var url = "${pageContext.request.contextPath}/api/0.1/post/getList/category/"+categoryId+"/flag/"+flag;
+	var url = "${pageContext.request.contextPath}/api/0.1/post/getList/category/"+categoryId+"/flag/"+flag+"/pageNum/"+pageNum+"/page/"+page;
 	$.ajax({
 		url : url,
 		type : "get",
@@ -143,7 +143,7 @@ function getPostList(categoryId, flag)
  	});
 }
 $(function(){
-	getPostList(1,2);
+	getPostList(1,2,1,10);
 });
 
 </script>
