@@ -106,6 +106,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  			head.style.backgroundImage = res.headImg[0].path;
  			var info = document.getElementById("aboutinfo");
             info.style.backgroundImage = "url("+res.bodyImg[0].path+")";
+            var imgPaths = res.imgPaths;
+            for (var i=0; i<imgPaths.length; i++)
+            {
+            	$("#abouttrophy").append("<div class=\"trophy\"><div class=\"col-md-4\" id=\"stretch\"><img src=\""+imgPaths[i].path+"\" /></div><p>"+imgPaths[i].name+"</p></div>");
+            }
  		},
  		error : function() {
  			alert("发送请求失败，请检查网络或刷新重试");
