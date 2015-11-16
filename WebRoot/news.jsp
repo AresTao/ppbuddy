@@ -120,7 +120,7 @@ function getPostList(categoryId, flag, pageNum, page)
  		success : function(res) {
  			for (var i=0; i<res.length; i++)
  			{
- 				$("#rocktheworld").append("<div class=\"top-grids\"><a href=\"newsItem.jsp?newsId="+res[i].postId+"\"><div class=\"news-small-pic col-md-3\"><img class=\"news-ab-img zoom-img\" src='"+res[i].bannerPath+"'/></div><div class=\"news-block\"><h4>"+res[i].title+"</h4><p>"+res[i].shortContent+"</p></div></a></div><div class=\"news-seg\"></div>");
+ 				$("#rocktheworld").append("<div class=\"top-grids\"><a href=\"newsItem.jsp?newsId="+res[i].postId+"\"><div class=\"news-small-pic\"><img class=\"news-ab-img zoom-img\" src='"+res[i].bannerPath+"'/></div><div class=\"news-block\"><h4>"+res[i].title+"</h4><p>"+res[i].shortContent+"</p></div></a></div><div class=\"news-seg\"></div>");
  			}
  		},
  		error : function() {
