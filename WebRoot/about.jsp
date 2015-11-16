@@ -103,10 +103,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  		async : true,
  		success : function(res) {
  			var head = document.getElementById("aboutheader");
- 			head.style.backgroundImage = res.headImg[0].path;
+ 			if (res.headImg.length > 0)
+ 				head.style.backgroundImage = res.headImg[0].path;
  			var info = document.getElementById("aboutinfo");
-            info.style.backgroundImage = "url("+res.bodyImg[0].path+")";
-            var imgPaths = res.imgPaths;
+ 			if (res.bodyImg.length > 0)
+            	info.style.backgroundImage = "url("+res.bodyImg[0].path+")";
+            var imgPaths = res.rewardImg;
             for (var i=0; i<imgPaths.length; i++)
             {
             	$("#abouttrophy").append("<div class=\"trophy\"><div class=\"col-md-4\" id=\"stretch\"><img src=\""+imgPaths[i].path+"\" /></div><p>"+imgPaths[i].name+"</p></div>");

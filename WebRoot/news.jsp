@@ -58,7 +58,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="news-header">
 			<div class="slider">
 				<div class="slider-caption">
-					<a href="news-test.html"><h1>既然是植物精华的，刷刷碗可以洗果蔬类的食物吗</h1></a>
+					<a href="#"><h1>既然是植物精华的，刷刷碗可以洗果蔬类的食物吗</h1></a>
 				</div>
 			</div>
 		</div>	
@@ -70,7 +70,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  			<div id="rocktheworld"></div>
 		</div>
 
-
+		<div class="viewmore" id="viewmore" onclick="getMoreNews()"><p>查看更多</p></div>
 		<!--end news-->
 <!-- 		<div class="news" onload="getNewsList()">
 			<div id="a">aa</div>
@@ -105,23 +105,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </body>
 <script type="text/javascript">
-//	var data ='[{"publishTime":"2015-10-25 10:40:16.0","publisherName":"ztwu","shortContent":"shortcontent1","bannerPath":"/upload","postId":"20151025","title":"热烈庆祝网站第二版开通！"},{"publishTime":"2015-10-25 10:40:16.0","publisherName":"ztwu","shortContent":"shortcontent2","bannerPath":"/upload","postId":"20151025","title":"感谢周小龊的辛勤工作！"}]';
-//	var jsonObj = eval('('+data+')');
-//	var newsCount = jsonObj.length;
-	// if(newsCount<1){
-	// 	alert("oops...木有新闻");
-	// }
-	// else{
-	// 	alert("有"+newsCount+"条新闻");
-	// }
-//	for(var i=0;i<jsonObj.length;i++){
-		// alert(jsonObj[i].newsTitle);
-//		$("#rocktheworld").append("<div class=\"top-grids\"><a href=\"news-test.html\"><div class=\"news-small-pic col-md-3\"><img class=\"news-ab-img zoom-img\" src=\"images/po.jpg\"/></div><div class=\"news-block\"><h4>"+jsonObj[i].title+"</h4><p>"+jsonObj[i].shortContent+"</p></div></a></div><div class=\"news-seg\"></div>");
-// 　　　　for(var key in jsonObj[i]){
-//         　　alert("key："+key+",value："+jsonObj[i][key]); 
-//        } 
-//　　}
 
+var pageNo = 1;
+var page = 10;
 function getPostList(categoryId, flag, pageNum, page)
 {
 	var url = "${pageContext.request.contextPath}/api/0.1/post/getList/category/"+categoryId+"/flag/"+flag+"/pageNum/"+pageNum+"/page/"+page;
@@ -138,13 +124,18 @@ function getPostList(categoryId, flag, pageNum, page)
  			}
  		},
  		error : function() {
- 			alert("发送请求失败，请检查网络或刷新重试");
+ 			$("#rocktheworld").append("<div class='nomore'><p>没有更多新闻</p></div>");
+ 			$("#viewmore").hide();
  		}
  	});
 }
 $(function(){
-	getPostList(1,2,1,10);
+	getPostList(1,2,pageNo,page);
+	pageNo+=1;
 });
-
+function getMoreNews()
+{
+    getPostList(1,2,pageNo,page);
+}
 </script>
 </html>

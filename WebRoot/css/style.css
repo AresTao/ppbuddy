@@ -98,16 +98,16 @@ color:#000;
 }
 section { display: block; margin-top:95px;}
 
-.shell { width: 500px; margin: 0 auto; }
+.shell { width: 45%; margin: 0 auto; }
 
 .slider-holder { margin-bottom: 39px; position: relative; }
 .slider-holder span.slider-shadow { background: url(images/slider-shadow.png) no-repeat 0 0; width: 580px; height: 15px; position: absolute; bottom: -15px; right: -1px; left: -1px;}
 .slider-holder span.overlay { height:  291px; width:  930px; position: absolute; top: 4px; left: 5px; box-shadow: 0px 0px 3px rgba(0,0,0,0.2) inset; -moz-box-shadow: 0px 0px 3px rgba(0,0,0,0.2) inset; -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.2) inset; -o-box-shadow: 0px 0px 3px rgba(0,0,0,0.2) inset; border-radius: 7px; -moz-border-radius: 7px; -webkit-border-radius: 7px; -o-border-radius: 7px;  }
 
-.flexslider { width: 500px; position: relative; z-index: 2; height: 299px; border-radius: 8px; -moz-border-radius: 8px; -webkit-border-radius: 8px; -o-border-radius: 8px; border: 1px solid #dedede !important; }
+.flexslider { width: 100%; position: relative; z-index: 2; height: 299px; border-radius: 8px; -moz-border-radius: 8px; -webkit-border-radius: 8px; -o-border-radius: 8px; border: 1px solid #dedede !important; }
 .flexslider ul { list-style: none; list-style-position: outside; position: relative; }
 .flexslider ul li { float: left; width: 500px; height: 299px; position: relative; }
-.flexslider ul li img { width: 500px; height: 299px; }
+.flexslider ul li img { width: 100%px; height: 299px; }
 .flexslider ul li .slide-cnt { width: 776px; position: absolute; top: 46px; left: 63px; }
 .flexslider ul li .slide-cnt h2 { font-size: 44px; line-height: 55px; text-align: center; font-weight: normal; padding-bottom: 85px; }
 .flexslider ul li .slide-cnt .btns { width: 360px; height: 30px; margin: 0 auto; background: url(images/slider-btns.png) no-repeat 0 0;}
@@ -215,6 +215,7 @@ nav a:focus {
 /*--start-banner--*/
 .banner {
   background: url(../images/index_banner.jpg) no-repeat center top;
+  background-position: center 100%;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -426,38 +427,37 @@ nav a:focus {
 .btn_container1 {
   position: relative;
   float: left;
-  padding-top: 53%;
-  left:79%;
+  padding: 33% 0% 10% 0%;
+  left:46%;
   height: 100%;
 }
 .btn_container2 {
   position: relative;
   float: left;
-  padding-top: 32%;
-  left:24%;
+  padding: 35% 0% 10% 0%;
+  left:25%;
   height: 100%;
 }
 .btn_container3 {
   position: relative;
   float: left;
-  padding-top: 24%;
+  padding: 23% 0% 10% 0%;
   left:50%;
   height: 100%;
 }
 .btn_container4 {
   position: relative;
   float: left;
-  padding-top: 36%;
-  left:24%;
+  padding: 38% 0% 5% 0%;
+  left:25%;
   height: 100%;
 }
 /*-----news slider-caption -----*/
 .news-header {
   background: url(../images/news_header.jpg) no-repeat 0px 0px;
   background-size: 100% 100%;
-  padding:10em 19em 2em 19em;
-  width:auto;
-  min-height:500px;
+  padding:15% 25% 3% 25%;
+  width:100%;
 }
 .slider{
   background:url(../images/6.jpg)no-repeat ;
@@ -477,19 +477,21 @@ nav a:focus {
 }
 .news-list{
   background: rgb(255,253,244);
-  padding:1em 12em;
+  padding:1% 20%;
 }
 .news-ab-img{
   height: 160px;
   width: 240px;
 }
 .news-block{
-  padding:0 4em 0 21em;
+  width:100%;
+  height:150px;
+  overflow: hidden;
+  display: inline;
 }
 .news-seg{
   background: url(../images/news_seg.jpg) no-repeat 0px 0px;
   min-height: 10px;
-  margin:0 4em;
 }
 .news{
   background-color:rgb(255,253,244);
@@ -504,28 +506,66 @@ nav a:focus {
 .news-image{
   background: url(../images/news_image_frame.jpg) no-repeat 0px 0px;
   background-size: 100% 100%;
-  min-height: 400px;
   margin: 0 20%;
   padding: 3.5% 5%;
 }
 .news-image img{
-  height:320px;
-  width: 590px;
+  height:100%;
+  width: 100%;
 }
 .news-content h3{
   font-size:1.5em;
   padding:5% 20% 2% 20%;
   color:#3C3C3C;
 }
+.nomore{
+  font-family: "宋体";
+  font-size: 20px;
+  font-weight: normal;
+  overflow: hidden;
+  text-align: center;
+  background-color:rgb(255,253,244);
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.viewmore{
+  font-family: "宋体";
+  font-size: 20px;
+  font-weight: normal;
+  overflow: hidden;
+  text-align: center;
+  background-color:rgb(255,253,244);
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  padding:1% 20%;
+}
+.viewmore p:hover{
+  background-color:rgb(255,255,230);
+}
+.viewmore p{
+  border: solid 1px;
+  border-color: #ADADAD;
+  width: 100%;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  overflow: hidden;
+  float: left;
+
+}
 /*----- top-grids ------*/
 .top-grids{
-  padding:3em 0 1em 0;
+  padding:1% 0%;
   text-align: center;
+  display: block;
+  overflow: hidden;
 }
 .top-grids h4 {
   font-size: 2.5em;
   color: #000;
-  padding:0.3em
+  padding:0.3em;
 }
 .top-grids p{
   color:#777;
@@ -534,27 +574,36 @@ nav a:focus {
 }
 .news-small-pic{
   padding:0em 1em 1em 0em;
+  float: left;
 }
 .aboutheader{
-  background: url(../images/about_header.jpg) no-repeat 0px 0px;
-  background-size: 100% 100%;
+  background: url(../images/about_header.jpg) no-repeat center bottom;
+  background-size:cover;
+  float: left;
+  width: 100%;
   min-height: 500px;
 }
 .aboutinfo{
-  background: url(../images/about_info.jpg) no-repeat 0px 0px;
-  background-size: 100% 100%;
-  min-height: 1200px;
+  background: url(../images/about_info.jpg) no-repeat center top;
+  background-size:cover;
+  float: left;
+  width: 100%;
+  min-height: 1500px;
 }
 .abouttrophy{
-  background: url(../images/about_trophy.jpg) no-repeat 0px 0px;
-  background-size: 100% 100%;
+  background: url(../images/about_trophy.jpg) no-repeat center top;
   min-height: 500px;
+  background-size:cover;
+  float: left;
+  width: 100%;
   padding:5% 20% 5% 24%;
 }
 .aboutpeople{
-  background: url(../images/about_people.jpg) no-repeat 0px 0px;
-  background-size: 100% 100%;
-  min-height: 1000px;
+  background: url(../images/about_people.jpg) no-repeat center top;
+  background-size:cover;
+  float: left;
+  width: 100%;
+  min-height: 1200px;
 }
 .trophy{
   position: relative;
@@ -894,6 +943,9 @@ p.para {
 	
 	opacity: 1;
 	pointer-events: auto;
+}
+.clear{
+  clear: both;
 }
 /*--gallery--*/
 #gallery {
@@ -1259,117 +1311,95 @@ p.para {
   padding-top:2.5em;
 }
 .product_hands{
-  background:url(../images/index_hands.jpg) no-repeat 0px 0px;
-  background-size:100% 100%;
-  min-height:600px;
+  background:url(../images/index_hands.jpg) no-repeat center top;
+  background-size:cover;
+  float: left;
+  width: 100%;
+/*  height: auto;
+  min-height:600px;*/
 }
 .product_bowls{
-  background:url(../images/index_bowls.jpg) no-repeat 0px 0px;
-  background-size:100% 100%;
-  min-height:600px;
+  background:url(../images/index_bowls.jpg) no-repeat center top;
+  background-size:cover;
+  float: left;
+  width: 100%;
+  /*min-height:700px;*/
 }
 .product_cars{
-  background:url(../images/index_cars_1.jpg) no-repeat 0px 0px;
-  background-size:100% 100%;
-  min-height:600px;
+  background:url(../images/index_cars_1.jpg) no-repeat center top;
+  background-size:cover;
+  float: left;
+  width: 100%;
+  /*min-height:600px;*/
 }
 .buy_hands{
-  background:url(../images/hands_buy.jpg) no-repeat 0px 0px;
-  background-size:100% 100%;
-  min-height:600px;
+  background:url(../images/hands_buy.jpg) no-repeat center top;
+  background-size:cover;
+  float: left;
+  width: 100%;
 }
 .hands_info{
-  background:url(../images/hands_info.jpg) no-repeat 0px 0px;
-  background-size:100% 100%;
+  background:url(../images/hands_info.jpg) no-repeat center top;
+  background-size:cover;
   min-height:1200px;
+  padding: 0;
+  width: 100%;
 }
 .hands_qa{
-  background:url(../images/hands_qa.jpg) no-repeat 0px 0px;
-  background-size:100% 100%;
+  background:url(../images/hands_qa.jpg) no-repeat center top;
+  background-size:cover;
   min-height:500px;
 }
 .wechat{
-  background:url(../images/hands_wechat.jpg) no-repeat 0px 0px;
-  background-size:100% 100%;
+  background:url(../images/hands_wechat.jpg) no-repeat center top;
+  background-size:cover;
+  min-height:80px;
+}
+.wechat1{
+  background:url(../images/index_wechat.jpg) no-repeat center top;
+  background-size:cover;
   min-height:80px;
 }
 .buy_bowls{
-  background:url(../images/bowls_buy.jpg) no-repeat 0px 0px;
-  background-size:100% 100%;
-  min-height:600px;
+  background:url(../images/bowls_buy.jpg) no-repeat center top;
+  background-size:cover;
+  float: left;
+  width: 100%;
 }
 .bowls_info{
-  background:url(../images/bowls_info.jpg) no-repeat 0px 0px;
-  background-size:100% 100%;
+  background:url(../images/bowls_info.jpg) no-repeat center top;
+  background-size:cover;
   min-height:1200px;
 }
 .bowls_qa{
-  background:url(../images/bowls_qa.jpg) no-repeat 0px 0px;
-  background-size:100% 100%;
-  min-height:650px;
+  background:url(../images/bowls_qa.jpg) no-repeat center top;
+  background-size:cover;
+  min-height:700px;
 }
 .buy_cars{
-  background:url(../images/cars_buy.jpg) no-repeat 0px 0px;
-  background-size:100% 100%;
-  min-height:600px;
+  background:url(../images/cars_buy.jpg) no-repeat center top;
+  background-size:cover;
+  float: left;
+  width: 100%;
 }
 .cars_info{
-  background:url(../images/cars_info.jpg) no-repeat 0px 0px;
-  background-size:100% 100%;
+  background:url(../images/cars_info.jpg) no-repeat center top;
+  background-size:cover;
   min-height:1200px;
 }
 .cars_qa{
-  background:url(../images/cars_qa.jpg) no-repeat 0px 0px;
-  background-size:100% 100%;
-  min-height:650px;
+  background:url(../images/cars_qa.jpg) no-repeat center top;
+  background-size:cover;
+  min-height:800px;
 }
 /*--responsive--*/
 @media (max-width:1440px){
 }
 @media (max-width:1280px){
-	.banner {
-	  background: url(../images/banner.jpg) no-repeat center top;
-	  background-size: cover;
-	  -webkit-background-size: cover;
-	  -moz-background-size: cover;
-	  -o-background-size: cover;
-	  -ms-background-size: cover;
-	  min-height: 484px;
-	}
+
 }
 @media (max-width:1024px){
-	.banner-info {
-	  width: 57%;
-	  margin: 13% auto 0;
-	  text-align: center;
-	}
-	.banner {
-	  background: url(../images/banner.jpg) no-repeat center top;
-	  background-size: cover;
-	  -webkit-background-size: cover;
-	  -moz-background-size: cover;
-	  -o-background-size: cover;
-	  -ms-background-size: cover;
-	  min-height: 423px;
-	}
-	.view {
-	  width: 283px;
-	  height: 200px;
-	  margin:15px 15px;
-	}
-	.view .mask, .view .content {
-    width: 283px;
-	  height: 200px;
-  }
-  .view p {
-	  font-size: 12px;
-	  padding: 10px 4px 9px;
-	  width: 92%;
-	}
-	p.phone {
-	  float: right;
-	  width: 19%;
-	}
+
 }
 @media (max-width:800px){
 	.banner-info {
@@ -1381,30 +1411,6 @@ p.para {
 	  float: right;
 	  width: 24%;
 	}
-	.banner {
-	  background: url(../images/banner.jpg) no-repeat center top;
-	  background-size: cover;
-	  -webkit-background-size: cover;
-	  -moz-background-size: cover;
-	  -o-background-size: cover;
-	  -ms-background-size: cover;
-	  min-height: 363px;
-	}
-	.service-grid {
-	  padding: 0;
-	  width: 49%;
-	  margin-right: 1%;
-	  text-align: center;
-	  float: left;
-	  margin-bottom: 6%;
-	}
-	.service-grid:nth-child(2){
-	margin-right:0;
-	border:none;
-	}
-	#service {
-     padding: 5em 0 2em 0;
-  }
   .ch-grid li {
 	  width: 180px;
 	  height: 180px;
@@ -1434,14 +1440,6 @@ p.para {
 	  width: 300px;
 	  height: 200px;
 	}
-	.gallery-bottom {
-	  margin-top: 1.5em;
-	  margin: 3% auto 0;
-	  width: 92%;
-	}
-	#gallery {
-     padding: 4em 0;
-   }
    #about {
 	  padding: 4em 0;
 	}
@@ -1498,10 +1496,6 @@ p.para {
 	  -ms-background-size: cover;
 	  min-height: 284px;
 	}
-	.callbacks_tabs {
-	  bottom: -17%;
-	  left: 41%;
-	}
 	p.phone {
 	  float: right;
 	  width: 29%;
@@ -1526,28 +1520,95 @@ p.para {
 	}
 }
 @media (max-width:480px){
+  .product_hands{
+    background:url(../images/index_hands_small.jpg) no-repeat center center;
+    background-size: 100% 100%;
+    float: left;
+    min-height: 300px;
+  }
+  .product_bowls{
+    background:url(../images/index_bowls_small.jpg) no-repeat center center;
+    background-size: 100% 100%;
+    float: left;
+    min-height: 300px;
+  }
+  .product_cars{
+    background:url(../images/index_cars_small.jpg) no-repeat center center;
+    background-size: 100% 100%;
+    float: left;
+    width: 100%;
+    min-height: 300px;
+  }
+  .btn_container1{
+    left: 32%;
+    padding-top: 80%;
+  }
+   .btn_container2{
+    left: 32%;
+    padding-top: 80%;
+  }
+   .btn_container3{
+    left: 32%;
+    padding: 75% 0% 3% 0%;
+  }
+  .shell{
+    width: 100%;
+  }
+  #about {
+    padding: 0;
+    min-height:270px;
+  }
+  .video_hands{
+  background:url(../images/hands_video.jpg) no-repeat center center;
+  background-size:cover;
+  min-height: 300px;
+}
+  section { 
+    display: block; 
+    margin-top:0px;
+  }
+  .hands_info{
+  background:url(../images/hands_info_small_1.jpg) no-repeat center center;
+  background-size:100% 100%;
+  width: 100%;
+  float: left;
+}
+  .hands_qa{
+  background:url(../images/hands_qa_small.jpg) no-repeat center center;
+  background-size:100% 100%;
+  width: 100%;
+  float: left;
+}
+ .buy_hands{
+  background:url(../images/hands_buy_small.jpg) no-repeat center center;
+  background-size:100% 100%;
+  width: 100%;
+  float: left;
+}
+
+.news-title h1{
+  font-size:1.8em;
+  padding:5% 10% 2% 10%;
+}
+.news-image{
+  background: url(../images/news_image_frame.jpg) no-repeat 0px 0px;
+  background-size: 100% 100%;
+  margin: 0 5%;
+  padding: 3.5% 5%;
+}
+.news-content h3{
+  font-size:1.2em;
+  padding:5% 10% 2% 10%;
+}
+.top-grids h4 {
+  font-size: 1.8em;
+}
+.news-header {
+  padding:5% 2% 3% 2%;
+}
 	p.phone {
 	  float: right;
 	  width: 39%;
-	}
-	.banner-info p {
-      font-size: 0.83em;
-    }
-	.banner-info {
-	  width: 98%;
-	  margin: 10% auto 0;
-	}
-	.banner-info h3 {
-	  font-size: 2.2em;
-	}
-	.banner {
-	  background: url(../images/banner.jpg) no-repeat center top;
-	  background-size: cover;
-	  -webkit-background-size: cover;
-	  -moz-background-size: cover;
-	  -o-background-size: cover;
-	  -ms-background-size: cover;
-	  min-height: 239px;
 	}
 	.service-grid p {
 	  font-size: 0.83em;
@@ -1589,9 +1650,6 @@ p.para {
 	  top: 15px;
 	  left: 15px;
 	}
-	#about {
-	  padding: 3em 0;
-	}
 	.view {
 	  width: 300px;
 	  height: 200px;
@@ -1627,19 +1685,7 @@ p.para {
 	}
 }
 @media (max-width:320px){
-	.service-grid {
-	  padding: 0;
-	  width: 100%;
-	  margin-right: 0;
-	  text-align: center;
-	  float: left;
-	  margin-bottom: 5%;
-	}
-	.gallery-bottom {
-	  margin-top: 1.5em;
-	  margin: 6% 4%;
-	  width: 100%;
-	}
+
 	.view {
 	  width: 246px;
 	  height: 200px;
@@ -1774,5 +1820,3 @@ p.para {
 	  padding: 0.3em 1em;
 	}
 }
-
-.news-content {text-align:center;}

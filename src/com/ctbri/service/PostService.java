@@ -126,7 +126,7 @@ public class PostService {
 		            log.info(downPath);
             		FileUtils.writeFile(bytes,downPath);
                 } catch (IOException e) {
-                	e.printStackTrace(); 
+                	e.printStackTrace();
                 }
             }
             if (i == 0)
