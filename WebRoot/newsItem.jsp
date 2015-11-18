@@ -11,6 +11,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- Custom Theme files -->
 <link href="css/style.css" rel='stylesheet' type='text/css' />	
+<link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
 <script src="js/jquery-1.11.1.min.js"></script>
 
 </head>
