@@ -94,30 +94,32 @@
 		<!--start introduction-->
 
 		<div class="product_hands">
-			<div class="col-md-1">
+			
 				<div class="btn_container1">
 				<a href="hands.html"><div class="knowMoreBtn"></div></a>
 				</div>
-			</div>
+			
 		</div>
 
 		<div class="product_bowls">
-			<div class="col-md-2">
+			
 				<div class="btn_container2">
 				<a href="bowls.html"><div class="knowMoreBtn"></div></a>
 				</div>
-			</div>
+			
 		</div>
    
 		<div class="product_cars">
-			<div class="col-md-2">
+			
 				<div class="btn_container3">
 				<a href="cars.html"><div class="knowMoreBtn"></div></a>
 				</div>
-			</div>
+			
 		</div>
 
 		<div class="clearfix"></div>
+		<div class="wechat1"></div>
+        <div class="clearfix"></div>
 		<!--end introduction-->
 		<!--start footer-->
 		<div class="copy">

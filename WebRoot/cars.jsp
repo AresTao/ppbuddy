@@ -64,8 +64,11 @@
 				</div>
 			</div>
 		</div>
+		<div class="clearfix"></div>
 		<div class="cars_info"></div>
+		<div class="clearfix"></div>
 		<div class="cars_qa"></div>
+		<div class="clearfix"></div>
 		<div class="wechat"></div>
         <div class="clearfix"></div>
 		<!--start footer-->
