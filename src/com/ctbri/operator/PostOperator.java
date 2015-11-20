@@ -311,12 +311,17 @@ public class PostOperator {
 				post.setPublisherName(res.getPublisherName());
 				
 				List<MimeFile> fileList = FileOperator.getFiles(postId);
-				List<String> imgPaths = new ArrayList<String>();
+				List<MimeFileItem> imgPaths = new ArrayList<MimeFileItem>();
+				MimeFileItem item = null;
 				if (fileList.size() > 0)
 				{
 					for (MimeFile file:fileList)
 					{
-						imgPaths.add(file.getPath());
+						item = new MimeFileItem();
+						item.setFileId(file.getFileId());
+						item.setName(file.getName());
+						item.setPath(file.getPath());
+						imgPaths.add(item);
 					}
 					
 				}

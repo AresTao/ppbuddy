@@ -33,7 +33,7 @@
 	        fileNum++;
 	        newRow.innerHTML = "<th>附件"+fileNum+"</th><td><input type='hidden' id='file"+fileNum+"Id' name='fileId' class='btn3' value=''><label id='file"+fileNum+"Name' style='float:left;display:inline-block;width:50px;'></label><input type='file' name='file"+fileNum+"' id='file"+fileNum+"' accept=''/>"
 	                +"<input type='button' class='btn3' value='删除' onclick='deleteMimeFile("+fileNum+")'>"
-	                +"<img onclick='addMimeFile()' src='resource/images/add.gif'></td>";
+	                +"<img onclick='addNewMimeFile()' src='resource/images/add.gif'></td>";
 	        document.getElementById('newsTable').appendChild( newRow);
 	    }
 	    
@@ -41,8 +41,8 @@
 	    {
 	        var newRow = document.createElement('tr');
 	        fileNum++;
-	        newRow.innerHTML = "<th>附件"+fileNum+"</th><td><label id='file"+fileNum+"Name' style='float:left;display:inline-block;width:40px;'></label><input type='file' name='file"+fileNum+"' id='file"+fileNum+"' accept=''/>"
-	                +"<img onclick='addMimeFile()' src='resource/images/add.gif'></td>";
+	        newRow.innerHTML = "<th>附件"+fileNum+"</th><td><label id='file"+fileNum+"Name' style='float:left;display:inline-block;width:40px;'></label>描述<input type='text' name='description"+fileNum+"'/><input type='file' name='file"+fileNum+"' id='file"+fileNum+"' accept=''/>"
+	                +"<img onclick='addNewMimeFile()' src='resource/images/add.gif'></td>";
 	        document.getElementById('newsTable').appendChild( newRow);
 	    }
 	    

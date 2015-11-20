@@ -513,7 +513,12 @@ nav a:focus {
   height:100%;
   width: 100%;
 }
-.news-content h3{
+
+.news-image p{
+  text-align:center;
+
+}
+.news-content{
   font-size:1.5em;
   padding:5% 20% 2% 20%;
   color:#3C3C3C;

@@ -25,7 +25,7 @@
 	    {
 	        var newRow = document.createElement('tr');
 	        fileNum++;
-	        newRow.innerHTML = "<th>附件"+fileNum+"</th><td><input type='file' name='file"+fileNum+"' id='uploadFile' accept=''/>"
+	        newRow.innerHTML = "<th>附件"+fileNum+"</th><td>描述<input type='text' name='description"+fileNum+"'/><input type='file' name='file"+fileNum+"' id='uploadFile' accept=''/>"
 	                +"<img onclick='addMimeFile()' src='resource/images/add.gif'></td>";
 	        document.getElementById('newsTable').appendChild( newRow);
 	    }
@@ -98,6 +98,8 @@
 	                
 	                <th>附件1</th>
 	                <td>
+	                	
+	                	描述<input type="text" name="description1" accept=""/>
 	                	<input type="file" name="file1" id="uploadFile" accept=""/>
 	                	<img onclick='addMimeFile()' src='resource/images/add.gif'>
 	                </td>

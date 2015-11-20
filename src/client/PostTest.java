@@ -15,18 +15,18 @@ public class PostTest {
 	public static void main(String[] args) throws Exception
 	{
 		//testGetPost();
-		testGetPostList();
+		//testGetPostList();
 		//testPublishPost();
 		//testDeletePost();
-		//testGetPost();
+		testGetPost();
 	}
 	
 	public static void testGetPost() throws Exception
 	{
 		try{
 			
-			//String restUrl = "http://localhost:8080/ppbuddy/api/0.1/post/get/20151025";
-			String restUrl = "http://101.200.173.116:8096/ppbuddy/api/0.1/post/get/";
+			String restUrl = "http://localhost:8080/ppbuddy/api/0.1/post/get/20151119114919417";
+			//String restUrl = "http://101.200.173.116:8096/ppbuddy/api/0.1/post/get/";
 			
 			URL url = new URL(restUrl);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();

@@ -5,6 +5,7 @@
 <title>新闻详述</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="keywords" content="Educator Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="applijegleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -59,8 +60,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="news">
 			<input type="hidden" id="hiddenNewsId" name="newsId" class="btn3" value='<%=request.getParameter("newsId")%>'>
 			<div class="news-title" id="newstitle"></div>
-			<div class="news-image" id="newsimage"></div>
+			<div class="news-image-list" id="newsimagelist"></div>
 			<div class="news-content" id="newscontent"></div>
+			<div class="news-down-image-list" id="newsdownimagelist"></div>
 		</div>	
 		<div class="clearfix"> </div>
 		<!--end news-->
@@ -102,7 +104,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				async : true,
 				success : function(res) {
 					$("#newstitle").append("<h1>"+res.title+"</h1>");
-					$("#newsimage").append("<img src=\""+res.imgPaths[0]+"\" />");
+					if (res.imgPaths.length > 0)
+					{
+						if (res.imgPaths.length > 2)
+						{
+							for (var i = 0; i< 2; i++)
+							{
+								$("#newsimagelist").append("<div class='news-image' id='newsimage'><img src=\""+res.imgPaths[i].path+"\" /><p>"+res.imgPaths[i].name+"</p></div>");
+							}
+							for (var i = 2; i< res.imgPaths.length; i++)
+							{
+								$("#newsdownimagelist").append("<div class='news-image' id='newsimage'><img src=\""+res.imgPaths[i].path+"\" /><p>"+res.imgPaths[i].name+"</p></div>");
+							}
+						}else
+						{
+							for (var i = 0; i< res.imgPaths.length; i++)
+							{
+								$("#newsimagelist").append("<div class='news-image' id='newsimage'><img src=\""+res.imgPaths[i].path+"\" /><p>"+res.imgPaths[i].name+"</p></div>");
+							}
+						}
+						
+					}
+						
 					$("#newscontent").append(res.content);
 					
 				},

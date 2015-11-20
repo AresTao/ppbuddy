@@ -296,6 +296,8 @@ public class PostService {
 	@Produces("application/json")
 	public Response getPost(@PathParam("APIversion") String APIversion, @PathParam("POSTID") String postId
 			){
+		if (!StringUtils.isNumber(postId))
+			return null;
 		PostResp res = PostOperator.getPost(postId);
 		return Response.status(200).entity(res).build();
 	}

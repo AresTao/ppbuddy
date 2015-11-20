@@ -10,7 +10,7 @@ public class PostResp {
 	private String content;
 	private String publishTime;
 	private String publisherName;
-	private List<String> imgPaths = new ArrayList<String>();
+	private List<MimeFileItem> imgPaths = new ArrayList<MimeFileItem>();
 	public String getPostId() {
 		return postId;
 	}
@@ -41,10 +41,10 @@ public class PostResp {
 	public void setPublisherName(String publisherName) {
 		this.publisherName = publisherName;
 	}
-	public List<String> getImgPaths() {
+	public List<MimeFileItem> getImgPaths() {
 		return imgPaths;
 	}
-	public void setImgPaths(List<String> imgPaths) {
+	public void setImgPaths(List<MimeFileItem> imgPaths) {
 		this.imgPaths = imgPaths;
 	}
 	

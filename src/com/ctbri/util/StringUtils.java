@@ -33,4 +33,12 @@ public class StringUtils {
         }
         return false;
     }
+    
+    public static boolean isNumber(String str)
+    {
+    	if(java.lang.Character.isDigit(str.charAt(0))){
+    		return true;
+    	}
+        return false;
+    }
 }

@@ -30,6 +30,7 @@ import com.ctbri.model.Post;
 import com.ctbri.operator.FileOperator;
 import com.ctbri.operator.PostOperator;
 import com.ctbri.resp.CommonPostResp;
+import com.ctbri.util.StringUtils;
 
 public class PostServlet extends HttpServlet{
 
@@ -74,6 +75,8 @@ public class PostServlet extends HttpServlet{
             String bannerPath="";
             String postId = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
             boolean hasBanner = true;
+            log.info(list);
+            String mimeFile="";
             for(FileItem item : list)  
             {  
                 //获取表单的属性名字  
@@ -89,6 +92,10 @@ public class PostServlet extends HttpServlet{
                     {
                     	postId = fields.get("postId");
                     }
+                    if (name.startsWith("description"))
+                    {
+                    	mimeFile = fields.get(name);
+                    }
                 }  
                 //对传入的非 简单的字符串进行处理 ，比如说二进制的 图片，电影这些  
                 else  
@@ -99,7 +106,8 @@ public class PostServlet extends HttpServlet{
                     int start = value.lastIndexOf("\\");
                     //截取 上传文件的 字符串名字，加1是 去掉反斜杠，  
                     String fileName = value.substring(start+1);
-                      
+                    if (StringUtils.isBlank(fileName))
+                    	continue;
                     String fileNameNew =UUID.randomUUID().toString();
                     realName=fileName;
                     fileName = fileNameNew+"."+fileName;
@@ -135,9 +143,9 @@ public class PostServlet extends HttpServlet{
                     	if(item.getSize() == 0)
                          	hasBanner = false;
                         bannerPath = downPath;
-                    } else
+                    } else 
                     {
-                    	FileOperator.addMimeFile(postId, realName, downPath);
+                    	FileOperator.addMimeFile(postId, mimeFile, downPath);
                     }
                 }  
             }
@@ -151,7 +159,7 @@ public class PostServlet extends HttpServlet{
         		post.setPostId(fields.get("postId"));
         		if (hasBanner)
         			post.setBannerPath(bannerPath);
-        		log.info(bannerPath);
+        		
         		CommonPostResp res = PostOperator.updatePost(post);
             }else
             {
