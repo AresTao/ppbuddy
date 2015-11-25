@@ -110,6 +110,12 @@ public class PostServlet extends HttpServlet{
                     	continue;
                     String fileNameNew =UUID.randomUUID().toString();
                     realName=fileName;
+                    if (StringUtils.isChinese(fileName))
+                    {
+                    	int pointIndex = fileName.lastIndexOf('.');
+                    	if (pointIndex != -1)
+                    		fileName = fileName.substring(pointIndex+1);
+                    }
                     fileName = fileNameNew+"."+fileName;
                     //真正写到磁盘上  
                     //它抛出的异常 用exception 捕捉  
