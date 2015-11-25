@@ -26,7 +26,7 @@
 				   <div class="wht-head">	
 				   <!---- start-logo---->
 				     <div class="logo">
-				   	   <a href="index.html"><img src="./images/logo.png" title="logo" /></a>
+				   	   <a href="index.jsp"><img src="./images/logo.png" title="logo" /></a>
 				     </div>
 				   <!---- //End-logo---->
 					<span class="menu"> </span>
@@ -97,7 +97,7 @@
 		<div class="product_hands">
 			
 				<div class="btn_container1">
-				<a href="hands.html"><div class="knowMoreBtn"></div></a>
+				<a href="hands.jsp"><div class="knowMoreBtn"></div></a>
 				</div>
 			
 		</div>
@@ -105,7 +105,7 @@
 		<div class="product_bowls">
 			
 				<div class="btn_container2">
-				<a href="bowls.html"><div class="knowMoreBtn"></div></a>
+				<a href="bowls.jsp"><div class="knowMoreBtn"></div></a>
 				</div>
 			
 		</div>
@@ -113,7 +113,7 @@
 		<div class="product_cars">
 			
 				<div class="btn_container3">
-				<a href="cars.html"><div class="knowMoreBtn"></div></a>
+				<a href="cars.jsp"><div class="knowMoreBtn"></div></a>
 				</div>
 			
 		</div>

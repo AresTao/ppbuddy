@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS `post` (
     `postId`           VARCHAR(128)   NOT NULL          ,
     `title`            VARCHAR(128)   NOT NULL          ,
     `shortContent`     VARCHAR(1024)   NOT NULL          ,
-    `content`          VARCHAR(4096)   NOT NULL          ,
+    `content`          VARCHAR(9192)   NOT NULL          ,
     `createTime`       datetime       NOT NULL          ,
     `publishTime`      datetime                         ,
 	`isPublish`        INT            default 0         ,

@@ -58,8 +58,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 		<!--start head news-->
 		<div class="news-header">
-			<div class="slider">
-				<div class="slider-caption">
+			<div class="slider" id="slider">
+				<div class="slider-caption" id="slider-caption">
 					<a href="#"><h1>既然是植物精华的，刷刷碗可以洗果蔬类的食物吗</h1></a>
 				</div>
 			</div>
@@ -120,10 +120,51 @@ function getPostList(categoryId, flag, pageNum, page)
 		cache : false,
  		async : true,
  		success : function(res) {
+ 		    if (res.length > 0)
+ 		    {
+ 		        var slider = document.getElementById("slider");
+ 		        slider.style.backgroundImage = "url("+res[0].bannerPath+")";
+ 		        var slidercaption = document.getElementById("slider-caption");
+ 		        slidercaption.innerHTML = "<a href=\"newsItem.jsp?newsId="+res[0].postId+"\"><div class=\"news-block\"><p>"+res[0].title+"</p></div></a>";
+ 		    }
+ 			for (var i=1; i<res.length; i++)
+ 			{
+ 				$("#rocktheworld").append("<div class=\"top-grids\"><a href=\"newsItem.jsp?newsId="+res[i].postId+"\"><div class=\"news-small-pic\"><img class=\"news-ab-img zoom-img\" src='"+res[i].bannerPath+"'/></div><div class=\"news-block\"><h4>"+res[i].title+"</h4><p>"+res[i].shortContent+"</p></div></a></div><div class=\"news-seg\"></div>");
+ 			}
+ 			if (res.length < page)
+ 			{
+ 			    $("#rocktheworld").append("<div class='nomore'><p>没有更多新闻</p></div>");
+ 			    $("#viewmore").hide();
+ 			}
+ 			
+ 		},
+ 		error : function() {
+ 			$("#rocktheworld").append("<div class='nomore'><p>没有更多新闻</p></div>");
+ 			$("#viewmore").hide();
+ 		}
+ 	});
+}
+
+function getMorePost(categoryId, flag, pageNum, page)
+{
+	var url = "${pageContext.request.contextPath}/api/0.1/post/getList/category/"+categoryId+"/flag/"+flag+"/pageNum/"+pageNum+"/page/"+page;
+	$.ajax({
+		url : url,
+		type : "get",
+		dataType : "json",
+		cache : false,
+ 		async : true,
+ 		success : function(res) {
  			for (var i=0; i<res.length; i++)
  			{
  				$("#rocktheworld").append("<div class=\"top-grids\"><a href=\"newsItem.jsp?newsId="+res[i].postId+"\"><div class=\"news-small-pic\"><img class=\"news-ab-img zoom-img\" src='"+res[i].bannerPath+"'/></div><div class=\"news-block\"><h4>"+res[i].title+"</h4><p>"+res[i].shortContent+"</p></div></a></div><div class=\"news-seg\"></div>");
  			}
+ 			if (res.length < page)
+ 			{
+ 			    $("#rocktheworld").append("<div class='nomore'><p>没有更多新闻</p></div>");
+ 			    $("#viewmore").hide();
+ 			}
+ 			
  		},
  		error : function() {
  			$("#rocktheworld").append("<div class='nomore'><p>没有更多新闻</p></div>");
@@ -137,7 +178,7 @@ $(function(){
 });
 function getMoreNews()
 {
-    getPostList(1,1,pageNo,page);
+    getMorePost(1,1,pageNo,page);
 }
 </script>
 </html>

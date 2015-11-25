@@ -190,13 +190,13 @@ public class PostOperator {
 			String hql = null;
 			if (flag == 0)
 			{
-				hql = "from com.ctbri.model.Post where categoryId=:categoryId and isPublish=0 order by postId desc ";
+				hql = "from com.ctbri.model.Post where categoryId=:categoryId and isPublish=0 order by publishTime desc ";
 			}else if (flag == 1)
 			{
-				hql = "from com.ctbri.model.Post where categoryId=:categoryId and isPublish=1 order by postId desc ";
+				hql = "from com.ctbri.model.Post where categoryId=:categoryId and isPublish=1 order by publishTime desc ";
 			}else if (flag == 2)
 			{
-				hql = "from com.ctbri.model.Post where categoryId=:categoryId order by postId desc ";
+				hql = "from com.ctbri.model.Post where categoryId=:categoryId order by publishTime desc ";
 			}
 			
 			Query query = session.createQuery(hql);
