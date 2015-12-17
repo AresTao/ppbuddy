@@ -265,7 +265,7 @@
 			var isPublishIndex = isPublishEle.selectedIndex;
 			var isPublish = isPublishEle.options[isPublishIndex].value; // 选中值
 			var body = {name:name,startTime:startTime,endTime:endTime,type:imgType,isPublish:isPublish};
-			alert(body);
+			
 			var url = "${pageContext.request.contextPath}/api/0.1/admin/img/queryList";
 			$.ajax({
 				url : url,

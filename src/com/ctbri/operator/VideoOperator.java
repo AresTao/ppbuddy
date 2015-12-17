@@ -185,10 +185,10 @@ private static final Logger log = Logger.getLogger(VideoOperator.class);
 			String hql = null;
 			if (flag == -1)
 			{
-				hql = "from com.ctbri.model.Video order by videoId desc";
+				hql = "from com.ctbri.model.Video order by publishTime desc";
 			}else 
 			{
-				hql = "from com.ctbri.model.Video where type=:type order by videoId desc";
+				hql = "from com.ctbri.model.Video where type=:type order by publishTime desc";
 			}
 			
 			Query query = session.createQuery(hql);

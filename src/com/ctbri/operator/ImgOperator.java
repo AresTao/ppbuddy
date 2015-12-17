@@ -193,10 +193,10 @@ private static final Logger log = Logger.getLogger(ImgOperator.class);
 			String hql = null;
 			if (flag == -1)
 			{
-				hql = "from com.ctbri.model.Img order by imgId desc";
+				hql = "from com.ctbri.model.Img order by publishTime desc";
 			}else 
 			{
-				hql = "from com.ctbri.model.Img where type=:type order by imgId desc";
+				hql = "from com.ctbri.model.Img where type=:type order by publishTime desc";
 			}
 			
 			Query query = session.createQuery(hql);
@@ -362,7 +362,7 @@ private static final Logger log = Logger.getLogger(ImgOperator.class);
 			String hql = null;
 			res = new ImgResp();
 			Transaction tran = session.beginTransaction();//开始事物     			
-			hql = "from com.ctbri.model.Img where type=:type and isPublish=1 order by imgId desc limit "+head;	
+			hql = "from com.ctbri.model.Img where type=:type and isPublish=1 order by publishTime desc limit "+head;	
 			Query query = session.createQuery(hql);
 			query.setInteger("type", Consts.ABOUT_HEAD);
 			List<Img> Imgs = query.list();
@@ -380,7 +380,7 @@ private static final Logger log = Logger.getLogger(ImgOperator.class);
 					res.getHeadImg().add(item);
 				}
 			}
-			hql = "from com.ctbri.model.Img where type=:type and isPublish=1 order by imgId desc limit "+body;	
+			hql = "from com.ctbri.model.Img where type=:type and isPublish=1 order by publishTime desc limit "+body;	
 			query = session.createQuery(hql);
 			query.setInteger("type", Consts.ABOUT_BODY);
 			Imgs = query.list();
@@ -399,7 +399,7 @@ private static final Logger log = Logger.getLogger(ImgOperator.class);
 				}
 			}
 			
-			hql = "from com.ctbri.model.Img where type=:type and isPublish=1 order by imgId desc limit "+reward;	
+			hql = "from com.ctbri.model.Img where type=:type and isPublish=1 order by publishTime desc limit "+reward;	
 			query = session.createQuery(hql);
 			query.setInteger("type", Consts.ABOUT_REWARD);
 			Imgs = query.list();
