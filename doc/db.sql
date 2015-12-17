@@ -52,3 +52,14 @@ CREATE TABLE IF NOT EXISTS `img` (
 	`isPublish`         INT            default 0         ,
     PRIMARY KEY (`imgId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `video` (
+    `videoId`             INT            AUTO_INCREMENT    ,
+    `name`              VARCHAR(128)   NOT NULL          ,
+    `path`              VARCHAR(128)   NOT NULL          ,
+    `type`              INT            default 0         ,
+    `createTime`        datetime       NOT NULL          ,
+    `publishTime`       datetime       NOT NULL          ,
+	`isPublish`         INT            default 0         ,
+    PRIMARY KEY (`videoId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

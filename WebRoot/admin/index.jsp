@@ -53,18 +53,11 @@
                         
                         <li><a href="javascript:menu('./newsInfoList.jsp')"><i class="icon-font">&#xe002;</i>新闻管理</a></li>
                         <li><a href="javascript:menu('./imgInfoList.jsp')"><i class="icon-font">&#xe010;</i>图片管理</a></li>
+                        <li><a href="javascript:menu('./videoInfoList.jsp')"><i class="icon-font">&#xe010;</i>视频管理</a></li>
                                                 
                     </ul>
                 </li>
-                <li>
-                    <a href="#"><i class="icon-font">&#xe018;</i>系统管理</a>
-                    <ul class="sub-menu">
-                        <li><a href="#"><i class="icon-font">&#xe017;</i>系统设置</a></li>
-                        <li><a href="#"><i class="icon-font">&#xe037;</i>清理缓存</a></li>
-                        <li><a href="#"><i class="icon-font">&#xe046;</i>数据备份</a></li>
-                        <li><a href="#"><i class="icon-font">&#xe045;</i>数据还原</a></li>
-                    </ul>
-                </li>
+                
             </ul>
         </div>
     </div>

@@ -1,4 +1,4 @@
-/*--
+﻿/*--
 Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -56,6 +56,7 @@ label{
   position: relative;
   float: left;
   left: 10%;
+  margin-top:0.5em;
 }
 .logo  a h1{
  font-size: 2.7em;
@@ -107,7 +108,7 @@ section { display: block; margin-top:95px;}
 .flexslider { width: 100%; position: relative; z-index: 2; height: 299px; border-radius: 8px; -moz-border-radius: 8px; -webkit-border-radius: 8px; -o-border-radius: 8px; border: 1px solid #dedede !important; }
 .flexslider ul { list-style: none; list-style-position: outside; position: relative; }
 .flexslider ul li { float: left; width: 500px; height: 299px; position: relative; }
-.flexslider ul li img { width: 100%px; height: 299px; }
+.flexslider ul li img { width: 100%; height: 299px; }
 .flexslider ul li .slide-cnt { width: 776px; position: absolute; top: 46px; left: 63px; }
 .flexslider ul li .slide-cnt h2 { font-size: 44px; line-height: 55px; text-align: center; font-weight: normal; padding-bottom: 85px; }
 .flexslider ul li .slide-cnt .btns { width: 360px; height: 30px; margin: 0 auto; background: url(images/slider-btns.png) no-repeat 0 0;}
@@ -419,10 +420,14 @@ nav a:focus {
   background-size:100% 100%;
   min-height: 500px;
 }
+.video_frame{
+  margin: 10% 30% 3% 30%;
+}
 .player{
   position: relative;
-  left:30.5%;
-  padding-top:8em;
+  width: 100%;
+  height: 320px;
+  padding-top:1em;
 }
 .btn_container1 {
   position: relative;
@@ -434,7 +439,7 @@ nav a:focus {
 .btn_container2 {
   position: relative;
   float: left;
-  padding: 35% 0% 10% 0%;
+  padding: 35% 0% 9% 0%;
   left:25%;
   height: 100%;
 }
@@ -456,12 +461,12 @@ nav a:focus {
 .news-header {
   background: url(../images/news_header.jpg) no-repeat 0px 0px;
   background-size: 100% 100%;
-  padding:15% 25% 3% 25%;
+  padding:14% 25% 3% 25%;
   width:100%;
 }
 .slider{
   background:url(../images/6.jpg)no-repeat ;
-  min-height:200px;
+  min-height:350px;
   display:block;
   padding:10% 10% 5% 10%;
   background-size:cover;
@@ -469,6 +474,7 @@ nav a:focus {
 }
 .slider-caption{
   text-align:center;
+  margin-top:50%;
 }
 .slider-caption h1{
   font-size:1.5em;
@@ -513,10 +519,8 @@ nav a:focus {
   height:100%;
   width: 100%;
 }
-
 .news-image p{
   text-align:center;
-
 }
 .news-content{
   font-size:1.5em;
@@ -562,20 +566,26 @@ nav a:focus {
 }
 /*----- top-grids ------*/
 .top-grids{
-  padding:1% 0%;
+  padding:2% 0% 1% 0%;
   text-align: center;
   display: block;
   overflow: hidden;
 }
 .top-grids h4 {
-  font-size: 2.5em;
+  font-size: 1.8em;
   color: #000;
   padding:0.3em;
+}
+.top-grids h4:hover,
+.top-grids p:hover {
+  color:#71C671;
 }
 .top-grids p{
   color:#777;
   font-size:1em;
   line-height:1.7em;
+  padding-left:250px;
+  text-align:left;
 }
 .news-small-pic{
   padding:0em 1em 1em 0em;
@@ -1404,9 +1414,30 @@ p.para {
 
 }
 @media (max-width:1024px){
-
+  .player{
+    height: 300px;
+  }
+  .video_frame{
+    margin: 15% 30% 3% 30%;
+  }
 }
 @media (max-width:800px){
+  .top-grids p{
+    padding-left: 0px;
+  }
+  .top-menu {
+  left: 0%;
+  background: rgb(248,247,242);
+  }
+  .top-menu ul li a{
+    color: #3C3C3C;
+  }
+  .player{
+    height: 300px;
+  }
+  .video_frame{
+    margin: 15% 20% 3% 20%;
+  }
 	.banner-info {
 	  width: 75%;
 	  margin: 13% auto 0;
@@ -1529,33 +1560,56 @@ p.para {
     background:url(../images/index_hands_small.jpg) no-repeat center center;
     background-size: 100% 100%;
     float: left;
-    min-height: 300px;
+    min-height: 500px;
   }
   .product_bowls{
     background:url(../images/index_bowls_small.jpg) no-repeat center center;
     background-size: 100% 100%;
     float: left;
-    min-height: 300px;
+    min-height: 500px;
   }
   .product_cars{
     background:url(../images/index_cars_small.jpg) no-repeat center center;
     background-size: 100% 100%;
     float: left;
     width: 100%;
-    min-height: 300px;
+    min-height: 500px;
+  }
+  .video_frame{
+    margin: auto;
+    padding-top: 4em;
+  }
+  .player{
+    height: 300px;
   }
   .btn_container1{
     left: 32%;
-    padding-top: 80%;
+    padding-top: 75%;
   }
    .btn_container2{
     left: 32%;
-    padding-top: 80%;
+    /*padding-top: 65%;*/
+    padding-top: 18em;
   }
    .btn_container3{
     left: 32%;
-    padding: 75% 0% 3% 0%;
+    padding: 80% 0% 3% 0%;
   }
+  .btn_container4{
+    left: 30%;
+    /*padding: 78% 0% 5% 0%;*/
+    padding-top: 19em;
+  }
+  .top-grids h4 {
+  font-size: 1.5em;
+  }
+  .slider-caption{
+  text-align:center;
+  margin-top:80%;
+}
+.news-content{
+  padding:5% 10% 2% 10%;
+}
   .shell{
     width: 100%;
   }
@@ -1568,6 +1622,16 @@ p.para {
   background-size:cover;
   min-height: 300px;
 }
+  .video_bowls{
+  background:url(../images/bowls_video.jpg) no-repeat center center;
+  background-size:cover;
+  min-height: 300px;
+}
+  .video_cars{
+  background:url(../images/cars_video.jpg) no-repeat center center;
+  background-size:cover;
+  min-height: 300px;
+}
   section { 
     display: block; 
     margin-top:0px;
@@ -1577,6 +1641,7 @@ p.para {
   background-size:100% 100%;
   width: 100%;
   float: left;
+  min-height: 1100px;
 }
   .hands_qa{
   background:url(../images/hands_qa_small.jpg) no-repeat center center;
@@ -1589,8 +1654,47 @@ p.para {
   background-size:100% 100%;
   width: 100%;
   float: left;
+  min-height: 400px;
 }
-
+  .bowls_info{
+  background:url(../images/bowls_info_small.jpg) no-repeat center center;
+  background-size:100% 100%;
+  width: 100%;
+  float: left;
+}
+  .bowls_qa{
+  background:url(../images/bowls_qa_small.jpg) no-repeat center center;
+  background-size:100% 100%;
+  width: 100%;
+  float: left;
+  min-height: 750px;
+}
+ .buy_bowls{
+  background:url(../images/bowls_buy_small.jpg) no-repeat center center;
+  background-size:100% 100%;
+  width: 100%;
+  float: left;
+}
+  .cars_info{
+  background:url(../images/cars_info_small.jpg) no-repeat center center;
+  background-size:100% 100%;
+  width: 100%;
+  float: left;
+}
+  .cars_qa{
+  background:url(../images/cars_qa_small.jpg) no-repeat center center;
+  background-size:100% 100%;
+  width: 100%;
+  float: left;
+  min-height: 900px;
+}
+ .buy_cars{
+  background:url(../images/cars_buy_small.jpg) no-repeat center center;
+  background-size:100% 100%;
+  width: 100%;
+  float: left;
+  min-height: 400px;
+}
 .news-title h1{
   font-size:1.8em;
   padding:5% 10% 2% 10%;
@@ -1606,10 +1710,40 @@ p.para {
   padding:5% 10% 2% 10%;
 }
 .top-grids h4 {
-  font-size: 1.8em;
+  font-size: 1.5em;
+}
+.news-list{
+  padding: 1% 5%;
+}
+.news-block{
+  display: inline;
+}
+.news-small-pic{
+  float: none;
 }
 .news-header {
   padding:5% 2% 3% 2%;
+}
+.aboutheader{
+  background: url(../images/about_header_small.jpg) no-repeat center center;
+  background-size: cover;
+  width: 100%;
+  float: left;
+}
+.aboutinfo{
+  background: url(../images/about_info_small.jpg) no-repeat center center;
+  background-size:100% 100%;
+  width: 100%;
+  float: left;
+}
+.abouttrophy{
+  padding:5% 10% 5% 15%;
+}
+.aboutpeople{
+  background: url(../images/about_people_small.jpg) no-repeat center center;
+  background-size:100% 100%;
+  width: 100%;
+  float: left;
 }
 	p.phone {
 	  float: right;
@@ -1688,6 +1822,20 @@ p.para {
 	.contact-top {
 	  margin-top: 1.5em;
 	}
+}
+@media (max-width:410px) {
+ .btn_container1{
+    left: 32%;
+    padding-top: 85%;
+  }
+   .btn_container2{
+    left: 32%;
+    padding-top: 71%;
+  }
+   .btn_container3{
+    left: 32%;
+    padding: 90% 0% 3% 0%;
+  }
 }
 @media (max-width:320px){
 

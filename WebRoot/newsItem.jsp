@@ -62,7 +62,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="news-title" id="newstitle"></div>
 			<div class="news-image-list" id="newsimagelist"></div>
 			<div class="news-content" id="newscontent"></div>
-			<div class="news-down-image-list" id="newsdownimagelist"></div>
+			<div class="news-downimage-list" id="newsdownimagelist"></div>
 		</div>	
 		<div class="clearfix"> </div>
 		<!--end news-->
@@ -71,7 +71,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="wechat"></div>
 		<div class="copy">
 			<center><img src="./images/QRcode.jpg" class="img-responsive" alt=""/></center>
-		    <p><B>&copy; 泡泡帮<br>地址</B> | 北京市丰台区方庄南路15号方恒偶寓1座802室 京ICP备15025321号<br><B>联系方式</B> | 电话：010-56288540， 010-56288541， 邮箱：paopaobang@paopaobuddy.com
+		    <p><B>&copy; 泡泡帮<br>地址</B> | 北京市丰台区方庄南路15号方恒偶寓1座802室 京ICP备15025321号<br><B>联系方式</B> | 电话：010-56288540， 010-56288541<br> 邮箱：paopaobang@paopaobuddy.com
 </p>
 		</div>
 		<!--footer-->
@@ -118,12 +118,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							}
 						}else
 						{
-							for (var i = 0; i< res.imgPaths.length; i++)
-							{
-								$("#newsimagelist").append("<div class='news-image' id='newsimage'><img src=\""+res.imgPaths[i].path+"\" /><p>"+res.imgPaths[i].name+"</p></div>");
-							}
+                                                	for (var i = 0; i< res.imgPaths.length; i++)
+                                                        {
+                                                                $("#newsimagelist").append("<div class='news-image' id='newsimage'><img src=\""+res.imgPaths[i].path+"\" /><p>"+res.imgPaths[i].name+"</p></div>");
+                                                        }
 						}
-						
 					}
 						
 					$("#newscontent").append(res.content);

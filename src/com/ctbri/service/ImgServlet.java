@@ -31,6 +31,7 @@ import com.ctbri.operator.FileOperator;
 import com.ctbri.operator.ImgOperator;
 import com.ctbri.operator.PostOperator;
 import com.ctbri.resp.CommonPostResp;
+import com.ctbri.util.StringUtils;
 
 public class ImgServlet extends HttpServlet{
 
@@ -104,6 +105,12 @@ public class ImgServlet extends HttpServlet{
                       
                     String fileNameNew =UUID.randomUUID().toString();
                     realName=fileName;
+                    if (StringUtils.isChinese(fileName))
+                    {
+                    	int pointIndex = fileName.lastIndexOf('.');
+                    	if (pointIndex != -1)
+                    		fileName = fileName.substring(pointIndex+1);
+                    }
                     fileName = fileNameNew+"."+fileName;
                     //真正写到磁盘上  
                     //它抛出的异常 用exception 捕捉  

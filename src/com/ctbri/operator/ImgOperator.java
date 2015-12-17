@@ -69,7 +69,7 @@ private static final Logger log = Logger.getLogger(ImgOperator.class);
 			hql.append("UPDATE com.ctbri.model.Img i set ");
 			if (!StringUtils.isBlank(img.getName()))
 				hql.append("i.name=:name, ");
-			if (!StringUtils.isBlank(img.getPath()))
+			if (!StringUtils.isBlank(img.getPath()) && !img.getPath().endsWith("."))
 				hql.append("i.path=:path, ");
 			if (img.getType() != 0)
 				hql.append("i.type=:type ");
@@ -80,7 +80,7 @@ private static final Logger log = Logger.getLogger(ImgOperator.class);
 			Query query = session.createQuery(hql.toString());
 			if (!StringUtils.isBlank(img.getName()))
 				query.setString("name", img.getName());
-			if (!StringUtils.isBlank(img.getPath()))
+			if (!StringUtils.isBlank(img.getPath()) && !img.getPath().endsWith("."))
 				query.setString("path", img.getPath());
 			if (img.getType() != 0)
 				query.setInteger("type", img.getType());

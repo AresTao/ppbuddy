@@ -356,7 +356,7 @@
 					<input type=button class="btn3" value="删&nbsp;&nbsp;除" onClick="deleteImg();"/>
 					<input type=button class="btn3" value="发布" onClick="publish(1);"/>
 					<input type=button class="btn3" value="取消发布" onClick="publish(0);"/>
-					<input type=button class="btn3" value="更新" onClick="updateImg();"/>
+					<input type=button class="btn3" value="编辑" onClick="updateImg();"/>
 				</td>
 			</table>
             <table cellspacing=1 class="query_table" align="center">
