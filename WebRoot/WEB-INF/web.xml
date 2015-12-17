@@ -62,6 +62,16 @@
 		<url-pattern>/admin/img</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>VideoServlet</servlet-name>
+		<servlet-class>
+			com.ctbri.service.VideoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>VideoServlet</servlet-name>
+		<url-pattern>/admin/video</url-pattern>
+	</servlet-mapping>
+	
 	<filter>    
 		<filter-name>AdminFilter</filter-name>   
 		<filter-class>com.ctbri.filter.AdminFilter</filter-class>   
