@@ -5,6 +5,7 @@ public class AdminImgResp {
 	private int imgId;
 	private String name;
 	private String path;
+	private String link;
 	private int type;
 	public int getImgId() {
 		return imgId;
@@ -29,6 +30,12 @@ public class AdminImgResp {
 	}
 	public void setType(int type) {
 		this.type = type;
+	}
+	public String getLink() {
+		return link;
+	}
+	public void setLink(String link) {
+		this.link = link;
 	}
 	
 }

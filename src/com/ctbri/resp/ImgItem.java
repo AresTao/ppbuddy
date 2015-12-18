@@ -4,6 +4,7 @@ public class ImgItem {
 
 	private String name;
 	private String path;
+	private String link;
 	private int type;
 	public String getName() {
 		return name;
@@ -22,6 +23,12 @@ public class ImgItem {
 	}
 	public void setType(int type) {
 		this.type = type;
+	}
+	public String getLink() {
+		return link;
+	}
+	public void setLink(String link) {
+		this.link = link;
 	}
 	
 }

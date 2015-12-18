@@ -17,6 +17,9 @@
         <property name="path" type="java.lang.String">
             <column name="path" not-null="false" />
         </property>
+        <property name="link" type="java.lang.String">
+            <column name="link" not-null="false" />
+        </property>
         <property name="createTime" type="java.lang.String">
             <column name="createTime" not-null="false" />
         </property>

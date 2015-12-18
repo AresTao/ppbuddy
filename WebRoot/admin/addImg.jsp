@@ -72,6 +72,14 @@
                 		</select>
 					</td>
 				</tr>
+				<tr>
+	                <th width="30%">图片链接</th>
+	                <td >
+	               		
+	                    <input type="text" id="link" name="link" class="input50 validate[required]"/>
+	                    
+	                </td>
+	            </tr>
 	            <tr>
 	                
 	                <th>图片文件</th>

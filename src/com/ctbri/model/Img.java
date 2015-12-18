@@ -5,6 +5,7 @@ public class Img {
 	private int imgId;
 	private String name;
 	private String path;
+	private String link;
 	private int type=0;
 	private String createTime;
 	private String publishTime;
@@ -50,6 +51,12 @@ public class Img {
 	}
 	public void setPublishTime(String publishTime) {
 		this.publishTime = publishTime;
+	}
+	public String getLink() {
+		return link;
+	}
+	public void setLink(String link) {
+		this.link = link;
 	}
 	
 	

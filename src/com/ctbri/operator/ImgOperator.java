@@ -72,6 +72,8 @@ private static final Logger log = Logger.getLogger(ImgOperator.class);
 				hql.append("i.name=:name, ");
 			if (!StringUtils.isBlank(img.getPath()) && !img.getPath().endsWith("."))
 				hql.append("i.path=:path, ");
+			if (!StringUtils.isBlank(img.getLink()))
+				hql.append("i.link=:link, ");
 			if (img.getType() != 0)
 				hql.append("i.type=:type ");
 			else
@@ -83,6 +85,8 @@ private static final Logger log = Logger.getLogger(ImgOperator.class);
 				query.setString("name", img.getName());
 			if (!StringUtils.isBlank(img.getPath()) && !img.getPath().endsWith("."))
 				query.setString("path", img.getPath());
+			if (!StringUtils.isBlank(img.getLink()))
+				query.setString("link", img.getLink());
 			if (img.getType() != 0)
 				query.setInteger("type", img.getType());
 			query.setInteger("imgId", img.getImgId());
@@ -218,6 +222,7 @@ private static final Logger log = Logger.getLogger(ImgOperator.class);
 					item.setPublishTime(img.getPublishTime());
 					item.setCreateTime(img.getCreateTime());
 					item.setPath(img.getPath());
+					item.setLink(img.getLink());
 					item.setType(img.getType());
 					
 					res.add(item);
@@ -259,6 +264,7 @@ private static final Logger log = Logger.getLogger(ImgOperator.class);
 				img.setName(res.getName());
 				
 				img.setPath(fileName);
+				img.setLink(res.getLink());
 				img.setType(res.getType());
 				
 			}
@@ -339,6 +345,7 @@ private static final Logger log = Logger.getLogger(ImgOperator.class);
 					item.setPublishTime(img.getPublishTime());
 					item.setCreateTime(img.getCreateTime());
 					item.setPath(img.getPath());
+					item.setLink(img.getLink());
 					item.setType(img.getType());
 					
 					res.add(item);
@@ -452,7 +459,7 @@ private static final Logger log = Logger.getLogger(ImgOperator.class);
 						item.setName(img.getName());
 						item.setPath(img.getPath());
 						item.setType(img.getType());
-						
+						item.setLink(img.getLink());
 						res.getBanners().add(item);
 					}
 				}

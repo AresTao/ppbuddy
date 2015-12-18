@@ -150,12 +150,13 @@ public class ImgServlet extends HttpServlet{
             	img.setPath(downPath);
             	img.setType(Integer.parseInt(fields.get("imgType")));
             	img.setImgId(Integer.parseInt(fields.get("imgId")));
-            	 
+            	img.setLink(fields.get("link")); 
         		CommonPostResp res = ImgOperator.updateImg(img);
             }else
             {
             	img.setName(fields.get("imgName"));
             	img.setPath(downPath);
+            	img.setLink(fields.get("link"));
             	img.setType(Integer.parseInt(fields.get("imgType")));
             	img.setIsPublish(Integer.parseInt(fields.get("isPublish")));
             	

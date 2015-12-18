@@ -14,7 +14,39 @@
 <!-- Custom Theme files -->
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
-<script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	getBanners();					
+	$(document).ready(function() {
+			//getBanners();
+        	$(".swipebox").swipebox();
+	});
+	function getBanners()
+	{
+		var url = "${pageContext.request.contextPath}/api/0.1/img/getBanners/3";
+		$.ajax({
+			url : url,
+			type : "get",
+			dataType : "json",
+			cache : false,
+			async : true,
+			success : function(res) {
+				var banners = document.getElementById("banners");
+				if (res.banners.length > 0)
+				{
+					for (var i=0; i<res.banners.length; i++)
+					{
+						var newRow = document.createElement('li');
+						newRow.innerHTML = "<a href='"+res.banners[i].link+"'><img src='"+ res.banners[i].path +"' alt='' /><span class='overlay'></span></a>";
+						banners.appendChild( newRow);
+					}
+		
+				}
+ 						
+			}
+		});
+	}
+</script>
+
 <script src="js/functions.js" type="text/javascript"></script>
 <!--[if lt IE 9]>
   <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
@@ -70,14 +102,7 @@
 					<!-- <span class="slider-shadow"></span> -->
 					<div class="flexslider">
 						<ul class="slides" id="banners">
-							<li>
-								<img src="./images/index_banner_1.jpg" alt="" />
-								<span class="overlay"></span>
-							</li>
-							<li>
-								<img src="./images/index_banner_1.jpg" alt="" />
-								<span class="overlay"></span>
-							</li>
+							
 						</ul>
 					</div>
 				</div>
@@ -139,9 +164,6 @@
         <link rel="stylesheet" href="css/swipebox.css">
         	<script src="js/jquery.swipebox.min.js"></script> 
         	    <script type="text/javascript">
-        			jQuery(function($) {
-        				$(".swipebox").swipebox();
-        			});
         </script>
 	<!--//gallery-->
 
@@ -158,50 +180,8 @@
 								});
 								</script>
 							<!--start-smoth-scrolling-->
-		<script type="text/javascript">
-			$(document).ready(function() {
-										/*
-										var defaults = {
-								  			containerID: 'toTop', // fading element id
-											containerHoverID: 'toTopHover', // fading element hover id
-											scrollSpeed: 1200,
-											easingType: 'linear' 
-								 		};
-										*/
-					getBanners();					
-					$().UItoTop({ easingType: 'easeOutQuart' });
-										
-				});
-			function getBanners()
-			{
-				var url = "${pageContext.request.contextPath}/api/0.1/img/getBanners/3";
-	 			$.ajax({
- 					url : url,
- 					type : "get",
- 					dataType : "json",
- 					cache : false,
- 					async : true,
- 					success : function(res) {
- 						var banners = document.getElementById("banners");
- 						if (res.banners.length > 0)
- 						{
- 							for (var i=0; i<res.banners.length; i++)
- 							{
- 								var newRow = document.createElement('li');
- 								newRow.innerHTML = "<img src='"+ res.banners[i].path +"' alt='' /><span class='overlay'></span>";
- 								banners.appendChild( newRow);
- 							}
- 							
- 						}
- 						
- 					},
- 					error : function() {
- 						alert("发送请求失败，请检查网络或刷新重试");
- 					}
-	 			});
-			}
-		</script>
-		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+				<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
 </body>
 </html>
+<script src="js/jquery.flexslider-min.js" type="text/javascript"></script>

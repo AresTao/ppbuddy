@@ -106,7 +106,7 @@
 				type[data[i].type],
 				data[i].name,
 				data[i].path,
-				data[i].createTime,
+				data[i].link,
 				data[i].publishTime,
 				publish[data[i].isPublish]
 			     ]);
@@ -383,7 +383,7 @@
                     <th>图片类型</th>
                     <th>图片标题</th>
                     <th>图片路径</th>
-                    <th>创建时间</th>
+                    <th>图片链接</th>
                     <th>发布时间</th>
                     <th>是否发布</th>
                     

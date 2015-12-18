@@ -42,7 +42,7 @@
 				success : function(res) {
 					document.getElementById("imgName").value = res.name;
 					$("#imgType").find("option[value='"+res.type+"']").attr("selected",true); 
-					
+					document.getElementById("link").value = res.link;
 					document.getElementById("fileName").innerHTML = res.path;
 					
 				},
@@ -91,7 +91,14 @@
                 		</select>
 					</td>
 				</tr>
-	            
+	            <tr>
+	                <th width="30%">图片链接</th>
+	                <td >
+	               		
+	                    <input type="text" id="link" name="link" class="input50 validate[required]"/>
+	                    
+	                </td>
+	            </tr>
 	            <tr>
 	                
 	                <th>图片文件</th>
