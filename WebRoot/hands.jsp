@@ -108,14 +108,7 @@ function speedReport(){for(var a=[],b=0;b<g_timePoints.length;b++)g_timePoints[b
         				$(".swipebox").swipebox();
         			});
         	$(document).ready(function() {
-										/*
-										var defaults = {
-								  			containerID: 'toTop', // fading element id
-											containerHoverID: 'toTopHover', // fading element hover id
-											scrollSpeed: 1200,
-											easingType: 'linear' 
-								 		};
-										*/
+										
 					getVideo();					
 					
 										
@@ -134,9 +127,6 @@ function speedReport(){for(var a=[],b=0;b<g_timePoints.length;b++)g_timePoints[b
  						
  						player.src = res.path;
  						
- 					},
- 					error : function() {
- 						alert("发送请求失败，请检查网络或刷新重试");
  					}
 	 			});
 			}

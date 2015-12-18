@@ -52,8 +52,8 @@
                     <ul class="sub-menu">
                         
                         <li><a href="javascript:menu('./newsInfoList.jsp')"><i class="icon-font">&#xe002;</i>新闻管理</a></li>
-                        <li><a href="javascript:menu('./imgInfoList.jsp')"><i class="icon-font">&#xe010;</i>图片管理</a></li>
-                        <li><a href="javascript:menu('./videoInfoList.jsp')"><i class="icon-font">&#xe010;</i>视频管理</a></li>
+                        <li><a href="javascript:menu('./imgInfoList.jsp')"><i class="icon-font">&#xe008;</i>图片管理</a></li>
+                        <li><a href="javascript:menu('./videoInfoList.jsp')"><i class="icon-font">&#xe006;</i>视频管理</a></li>
                                                 
                     </ul>
                 </li>
