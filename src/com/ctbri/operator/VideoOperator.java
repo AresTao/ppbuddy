@@ -344,6 +344,40 @@ private static final Logger log = Logger.getLogger(VideoOperator.class);
 		return res;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public static AdminVideoResp getVideo(int type)
+	{
+		Session session = null;
+		AdminVideoResp video = null;
+		try{
+			session = DbHelper.getSession();
+			Transaction tran = session.beginTransaction();//开始事物     
+			String hql = "from com.ctbri.model.Video where type=:type";
+			Query query = session.createQuery(hql);
+			query.setInteger("type", type);
+			List<Video> accounts = query.list();
+			tran.commit();
+			
+			if(accounts.size() > 0)
+			{
+				Video res = accounts.get(0);
+				video = new AdminVideoResp();
+				
+				video.setVideoId(res.getVideoId());
+				
+				video.setName(res.getName());
+				
+				video.setPath(res.getPath());
+				video.setType(res.getType());
+				
+			}
+			return video;
+		}catch(Exception e)
+		{
+			log.error(e.getMessage());
+		}
+		return video;
+	}
 	
 /*	//isPublish  0 not published 1 published 2 all
 	

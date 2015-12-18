@@ -21,6 +21,7 @@ import com.ctbri.resp.AdminImgItem;
 import com.ctbri.resp.AdminImgResp;
 import com.ctbri.resp.AdminPostItem;
 import com.ctbri.resp.AdminPostResp;
+import com.ctbri.resp.BannerResp;
 import com.ctbri.resp.CommonPostResp;
 import com.ctbri.resp.ImgItem;
 import com.ctbri.resp.ImgResp;
@@ -425,6 +426,45 @@ private static final Logger log = Logger.getLogger(ImgOperator.class);
 		}	
 		return res;	
 	}
+	
+	//head表示关于页head部分图片个数、body表示页面中的图片个数、reward表示证书图片个数
+		@SuppressWarnings("unchecked")
+		public static BannerResp getBanners(int num) 
+		{
+			Session session = null;
+			BannerResp res = null;
+			try{
+				session = DbHelper.getSession();
+				String hql = null;
+				res = new BannerResp();
+				Transaction tran = session.beginTransaction();//开始事物     			
+				hql = "from com.ctbri.model.Img where type=:type and isPublish=1 order by publishTime desc limit "+num;	
+				Query query = session.createQuery(hql);
+				query.setInteger("type", Consts.INDEX_BANNER);
+				List<Img> Imgs = query.list();
+				
+				if (Imgs.size() > 0)
+				{
+					ImgItem item = new ImgItem();
+					for (Img img : Imgs)
+					{
+						item = new ImgItem();
+						item.setName(img.getName());
+						item.setPath(img.getPath());
+						item.setType(img.getType());
+						
+						res.getBanners().add(item);
+					}
+				}
+				
+				tran.commit();
+				return res;
+			}catch(Exception e)
+			{
+				log.error(e.getMessage());
+			}	
+			return res;	
+		}
 	
 /*	//isPublish  0 not published 1 published 2 all
 	

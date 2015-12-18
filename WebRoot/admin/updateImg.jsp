@@ -4,7 +4,7 @@
 <html>
     <head>
     
-    	<title>更新图片</title>
+    	<title>编辑图片</title>
     	<script type="text/javascript" src="resource/EHM/Base.js"></script>
 		<script type="text/javascript">
 			 ChangeSkinAPP.Register(function(){ChangeSkin.Import("style.css");});
@@ -87,6 +87,7 @@
                 			<option value="1" selected="selected">-- 关于head --</option>
                 			<option value="2">-- 关于body --</option>
                 			<option value="3">-- 关于证书 --</option>
+                			<option value="4">-- 首页banner --</option>
                 		</select>
 					</td>
 				</tr>

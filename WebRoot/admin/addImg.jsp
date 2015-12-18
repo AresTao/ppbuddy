@@ -68,6 +68,7 @@
                 			<option value="1" selected="selected">-- 关于head --</option>
                 			<option value="2">-- 关于body --</option>
                 			<option value="3">-- 关于证书 --</option>
+                			<option value="4">-- 首页banner --</option>
                 		</select>
 					</td>
 				</tr>

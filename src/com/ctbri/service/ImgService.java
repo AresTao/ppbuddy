@@ -24,6 +24,7 @@ import com.ctbri.resp.AdminImgItem;
 import com.ctbri.resp.AdminImgResp;
 import com.ctbri.resp.AdminPostItem;
 import com.ctbri.resp.AdminPostResp;
+import com.ctbri.resp.BannerResp;
 import com.ctbri.resp.CommonPostResp;
 import com.ctbri.resp.ImgItem;
 import com.ctbri.resp.ImgResp;
@@ -108,6 +109,18 @@ private static final Logger log = Logger.getLogger(ImgService.class);
 	@Produces("application/json")
 	public Response getImgList(@PathParam("APIversion") String APIversion){
 		ImgResp res = ImgOperator.getAboutImgList(1,1,20);
+		return Response.status(200).entity(res).build(); 
+	}
+	
+	/*
+	 * 
+	 * */
+	@GET
+	@Path("/{APIversion}/img/getBanners/{BANNERNUM}")	//flag 0 未发布 1 已经发布 2 全部
+	//@Consumes("application/json")
+	@Produces("application/json")
+	public Response getBanners(@PathParam("APIversion") String APIversion, @PathParam("BANNERNUM") int num){
+		BannerResp res = ImgOperator.getBanners(num);
 		return Response.status(200).entity(res).build(); 
 	}
 	/*

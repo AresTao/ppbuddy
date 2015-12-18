@@ -102,7 +102,8 @@ public class ImgServlet extends HttpServlet{
                     int start = value.lastIndexOf("\\");
                     //截取 上传文件的 字符串名字，加1是 去掉反斜杠，  
                     String fileName = value.substring(start+1);
-                      
+                    if (StringUtils.isBlank(fileName))
+                    	continue;
                     String fileNameNew =UUID.randomUUID().toString();
                     realName=fileName;
                     if (StringUtils.isChinese(fileName))

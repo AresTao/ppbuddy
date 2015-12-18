@@ -71,6 +71,14 @@
                 		</select>
 					</td>
 				</tr>
+				<tr>
+	                <th width="30%">视频链接</th>
+	                <td >
+	               		
+	                    <input type="text" id="videoLink" name="videoLink" class="input50 validate[required]"/>
+	                    <span style="color: red;"> *</span>
+	                </td>
+	            </tr>
 	            <tr>
 	                
 	                <th>视频文件</th>

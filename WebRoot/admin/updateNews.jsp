@@ -4,7 +4,7 @@
 <html>
     <head>
     
-    	<title>更新新闻</title>
+    	<title>编辑新闻</title>
     	<script type="text/javascript" src="resource/EHM/Base.js"></script>
 		<script type="text/javascript">
 			 ChangeSkinAPP.Register(function(){ChangeSkin.Import("style.css");});

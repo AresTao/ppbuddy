@@ -99,7 +99,7 @@
 
             for (var i=pageIndex*10;i<(pageIndex+1)*10 && i<data.length;i++)     
             {
-            	var type=['','关于头图片','关于页面图片','关于证书图片'];
+            	var type=['','关于头图片','关于页面图片','关于证书图片','首页banner'];
             	var publish = ['未发布','已发布'];
 		        result.push([
 				data[i].imgId,
@@ -328,6 +328,7 @@
                 			<option value="1">-- 关于banner --</option>
                 			<option value="2">-- 关于body --</option>
                 			<option value="3">-- 关于证书 --</option>
+                			<option value="4">-- 首页banner --</option>
                 		</select>
 					</td>
 	            </tr>

@@ -92,14 +92,14 @@ public class VideoService {
 	
 	/*
 	 * 
-	 * *
+	 * */
 	@GET
-	@Path("/{APIversion}/video/get/{IMGID}")
+	@Path("/{APIversion}/video/get/{TYPE}")
 	//@Consumes("application/json")
 	@Produces("application/json")
-	public Response getVideo(@PathParam("APIversion") String APIversion, @PathParam("IMGID") String videoId
+	public Response getVideo(@PathParam("APIversion") String APIversion, @PathParam("TYPE") int type
 			){
-		VideoResp res = VideoOperator.getVideo(videoId);
+		AdminVideoResp res = VideoOperator.getVideo(type);
 		return Response.status(200).entity(res).build();
 	}
 	
@@ -112,5 +112,5 @@ public class VideoService {
 	
 	
 	
-	*/
+	
 }

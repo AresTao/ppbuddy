@@ -89,6 +89,13 @@ public class VideoServlet extends HttpServlet{
                     	
                     	videoId = Integer.parseInt(fields.get("videoId"));
                     }
+                    if (name.equals("videoLink"))
+                    {
+                    	if (!StringUtils.isBlank(fields.get("videoLink")))
+                    	{
+                    		downPath = fields.get("videoLink");
+                    	}
+                    }
                 }  
                 //对传入的非 简单的字符串进行处理 ，比如说二进制的 图片，电影这些  
                 else  
@@ -99,7 +106,8 @@ public class VideoServlet extends HttpServlet{
                     int start = value.lastIndexOf("\\");
                     //截取 上传文件的 字符串名字，加1是 去掉反斜杠，  
                     String fileName = value.substring(start+1);
-                      
+                    if (StringUtils.isBlank(fileName))
+                    	continue;  
                     String fileNameNew =UUID.randomUUID().toString();
                     realName=fileName;
                     if (StringUtils.isChinese(fileName))
