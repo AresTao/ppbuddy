@@ -105,7 +105,7 @@
 				data[i].videoId,
 				type[data[i].type],
 				data[i].name,
-				data[i].path,
+				data[i].link,
 				data[i].createTime,
 				data[i].publishTime,
 				publish[data[i].isPublish]
@@ -153,9 +153,6 @@
 						document.getElementById('divPage').innerHTML = '';
 						document.getElementById('videoList').innerHTML = '';
 						getVideoList(-1);
-					},
-					error : function(res) {
-						jAlert(res, '提示');
 					}
 				});
 			}
@@ -195,9 +192,6 @@
 					document.getElementById('divPage').innerHTML = '';
 					document.getElementById('videoList').innerHTML = '';
 					getVideoList(-1);
-				},
-				error : function(res) {
-					jAlert("发送请求失败，请检查网络或刷新重试","提示");
 				}
 			});
 		};
@@ -247,7 +241,8 @@
 					initData(res);
 				},
 				error : function() {
-					jAlert("发送请求失败，请检查网络或刷新重试","提示");
+					document.getElementById('videoList').innerHTML = '空';
+					//jAlert("发送请求失败，请检查网络或刷新重试","提示");
 				}
 			});
 		}
@@ -281,7 +276,7 @@
 					initData(res);
 				},
 				error : function() {
-					document.getElementById('videoList').innerHTML = '没有查询结果';
+					document.getElementById('videoList').innerHTML = '空';
 					//jAlert("发送请求失败，请检查网络或刷新重试","提示");
 				}
 			});
@@ -381,7 +376,7 @@
                 	<th><input type="checkbox" name="selectall" id="selectall"/></th>
                     <th>视频类型</th>
                     <th>视频标题</th>
-                    <th>视频路径</th>
+                    <th>视频链接</th>
                     <th>创建时间</th>
                     <th>发布时间</th>
                     <th>是否发布</th>

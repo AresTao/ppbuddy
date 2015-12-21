@@ -42,8 +42,7 @@
 				success : function(res) {
 					document.getElementById("videoName").value = res.name;
 					$("#videoType").find("option[value='"+res.type+"']").attr("selected",true); 
-					
-					document.getElementById("fileName").innerHTML = res.path;
+					document.getElementById("videoLink").value = res.link;
 					
 				},
 				error : function() {
@@ -98,14 +97,7 @@
 	                    <span style="color: red;"> *</span>
 	                </td>
 	            </tr>
-	            <tr>
-	                
-	                <th>视频文件</th>
-	                <td>
-	                	<label id='fileName' style='float:left;display:inline-block;width:50px;'></label><input type="file" name="file0" id="uploadFile" accept=""/>
-	                </td>
-	                
-	            </tr> 
+	            
 	            
 	            </tbody>
 	        </table>

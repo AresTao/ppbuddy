@@ -79,14 +79,7 @@
 	                    <span style="color: red;"> *</span>
 	                </td>
 	            </tr>
-	            <tr>
-	                
-	                <th>视频文件</th>
-	                <td>
-	                	<input type="file" name="file0" id="uploadFile" accept=""/>
-	                </td>
-	                
-	            </tr>
+	            
 	            </tbody>
 	        </table>
 	       	

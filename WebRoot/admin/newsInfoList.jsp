@@ -159,9 +159,6 @@
 						document.getElementById('divPage').innerHTML = '';
 						document.getElementById('newsList').innerHTML = '';
 						getPostList(1, 2);
-					},
-					error : function(res) {
-						jAlert(res, '提示');
 					}
 				});
 			}
@@ -201,9 +198,6 @@
 					document.getElementById('divPage').innerHTML = '';
 					document.getElementById('newsList').innerHTML = '';
 					getPostList(1, 2);
-				},
-				error : function(res) {
-					jAlert("发送请求失败，请检查网络或刷新重试","提示");
 				}
 			});
 		};
@@ -253,7 +247,8 @@
 					initData(res);
 				},
 				error : function() {
-					jAlert("发送请求失败，请检查网络或刷新重试","提示");
+					document.getElementById('newsList').innerHTML = '空';
+					//jAlert("发送请求失败，请检查网络或刷新重试","提示");
 				}
 			});
 		}
@@ -286,7 +281,7 @@
 					initData(res);
 				},
 				error : function() {
-					document.getElementById('newsList').innerHTML = '没有查询结果';
+					document.getElementById('newsList').innerHTML = '空';
 					//jAlert("发送请求失败，请检查网络或刷新重试","提示");
 				}
 			});

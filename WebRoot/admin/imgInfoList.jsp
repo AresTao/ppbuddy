@@ -153,9 +153,6 @@
 						document.getElementById('divPage').innerHTML = '';
 						document.getElementById('imgList').innerHTML = '';
 						getImgList(-1);
-					},
-					error : function(res) {
-						jAlert(res, '提示');
 					}
 				});
 			}
@@ -195,9 +192,6 @@
 					document.getElementById('divPage').innerHTML = '';
 					document.getElementById('imgList').innerHTML = '';
 					getImgList(-1);
-				},
-				error : function(res) {
-					jAlert("发送请求失败，请检查网络或刷新重试","提示");
 				}
 			});
 		};
@@ -247,7 +241,8 @@
 					initData(res);
 				},
 				error : function() {
-					jAlert("发送请求失败，请检查网络或刷新重试","提示");
+					document.getElementById('imgList').innerHTML = '空';
+					//jAlert("发送请求失败，请检查网络或刷新重试","提示");
 				}
 			});
 		}
@@ -281,7 +276,7 @@
 					initData(res);
 				},
 				error : function() {
-					document.getElementById('imgList').innerHTML = '没有查询结果';
+					document.getElementById('imgList').innerHTML = '空';
 					//jAlert("发送请求失败，请检查网络或刷新重试","提示");
 				}
 			});

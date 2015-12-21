@@ -10,43 +10,15 @@
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="css/slider.css" type="text/css" media="all" />
 <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
 <!-- Custom Theme files -->
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-	getBanners();					
-	$(document).ready(function() {
-			//getBanners();
-        	$(".swipebox").swipebox();
-	});
-	function getBanners()
-	{
-		var url = "${pageContext.request.contextPath}/api/0.1/img/getBanners/3";
-		$.ajax({
-			url : url,
-			type : "get",
-			dataType : "json",
-			cache : false,
-			async : true,
-			success : function(res) {
-				var banners = document.getElementById("banners");
-				if (res.banners.length > 0)
-				{
-					for (var i=0; i<res.banners.length; i++)
-					{
-						var newRow = document.createElement('li');
-						newRow.innerHTML = "<a href='"+res.banners[i].link+"'><img src='"+ res.banners[i].path +"' alt='' /><span class='overlay'></span></a>";
-						banners.appendChild( newRow);
-					}
-		
-				}
- 						
-			}
-		});
-	}
-</script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://unslider.com/unslider.js"></script>
 
+<script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
 <script src="js/functions.js" type="text/javascript"></script>
 <!--[if lt IE 9]>
   <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
@@ -99,7 +71,7 @@
 			<section><div class="shell">
 				<!-- slider -->
 				<div class="slider-holder">
-					<!-- <span class="slider-shadow"></span> -->
+					<!--<span class="slider-shadow"></span>-->
 					<div class="flexslider">
 						<ul class="slides" id="banners">
 							
@@ -179,9 +151,61 @@
 									});
 								});
 								</script>
+<script type="text/javascript">
+	$(document).ready(function() {
+          	$(".swipebox").swipebox();
+	});
+    var bannerNum;
+	function getBanners()
+	{
+		var url = "${pageContext.request.contextPath}/api/0.1/img/getBanners/3";
+		$.ajax({
+			url : url,
+			type : "get",
+			dataType : "json",
+			cache : false,
+			async : true,
+			success : function(res) {
+                                bannerNum = res.banners.length;
+				if (res.banners.length > 0)
+				{
+					for (var i=0; i<res.banners.length; i++)
+					{
+						$("#banners").append("<li><a href='"+res.banners[i].link+"'><img src='"+ res.banners[i].path +"' alt='' /><span class='overlay'></span></a></li>");
+					}
+		
+				}
+ 						
+			}
+		});
+	}
+    $(window).load(function() {
+		getBanners();
+        setTimeout('load()',1000);
+	});
+    function load()
+    {
+        var banners = document.getElementById("banners").getElementsByTagName("li").length;
+        if (banners == bannerNum)
+        {
+         	$('.flexslider').flexslider({
+              	animation: "slide",
+               	controlsContainer: ".slider-holder",
+               	slideshowSpeed: 5000,
+               	directionNav: true,
+               	controlNav: true,
+               	animationDuration: 900
+           	});
+        }else
+        {
+            setTimeOut('load()',500);
+        }
+    }
+</script>
+
+
 							<!--start-smoth-scrolling-->
 				<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
 </body>
 </html>
-<script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
